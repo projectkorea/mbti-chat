@@ -1,6 +1,8 @@
+import Loading from "components/Loading";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/functions";
+import { useHistory } from "react-router-dom";
 
 if (!window.Kakao.isInitialized()) {
   window.Kakao.init(process.env.REACT_APP_KAKAO_APP_KEY_WEB);
@@ -8,6 +10,7 @@ if (!window.Kakao.isInitialized()) {
 }
 
 const Kakaotalk = () => {
+  const history = useHistory();
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
   const kakaoAuthCode = params.code;
@@ -30,6 +33,7 @@ const Kakaotalk = () => {
             window.Kakao.Auth.setAccessToken(kakaoToken);
             const user = result.user;
             console.log("User : ", user);
+            history.push("/");
           })
           .catch(function (error) {
             console.log(error);
@@ -39,7 +43,7 @@ const Kakaotalk = () => {
         console.log(error);
       });
   }
-  return null;
+  return <Loading />;
 };
 
 export default Kakaotalk;

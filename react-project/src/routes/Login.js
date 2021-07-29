@@ -37,11 +37,35 @@ const Login = () => {
     });
   };
 
+  const onNaverClick = () => {
+    const state =
+      Math.random().toString(36).substring(2, 15) +
+      Math.random().toString(36).substring(2, 15);
+    window.localStorage.setItem("naverState", state);
+    const protocol = window.location.protocol;
+    const hostName = window.location.hostname;
+    const port = window.location.port;
+    let url = protocol + "//" + hostName + (port ? ":" + port : "");
+    url += "/callback/naver";
+    const authUrl = "https://nid.naver.com/oauth2.0/authorize";
+    const params = [];
+    params.push("response_type=code");
+    params.push("client_id=" + process.env.REACT_APP_NAVER_APP_CLIENT_ID);
+    params.push("redirect_uri=" + url);
+    params.push("state=" + state);
+    const authCodeUrl = authUrl + "?" + params.join("&");
+    console.log(authCodeUrl);
+    window.location.href = authCodeUrl;
+  };
+
   return (
     <>
       <div className="authContainer">
         <LoginForm />
         <div className="authBtns">
+          <button onClick={onNaverClick} name="naver" className="authBtn">
+            네이버 로그인
+          </button>
           <button onClick={onKakaoClick} name="kakao" className="authBtn">
             카카오 로그인
           </button>

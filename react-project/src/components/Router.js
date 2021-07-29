@@ -5,6 +5,7 @@ import Home from "routes/Home";
 import Login from "routes/Login";
 import Profile from "routes/Profile";
 import Kakaotalk from "routes/Kakaotalk";
+import Naver from "routes/Naver";
 import Navigation from "components/Navigation";
 
 const Router = ({ isLoggedin, setUserObj }) => {
@@ -29,7 +30,12 @@ const Router = ({ isLoggedin, setUserObj }) => {
             <Route exact path="/" component={Home} />
             <Route path="/chat" component={Chat} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/callback/kakaotalk" component={Kakaotalk} />
+            <Route exact path="/callback/kakaotalk">
+              <Kakaotalk />
+            </Route>
+            <Route exact path="/callback/naver">
+              <Naver />
+            </Route>
             <Route>
               <Redirect to="/" />
             </Route>
