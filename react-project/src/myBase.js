@@ -3,13 +3,13 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC3C3sMgFqn9XWymW-7BSsyOt4pLZmrhmI",
-  authDomain: "mbti-chat-cf115.firebaseapp.com",
-  projectId: "mbti-chat-cf115",
-  storageBucket: "mbti-chat-cf115.appspot.com",
-  messagingSenderId: "315935660847",
-  appId: "1:315935660847:web:72b8974d9f5bce6f0c5fda",
-  measurementId: "G-80VGJDGCR0",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUR_ID,
 };
 
 firebase.initializeApp(firebaseConfig);

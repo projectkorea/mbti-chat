@@ -10,16 +10,13 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setUserObj(user);
-        console.log("USEEFFECT 작동: user가 있다.");
       }
       setInit(true);
-      console.log("USEEFFECT 작동: 초기화했다.");
     });
   }, []);
 
   return (
     <>
-      {console.log("APP랜더링")}
       {init ? (
         <Router isLoggedin={Boolean(userObj)} setUserObj={setUserObj} />
       ) : (
