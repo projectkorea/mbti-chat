@@ -1,16 +1,23 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-function MbtiBlock({ mbtiType }) {
+//mbti-count 불러오기
+function MbtiBlock({ mbtiType, mbtiCount, mode }) {
   return (
     <>
-      <div>
+      {mode ? (
         <button>
-          <Link to={`chat/${mbtiType}`}>
-            <h1>{mbtiType}</h1>
-          </Link>
+          <h1>{mbtiType}</h1>
         </button>
-      </div>
+      ) : (
+        <div>
+          <Link to={`chat/${mbtiType}`}>
+            <button>
+              <h1>{mbtiType}</h1>
+              <h5>메세지 개수:{mbtiCount}</h5>
+            </button>
+          </Link>
+        </div>
+      )}
     </>
   );
 }

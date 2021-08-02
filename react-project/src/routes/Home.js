@@ -1,13 +1,17 @@
-import React from "react";
 import MbtiBlock from "components/MbtiBlock";
 import contents from "contents";
+import { dbService } from "myBase";
 
 function Home() {
   return (
     <>
       <div>Home</div>
       {contents.map((mbtiType) => (
-        <MbtiBlock mbtiType={mbtiType.type} className="mbti-block" />
+        <MbtiBlock
+          mbtiType={mbtiType.type}
+          mbtiCount={mbtiType.count}
+          className="mbti-block"
+        />
       ))}
     </>
   );

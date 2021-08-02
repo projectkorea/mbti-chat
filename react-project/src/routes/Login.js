@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { authService, firebaseInstance } from "myBase";
 import LoginForm from "components/LoginForm";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Login = () => {
   const history = useHistory();
@@ -77,6 +77,7 @@ const Login = () => {
           </button>
         </div>
       </div>
+      <Link to="/login/signup">가입하기</Link>
     </>
   );
 };

@@ -7,8 +7,9 @@ import Profile from "routes/Profile";
 import Kakaotalk from "routes/Kakaotalk";
 import Naver from "routes/Naver";
 import Navigation from "components/Navigation";
+import SignUp from "routes/SignUp";
 
-const Router = ({ isLoggedin, setUserObj }) => {
+const Router = ({ isLoggedin, setUserObj, userObj }) => {
   return (
     <BrowserRouter>
       {isLoggedin ? (
@@ -16,7 +17,9 @@ const Router = ({ isLoggedin, setUserObj }) => {
           <Navigation isLoggedin={isLoggedin} setUserObj={setUserObj} />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/chat" component={Chat} />
+            <Route path="/chat">
+              <Chat userObj={userObj} />
+            </Route>
             <Route exact path="/profile" component={Profile} />
             <Route>
               <Redirect to="/" />
@@ -28,8 +31,9 @@ const Router = ({ isLoggedin, setUserObj }) => {
           <Navigation isLoggedin={isLoggedin} />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/chat" component={Chat} />
+            <Route path="/chat" component={Chat} userObj={userObj} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/login/signup" component={SignUp} />
             <Route exact path="/callback/kakaotalk">
               <Kakaotalk />
             </Route>

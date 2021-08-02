@@ -17,8 +17,13 @@ function App() {
 
   return (
     <>
+      {console.log(userObj)}
       {init ? (
-        <Router isLoggedin={Boolean(userObj)} setUserObj={setUserObj} />
+        <Router
+          isLoggedin={Boolean(userObj)}
+          setUserObj={setUserObj}
+          userObj={userObj}
+        />
       ) : (
         <h1>Loading...</h1>
       )}
