@@ -1,15 +1,15 @@
 import MbtiBlock from "components/MbtiBlock";
-import contents from "contents";
-import { dbService } from "myBase";
 
-function Home() {
+function Home({ mbtiArray }) {
   return (
     <>
       <div>Home</div>
-      {contents.map((mbtiType) => (
+      {mbtiArray.map((element) => (
         <MbtiBlock
-          mbtiType={mbtiType.type}
-          mbtiCount={mbtiType.count}
+          key={element.type}
+          mbtiType={element.type}
+          mbtiCount={element.count}
+          mbtiCitizen={element.citizen}
           className="mbti-block"
         />
       ))}

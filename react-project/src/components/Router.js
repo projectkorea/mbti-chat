@@ -9,18 +9,22 @@ import Naver from "routes/Naver";
 import Navigation from "components/Navigation";
 import SignUp from "routes/SignUp";
 
-const Router = ({ isLoggedin, setUserObj, userObj }) => {
+const Router = ({ isLoggedin, setUserObj, userObj, mbtiArray, typeInit }) => {
   return (
     <BrowserRouter>
       {isLoggedin ? (
         <>
           <Navigation isLoggedin={isLoggedin} setUserObj={setUserObj} />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/">
+              <Home mbtiArray={mbtiArray} />
+            </Route>
             <Route path="/chat">
               <Chat userObj={userObj} />
             </Route>
-            <Route exact path="/profile" component={Profile} />
+            <Route path="/profile">
+              <Profile userObj={userObj} typeInit={typeInit} />
+            </Route>
             <Route>
               <Redirect to="/" />
             </Route>
@@ -30,7 +34,9 @@ const Router = ({ isLoggedin, setUserObj, userObj }) => {
         <>
           <Navigation isLoggedin={isLoggedin} />
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/">
+              <Home mbtiArray={mbtiArray} />
+            </Route>
             <Route path="/chat" component={Chat} userObj={userObj} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/login/signup" component={SignUp} />

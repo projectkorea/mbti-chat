@@ -1,19 +1,25 @@
-import React from "react";
-import contents from "contents";
+import React, { useState } from "react";
+import array from "contents";
 import MbtiBlock from "components/MbtiBlock";
 
-function Profile() {
+function Profile({ userObj, typeInit }) {
+  const [typeInput, setTypeInput] = useState(false);
   return (
     <>
       <div>Profile1</div>
       <span>나의 유형은?</span>
-      {contents.map((mbtiType) => (
-        <MbtiBlock
-          mbtiType={mbtiType.type}
-          className="mbti-block--profile"
-          mode="profile"
-        />
-      ))}
+      {typeInit || typeInput
+        ? userObj.displayName
+        : array.map((element) => (
+            <MbtiBlock
+              key={element.type}
+              mbtiType={element.type}
+              className="mbti-block--profile"
+              forProfile="true"
+              userObj={userObj}
+              setTypeInput={setTypeInput}
+            />
+          ))}
     </>
   );
 }

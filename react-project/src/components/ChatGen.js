@@ -1,53 +1,53 @@
-import { dbService } from "myBase";
-import React, { useState } from "react";
+import { dbService, countService } from "myBase";
+import React, { useEffect, useState } from "react";
 
 const ChatGen = ({ userObj }) => {
   const mbtiType = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
   );
-  const countField = `${mbtiType}-count`;
   const [chat, setChat] = useState("");
-  const [chatCount, setChatCount] = useState(0);
+  const [chatCount, setChatCount] = useState(3);
 
-  const checkOverChat = () => {
-    if (chatCount >= 5) {
-      alert("채팅방 도배가 감지되었습니다. 잠시후에 채팅해주세요.");
-      setTimeout(() => {
-        setChatCount(0);
-      }, 5000);
-      return "overChat";
-    }
-  };
-
-  const inspector = () => {
-    if (chat === "") {
-      return "noChat";
-    }
-  };
+  useEffect(() => {
+    setInterval(() => setChatCount(3), 6000);
+  }, []);
 
   const onSubmit = async (event) => {
-    event.preventDefault();
-    if (inspector() === "noChat") {
-      return;
-    } else if (checkOverChat() === "overChat") {
-      return;
-    } else {
-      //메세지 다큐먼트 생성
-      await dbService.collection(`mbti-chat-${mbtiType}`).add({
-        text: chat, //state value:chat
-        createdAt: Date.now(),
-        creatorId: userObj.uid,
-      });
-      //카운트 다큐먼트 업데이트
-      await dbService
-        .collection("mbti-chat-count")
-        .doc("U4cBg755pLzeo5Mi8BMe")
-        .update({
-          countField: dbService.FieldValue.increment(1),
+    if (userObj) {
+      event.preventDefault();
+
+      //채팅검열
+      if (chat === "") {
+        alert("입력하라능!");
+        return;
+      } else if (chatCount <= 0) {
+        alert("도배하지말라능!");
+        return;
+      } else {
+        //업데이트 될 때 까지 기다리고 비우면 일종의 딜레이 착시현상 발생
+        setChat("");
+
+        //메세지 다큐먼트 생성
+        await dbService.collection(`mbti-chat-${mbtiType}`).add({
+          text: chat, //state value:chat
+          createdAt: Date.now(),
+          creatorId: userObj.uid,
         });
 
-      setChat("");
-      setChatCount(chatCount + 1);
+        //발언권 -1
+        setChatCount(chatCount - 1);
+
+        //FIRESTORE COUNT DOCUMENT 업데이트
+        await dbService
+          .collection("mbti-chat-count")
+          .doc("U4cBg755pLzeo5Mi8BMe")
+          .update({
+            [mbtiType]: countService.FieldValue.increment(1),
+          });
+      }
+    } else {
+      alert("로그인 후 이용바랍니다.");
+      event.preventDefault();
     }
   };
 
@@ -60,6 +60,7 @@ const ChatGen = ({ userObj }) => {
 
   return (
     <form onSubmit={onSubmit} className="factoryForm">
+      <h1>{chatCount}</h1>
       <div className="factoryInput__container">
         <input
           className="factoryInput__input"

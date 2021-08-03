@@ -12,7 +12,7 @@ const Chat = ({ userObj }) => {
   useEffect(() => {
     dbService
       .collection(`mbti-chat-${mbtiType}`)
-      .orderBy("createdAt", "desc")
+      .orderBy("createdAt", "asc")
       .onSnapshot((snapshot) => {
         const nweetArray = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -24,17 +24,18 @@ const Chat = ({ userObj }) => {
 
   return (
     <div className="container">
-      <h1>카운트 수:{}</h1>
-      <ChatGen userObj={userObj} />
       <div style={{ marginTop: 30 }}>
-        {nweets.map((nweet) => (
-          <ChatBox
-            key={nweet.id}
-            nweetObj={nweet}
-            isOwner={nweet.creatorId === userObj.uid}
-          />
-        ))}
+        {userObj
+          ? nweets.map((nweet) => (
+              <ChatBox
+                key={nweet.id}
+                nweetObj={nweet}
+                isOwner={nweet.creatorId === userObj.uid}
+              />
+            ))
+          : nweets.map((nweet) => <ChatBox key={nweet.id} nweetObj={nweet} />)}
       </div>
+      {userObj ? <ChatGen userObj={userObj} /> : <ChatGen />}
     </div>
   );
 };
