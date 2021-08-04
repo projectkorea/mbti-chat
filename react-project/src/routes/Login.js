@@ -5,7 +5,7 @@ import { authService, firebaseInstance } from "myBase";
 import LoginForm from "components/LoginForm";
 import { Link, useHistory } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setSignInEmail }) => {
   const history = useHistory();
   const onSocialClick = async (event) => {
     const {
@@ -61,7 +61,7 @@ const Login = () => {
   return (
     <>
       <div className="authContainer">
-        <LoginForm />
+        <LoginForm setSignInEmail={setSignInEmail} />
         <div className="authBtns">
           <button onClick={onNaverClick} name="naver" className="authBtn">
             네이버 로그인

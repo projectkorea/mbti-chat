@@ -5,10 +5,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const Navigation = ({ isLoggedin, setUserObj }) => {
+const Navigation = ({
+  isLoggedin,
+  setUserObj,
+  setSignInEmail,
+  setTypeInit,
+}) => {
   const history = useHistory();
   const onLogOutClick = () => {
     authService.signOut();
+    setUserObj(null);
+    setSignInEmail(null);
+    setTypeInit(null);
     setUserObj(null);
     history.push("/");
   };

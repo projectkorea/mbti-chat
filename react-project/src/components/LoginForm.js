@@ -1,17 +1,17 @@
 import { authService } from "myBase";
 import React, { useState } from "react";
 
-const LoginForm = () => {
+const LoginForm = ({ setSignInEmail }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const onSubmit = async (event) => {
     event.preventDefault();
     try {
-      await authService.createUserWithEmailAndPassword(email, password);
-      if (authService.currentUser.emailVerified) {
-        await authService.signInWithEmailAndPassword(email, password);
-      }
+      await authService
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => setSignInEmail(true));
     } catch (error) {
       setError(error.message);
     }

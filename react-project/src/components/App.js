@@ -7,6 +7,7 @@ function App() {
   const [init, setInit] = useState(false);
   const [dbInit, setdbInit] = useState(false);
   const [typeInit, setTypeInit] = useState(false);
+  const [signInEmail, setSignInEmail] = useState(false);
   const [userObj, setUserObj] = useState(null);
 
   // 메세지 대화 수, 사람 수 DB불러오기
@@ -32,9 +33,14 @@ function App() {
     setdbInit(true);
   };
 
-  //userObj에서 이름으로 유형골랐는지 확인하기
+  //type골랐는지 확인해서 프로필에 선택사항 주기
   const checkType = (user) => {
     if (user) {
+      console.log(user);
+      console.log(user.providerData[0]["uid"]);
+      if (user.providerData[0]["uid"].indexOf("@") !== -1) {
+        console.log("@들어감");
+      }
       mbtiArray.map((element) => {
         if (user.displayName === element["type"]) {
           setTypeInit(true);
@@ -64,6 +70,9 @@ function App() {
           userObj={userObj}
           mbtiArray={mbtiArray}
           typeInit={typeInit}
+          setTypeInit={setTypeInit}
+          setSignInEmail={setSignInEmail}
+          signInEmail={signInEmail}
         />
       ) : (
         <h1>Loading...</h1>

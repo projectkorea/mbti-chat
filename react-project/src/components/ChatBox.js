@@ -24,6 +24,7 @@ const ChatBox = ({ nweetObj, isOwner }) => {
   return (
     <div className="nweet">
       <>
+        <h5>{nweetObj.creatorNickName}</h5>
         <h4>{nweetObj.text}</h4>
         {isOwner && (
           <>

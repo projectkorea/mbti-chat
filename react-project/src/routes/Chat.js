@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import ChatBox from "components/ChatBox";
 import ChatGen from "components/ChatGen";
 
-const Chat = ({ userObj }) => {
-  console.log(`유저: ${userObj}`);
+const Chat = ({ userObj, signInEmail, typeInit }) => {
   const [nweets, setNweets] = useState([]);
   const mbtiType = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
@@ -31,11 +30,20 @@ const Chat = ({ userObj }) => {
                 key={nweet.id}
                 nweetObj={nweet}
                 isOwner={nweet.creatorId === userObj.uid}
+                userObj={userObj}
               />
             ))
           : nweets.map((nweet) => <ChatBox key={nweet.id} nweetObj={nweet} />)}
       </div>
-      {userObj ? <ChatGen userObj={userObj} /> : <ChatGen />}
+      {userObj ? (
+        <ChatGen
+          userObj={userObj}
+          signInEmail={signInEmail}
+          typeInit={typeInit}
+        />
+      ) : (
+        <ChatGen />
+      )}
     </div>
   );
 };

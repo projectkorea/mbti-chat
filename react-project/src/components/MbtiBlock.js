@@ -8,6 +8,7 @@ function MbtiBlock({
   mbtiCitizen,
   userObj,
   setTypeInput,
+  setTypeInit,
 }) {
   //유형 고르기 && 사람수 DB업데이트하기
   const onClick = async () => {
@@ -19,6 +20,7 @@ function MbtiBlock({
       });
     await userObj.updateProfile({ displayName: mbtiType });
     setTypeInput(true);
+    setTypeInit(true);
   };
   return (
     <>

@@ -1,21 +1,35 @@
 import { dbService, countService } from "myBase";
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
-const ChatGen = ({ userObj }) => {
+const ChatGen = ({ userObj, signInEmail, typeInit }) => {
+  const history = useHistory();
   const mbtiType = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
   );
   const [chat, setChat] = useState("");
-  const [chatCount, setChatCount] = useState(3);
+  const [chatCount, setChatCount] = useState(4);
 
   useEffect(() => {
-    setInterval(() => setChatCount(3), 6000);
+    setInterval(() => setChatCount(4), 10000);
   }, []);
 
   const onSubmit = async (event) => {
+    //로그인 했다면 채팅 가능하게
     if (userObj) {
       event.preventDefault();
-
+      //11 통과 10 불통과 00 통과  01 통과
+      if (signInEmail === true && userObj.emailVerified === false) {
+        alert("이메일 인증 후 채팅하라능!");
+        history.push("/profile");
+        return;
+      }
+      //type을 골라야 채팅 가능하게
+      if (!typeInit) {
+        alert("유형을 고르고 채팅하라능!");
+        history.push("/profile");
+        return;
+      }
       //채팅검열
       if (chat === "") {
         alert("입력하라능!");
@@ -32,6 +46,7 @@ const ChatGen = ({ userObj }) => {
           text: chat, //state value:chat
           createdAt: Date.now(),
           creatorId: userObj.uid,
+          creatorNickName: userObj.displayName,
         });
 
         //발언권 -1
