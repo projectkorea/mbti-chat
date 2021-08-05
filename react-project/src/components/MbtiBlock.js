@@ -1,5 +1,6 @@
 import { countService, dbService } from "myBase";
 import { Link } from "react-router-dom";
+import { nickname } from "components/NicknameGen";
 
 function MbtiBlock({
   mbtiType,
@@ -12,13 +13,20 @@ function MbtiBlock({
 }) {
   //유형 고르기 && 사람수 DB업데이트하기
   const onClick = async () => {
+    //유형 인구수 1올리기
     await dbService
       .collection("mbti-chat-citizen")
       .doc("mQsXVT0f9hXPuhuzspJH")
       .update({
         [mbtiType]: countService.FieldValue.increment(1),
       });
-    await userObj.updateProfile({ displayName: mbtiType });
+
+    // 타입과 닉네임 업데이트
+    await userObj.updateProfile({
+      displayName: mbtiType,
+      photoURL: nickname,
+    });
+
     setTypeInput(true);
     setTypeInit(true);
   };

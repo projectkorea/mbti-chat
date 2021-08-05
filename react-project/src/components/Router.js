@@ -60,7 +60,7 @@ const Router = ({
             <Route exact path="/">
               <Home mbtiArray={mbtiArray} />
             </Route>
-            <Route path="/chat" component={Chat} userObj={userObj} />
+            <Route path="/chat" component={Chat} />
             <Route exact path="/login">
               <Login setSignInEmail={setSignInEmail} />
             </Route>

@@ -24,7 +24,17 @@ const ChatBox = ({ nweetObj, isOwner }) => {
   return (
     <div className="nweet">
       <>
-        <h5>{nweetObj.creatorNickName}</h5>
+        <span>{nweetObj.creatorType}</span>
+        <span>{nweetObj.creatorNickname}</span>
+        <br></br>
+        <span>{nweetObj.createdAt.month}</span>
+        <span>/</span>
+        <span>{nweetObj.createdAt.day}</span>
+        <br></br>
+        <span>{nweetObj.createdAt.hour}</span>
+        <span>:</span>
+        <span>{nweetObj.createdAt.minute}</span>
+
         <h4>{nweetObj.text}</h4>
         {isOwner && (
           <>
@@ -36,6 +46,7 @@ const ChatBox = ({ nweetObj, isOwner }) => {
           </>
         )}
       </>
+      <br></br>
     </div>
   );
 };

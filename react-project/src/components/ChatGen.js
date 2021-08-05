@@ -40,13 +40,21 @@ const ChatGen = ({ userObj, signInEmail, typeInit }) => {
       } else {
         //업데이트 될 때 까지 기다리고 비우면 일종의 딜레이 착시현상 발생
         setChat("");
-
+        const date = new Date();
         //메세지 다큐먼트 생성
         await dbService.collection(`mbti-chat-${mbtiType}`).add({
           text: chat, //state value:chat
-          createdAt: Date.now(),
+          createdAt: {
+            year: date.getFullYear(),
+            month: date.getMonth() + 1,
+            day: date.getDate(),
+            hour: date.getHours(),
+            minute: date.getMinutes(),
+            second: date.getSeconds(),
+          },
           creatorId: userObj.uid,
-          creatorNickName: userObj.displayName,
+          creatorType: userObj.displayName,
+          creatorNickname: userObj.photoURL,
         });
 
         //발언권 -1
@@ -75,14 +83,13 @@ const ChatGen = ({ userObj, signInEmail, typeInit }) => {
 
   return (
     <form onSubmit={onSubmit} className="factoryForm">
-      <h1>{chatCount}</h1>
       <div className="factoryInput__container">
         <input
           className="factoryInput__input"
           value={chat}
           onChange={onChange}
           type="text"
-          placeholder="What's on your mind?"
+          placeholder="채팅을 입력하세요"
           maxLength={120}
         />
         <input type="submit" value="&rarr;" className="factoryInput__arrow" />
