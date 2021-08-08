@@ -1,9 +1,8 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { authService, firebaseInstance } from "myBase";
 import LoginForm from "components/LoginForm";
 import { Link, useHistory } from "react-router-dom";
+import SocialLogin from "components/SocialLogin";
 
 const Login = ({ setSignInEmail }) => {
   const history = useHistory();
@@ -62,22 +61,32 @@ const Login = ({ setSignInEmail }) => {
     <>
       <div className="authContainer">
         <LoginForm setSignInEmail={setSignInEmail} />
-        <div className="authBtns">
-          <button onClick={onNaverClick} name="naver" className="authBtn">
-            네이버 로그인
+        <div className="auth--container">
+          <button onClick={onNaverClick} name="naver" className="auth--item">
+            <SocialLogin socialType={"naver"} socialName="네이버" />
           </button>
-          <button onClick={onKakaoClick} name="kakao" className="authBtn">
-            카카오 로그인
+          <button onClick={onKakaoClick} name="kakao" className="auth--item">
+            <SocialLogin socialType={"kakao"} socialName="카카오" />
           </button>
-          <button onClick={onSocialClick} name="google" className="authBtn">
-            구글 로그인 <FontAwesomeIcon icon={faGoogle} />
+        </div>
+        <div className="auth--container">
+          <button onClick={onSocialClick} name="google" className="auth--item">
+            <SocialLogin socialType={"google"} socialName="구글" />
           </button>
-          <button onClick={onSocialClick} name="facebook" className="authBtn">
-            페이스북 로그인 <FontAwesomeIcon icon={faFacebook} />
+          <button
+            onClick={onSocialClick}
+            name="facebook"
+            className="auth--item"
+          >
+            <SocialLogin socialType={"facebook"} socialName={"페이스북"} />
           </button>
         </div>
       </div>
-      <Link to="/login/signup">가입하기</Link>
+      <div className="auth--container">
+        <Link to="/login/signup">
+          <button className="auth--item">가입하기</button>
+        </Link>
+      </div>
     </>
   );
 };

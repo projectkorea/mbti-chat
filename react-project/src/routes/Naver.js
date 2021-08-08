@@ -2,10 +2,8 @@ import Loading from "components/Loading";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/functions";
-import { useHistory } from "react-router-dom";
 
 const Naver = () => {
-  const history = useHistory();
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
   const naverState = params.state;

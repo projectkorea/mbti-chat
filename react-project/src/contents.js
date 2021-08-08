@@ -1,84 +1,117 @@
-const array = [
+export const mbtiArray = [
   {
     type: "intj",
     count: 1,
     citizen: 1,
+    color: "#C3C3C3",
   },
   {
     type: "intp",
     count: 2,
     citizen: 1,
+    color: "#55545A",
   },
   {
     type: "entj",
     count: 3,
     citizen: 1,
+    color: "#37373F",
   },
   {
     type: "entp",
     count: 0,
     citizen: 1,
+    color: "#B62135",
   },
   {
     type: "infj",
     count: 0,
     citizen: 1,
+    color: "#64AECB",
   },
   {
     type: "infp",
     count: 0,
     citizen: 1,
+    color: "#66C8BB",
   },
   {
     type: "enfj",
     count: 0,
     citizen: 1,
+    color: "#13A5B4",
   },
   {
     type: "enfp",
     count: 0,
     citizen: 1,
+    color: "#13A5B4",
   },
   {
     type: "istj",
     count: 0,
     citizen: 1,
+    color: "#55545A",
   },
   {
     type: "isfj",
     count: 0,
     citizen: 1,
+    color: "#F4BF59",
   },
   {
     type: "esfj",
     count: 0,
     citizen: 1,
+    color: "#DA5A8B",
   },
   {
     type: "estj",
     count: 0,
     citizen: 1,
+    color: "#5CA286",
   },
   {
     type: "istp",
     count: 0,
     citizen: 1,
+    color: "#363E62",
   },
   {
     type: "isfp",
     count: 0,
     citizen: 1,
+    color: "#66C8BB",
   },
   {
     type: "estp",
     count: 0,
     citizen: 1,
+    color: "#C92F37",
   },
   {
     type: "esfp",
     count: 0,
     citizen: 1,
+    color: "#F5C012",
   },
 ];
 
-export default array;
+export const mbtiColorArray = {
+  intj: "C3C3C3",
+  intp: "91ADB9",
+  entj: "37373F",
+  entp: "B62135",
+  infj: "64AECB",
+  infp: "66C8BB",
+  enfj: "13A5B4",
+  enfp: "13A5B4",
+  istj: "55545A",
+  isfj: "F4BF59",
+  esfj: "DA5A8B",
+  estj: "5CA286",
+  istp: "363E62",
+  isfp: "66C8BB",
+  estp: "C92F37",
+  esfp: "F5C012",
+};

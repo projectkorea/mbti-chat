@@ -2,8 +2,7 @@ import MbtiBlock from "components/MbtiBlock";
 
 function Home({ mbtiArray }) {
   return (
-    <>
-      <div>Home</div>
+    <div className="mbti-block--container">
       {mbtiArray.map((element) => (
         <MbtiBlock
           key={element.type}
@@ -13,7 +12,7 @@ function Home({ mbtiArray }) {
           className="mbti-block"
         />
       ))}
-    </>
+    </div>
   );
 }
 

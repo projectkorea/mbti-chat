@@ -1,12 +1,19 @@
 import { dbService, countService } from "myBase";
-import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { mbtiColorArray } from "contents";
 
 const ChatBox = ({ nweetObj, isOwner }) => {
   const mbtiType = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
   );
+
+  //for badge box
+
+  const creatorType =
+    nweetObj.creatorType && nweetObj.creatorType.toUpperCase();
+  const creatorTypeColor = mbtiColorArray[nweetObj.creatorType];
+  const creatorTypeUrl = `https://img.shields.io/badge/${creatorType}-${creatorTypeColor}?style=flat-square`;
 
   const onDeleteClick = async () => {
     const ok = window.confirm("Are you sure you want to delete it?");
@@ -22,9 +29,11 @@ const ChatBox = ({ nweetObj, isOwner }) => {
   };
 
   return (
-    <div className="nweet">
+    <div className="chat-box">
       <>
-        <span>{nweetObj.creatorType}</span>
+        <span>
+          <img alt="type" src={creatorTypeUrl} />
+        </span>
         <span>{nweetObj.creatorNickname}</span>
         <br></br>
         <span>{nweetObj.createdAt.month}</span>
@@ -34,7 +43,6 @@ const ChatBox = ({ nweetObj, isOwner }) => {
         <span>{nweetObj.createdAt.hour}</span>
         <span>:</span>
         <span>{nweetObj.createdAt.minute}</span>
-
         <h4>{nweetObj.text}</h4>
         {isOwner && (
           <>

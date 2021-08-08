@@ -2,7 +2,6 @@ import React from "react";
 import { authService } from "myBase";
 import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = ({
@@ -22,12 +21,29 @@ const Navigation = ({
   };
   return (
     <nav>
+      <Link to="/">
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <img
+            alt="logo"
+            src="/mbti-chat-icon-font.svg"
+            width="60px"
+            height="60px"
+            style={{ marginTop: 50 }}
+          />
+        </div>
+      </Link>
       {isLoggedin ? (
-        <ul>
+        <ul
+          style={{ display: "flex", justifyContent: "center", marginTop: 50 }}
+        >
           <li>
-            들옴
             <Link to="/">
-              <FontAwesomeIcon icon={faFacebook} color={"#04AAFF"} size="2x" />
+              <img
+                alt="logo"
+                src="/mbti-chat-icon-font.svg"
+                width="60px"
+                height="60px"
+              />
             </Link>
           </li>
           <li>
@@ -47,13 +63,9 @@ const Navigation = ({
           </li>
         </ul>
       ) : (
-        <ul>
-          <li>
-            아직안들옴
-            <Link to="/">
-              <FontAwesomeIcon icon={faFacebook} color={"#04AAFF"} size="2x" />
-            </Link>
-          </li>
+        <ul
+          style={{ display: "flex", justifyContent: "center", marginTop: 50 }}
+        >
           <li>
             <Link to="/login">
               <h3>로그인</h3>

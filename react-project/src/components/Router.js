@@ -43,6 +43,7 @@ const Router = ({
             <Route path="/profile">
               <Profile
                 userObj={userObj}
+                setUserObj={setUserObj}
                 typeInit={typeInit}
                 signInEmail={signInEmail}
                 setTypeInit={setTypeInit}

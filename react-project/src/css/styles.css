@@ -1,0 +1,91 @@
+@import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: whitesmoke;
+  font-family: "NanumBarunGothic";
+  font-size: 18px;
+}
+
+/* Home */
+
+.mbti-block--container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px;
+}
+
+.mbti-block--item {
+  display: inline-block;
+  margin: 10px;
+}
+
+.mbti-block__btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mbti-block__title {
+  font-size: 28px;
+}
+
+.mbti-block__subtitle {
+  font-size: 12px;
+  color: gainsboro;
+}
+
+/* login */
+
+.login--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.login--item {
+  display: block;
+  width: 260px;
+  height: 36px;
+  margin: 10px;
+  padding: 9px 0px 7px 8px;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.login--item.input {
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(200, 200, 200);
+}
+
+.login--item.submit {
+  font-size: 15px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #42a5f5;
+}
+
+.auth--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.auth--item {
+  display: inline-block;
+  width: 140px;
+  margin: 0px 5px 0px 0px;
+  height: 28px;
+  border-radius: 5px;
+  border: 0px;
+  cursor: pointer;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(200, 200, 200);
+}

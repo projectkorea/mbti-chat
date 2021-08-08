@@ -10,7 +10,7 @@ const LoginForm = ({ setSignInEmail }) => {
     event.preventDefault();
     try {
       await authService
-        .createUserWithEmailAndPassword(email, password)
+        .signInWithEmailAndPassword(email, password)
         .then(() => setSignInEmail(true));
     } catch (error) {
       setError(error.message);
@@ -18,7 +18,7 @@ const LoginForm = ({ setSignInEmail }) => {
   };
   return (
     <>
-      <form onSubmit={onSubmit} className="container">
+      <form onSubmit={onSubmit} className="login--container">
         <input
           name="email"
           type="text"
@@ -26,7 +26,7 @@ const LoginForm = ({ setSignInEmail }) => {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="authInput"
+          className="login--item input"
         />
         <input
           name="password"
@@ -35,9 +35,9 @@ const LoginForm = ({ setSignInEmail }) => {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="authInput"
+          className="login--item input"
         />
-        <input type="submit" className="authError" value={"Log in"} />
+        <input type="submit" className="login--item submit" value={"Log in"} />
         {error && <span className="authError">{error}</span>}
       </form>
     </>

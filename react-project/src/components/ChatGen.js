@@ -18,7 +18,7 @@ const ChatGen = ({ userObj, signInEmail, typeInit }) => {
     //로그인 했다면 채팅 가능하게
     if (userObj) {
       event.preventDefault();
-      //11 통과 10 불통과 00 통과  01 통과
+      // 00 통과  01 통과 11 통과 10 불통과
       if (signInEmail === true && userObj.emailVerified === false) {
         alert("이메일 인증 후 채팅하라능!");
         history.push("/profile");

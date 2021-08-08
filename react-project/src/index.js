@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "components/App";
-import "styles.css";
+import "css/styles.css";
+import "css/loader.css";
 import firebase from "firebase";
 
 if (window.location.hostname === "localhost") {
