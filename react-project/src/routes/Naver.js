@@ -17,13 +17,13 @@ const Naver = () => {
   }
   const naverAuthCode = params.code;
   if (naverAuthCode) {
-    console.log(naverAuthCode);
+    // console.log(naverAuthCode);
     // this.token = naverAuthCode;
     // 카카오 로그인 토큰을 파이어베이스 함수에 전달합니다.
     var naverAuth = firebase.functions().httpsCallable("NaverAuth");
     naverAuth({ code: naverAuthCode })
       .then(function (result) {
-        console.log(result);
+        // console.log(result);
         // Read result of the Cloud Function.
         var naverToken = result.data.naver_token;
         var fireToken = result.data.firebase_token;
@@ -35,9 +35,9 @@ const Naver = () => {
             // _this.token = naverToken;
             window.localStorage.setItem("NaverToken", naverToken);
             const user = result.user;
-            console.log("User : ", user);
+            // console.log("User : ", user);
             if (result.additionalUserInfo.isNewUser) {
-              console.log("신규 사용자...");
+              //   console.log("신규 사용자...");
             }
           })
           .catch(function (error) {

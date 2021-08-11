@@ -1,63 +1,79 @@
 import React, { useState } from "react";
-import { mbtiArray } from "contents";
+import { mbtiArray, mbtiColorArray } from "contents";
 import MbtiBlock from "components/MbtiBlock";
-import { authService } from "myBase";
+import Auth from "components/Auth";
 
 function Profile({ userObj, typeInit, setTypeInit }) {
-  //typeInput은 페이지 내 타입 골랐는지 확인하는 state
+  //페이지 내 타입을 골랐는지 확인하는 state
   const [typeInput, setTypeInput] = useState(false);
-  const [verifiedBtn, setVerifiedBtn] = useState(false);
-
-  const onCheckVerification = async () => {
-    if (verifiedBtn) {
-      if (!userObj.emailVerified) {
-        await window.location.reload();
-      }
-    } else {
-      alert("인증메일을 먼저 보내세요.");
-    }
-  };
-
-  const onSendVerifiation = () => {
-    const user = authService.currentUser;
-    setVerifiedBtn(true);
-    if (!verifiedBtn) {
-      user
-        .sendEmailVerification()
-        .then(
-          async () =>
-            await alert(`${user.email} 주소로 인증 코드를 발송했습니다.`)
-        );
-    } else {
-      alert(`인증코드를 이미 발송했습니다. ${user.email} 주소를 확인해주세요.`);
-    }
-  };
+  const creatorType = userObj.displayName && userObj.displayName.toUpperCase();
+  const creatorTypeColor = mbtiColorArray[userObj.displayName];
+  const creatorTypeUrl = `https://img.shields.io/badge/${creatorType}-${creatorTypeColor}?style=flat-square`;
 
   return (
     <>
-      <div>Profile1</div>
-      {userObj.emailVerified && <h1>인증성공 ID</h1>}
-      {!userObj.emailVerified && (
-        <>
-          <button onClick={onSendVerifiation}>이메일 인증 코드 보내기</button>
-          <button onClick={onCheckVerification}>인증 확인하기</button>
-          <h1>인증이 필요합니다.</h1>
-        </>
-      )}
-      <span>나의 유형은?</span>
-      {typeInit || typeInput
-        ? userObj.displayName
-        : mbtiArray.map((element) => (
-            <MbtiBlock
-              key={element.type}
-              mbtiType={element.type}
-              className="mbti-block--profile"
-              forProfile="true"
-              userObj={userObj}
-              setTypeInput={setTypeInput}
-              setTypeInit={setTypeInit}
+      <div className="profile">
+        <div className="profile-head">
+          <h1 className="profile-font--title">프로필</h1>
+          {typeInit || typeInput ? (
+            <div
+              className="profile--item"
+              src="default-profile.svg"
+              alt="profile"
+              style={{
+                width: "150px",
+                height: "150px",
+                borderRadius: "70%",
+                backgroundImage: `url(/char/${userObj.displayName}.svg)`,
+                backgroundColor: "rgb(200,200,200)",
+                backgroundSize: "150%",
+                backgroundPosition: "top",
+                backgroundRepeat: "no-repeat",
+              }}
             />
-          ))}
+          ) : (
+            <img
+              className="profile--item"
+              src="default-profile.svg"
+              alt="profile"
+              style={{
+                width: "150px",
+                height: "150px",
+                borderRadius: "50%",
+                backgroundColor: "gray",
+              }}
+            />
+          )}
+        </div>
+        <div className="profile-body">
+          {(typeInit || typeInput) && (
+            <img
+              alt="type"
+              src={creatorTypeUrl}
+              style={{ margin: "-5px 0px 10px" }}
+            />
+          )}
+          <div className="profile-font">{userObj.photoURL}</div>
+          {!(typeInit || typeInput) && (
+            <>
+              <div className="profile-small">당신의 MBTI유형은?</div>
+              <div className="mbti-block--container">
+                {mbtiArray.map((element) => (
+                  <MbtiBlock
+                    key={element.type}
+                    mbtiType={element.type}
+                    forProfile="true"
+                    userObj={userObj}
+                    setTypeInput={setTypeInput}
+                    setTypeInit={setTypeInit}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+          <Auth userObj={userObj} />
+        </div>
+      </div>
     </>
   );
 }

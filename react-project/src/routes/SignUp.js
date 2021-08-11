@@ -1,91 +1,26 @@
-import React from "react";
-import { authService, firebaseInstance } from "myBase";
 import LoginForm from "components/LoginForm";
-import { Link, useHistory } from "react-router-dom";
-import SocialLogin from "components/SocialLogin";
+import SocialLoginBox from "components/SocialLoginBox";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = ({ setSignInEmail }) => {
-  const history = useHistory();
-  const onSocialClick = async (event) => {
-    const {
-      target: { name },
-    } = event;
-    let provider;
-    if (name === "google") {
-      provider = new firebaseInstance.auth.GoogleAuthProvider();
-    } else if (name === "facebook") {
-      provider = new firebaseInstance.auth.FacebookAuthProvider();
-    }
-    await authService.signInWithRedirect(provider);
-    history.push("/");
-  };
-
-  const onKakaoClick = () => {
-    if (!window.Kakao.isInitialized()) {
-      window.Kakao.init(process.env.REACT_APP_KAKAO_APP_KEY_WEB);
-      window.Kakao.isInitialized();
-    }
-    const protocol = window.location.protocol;
-    const hostName = window.location.hostname;
-    const port = window.location.port;
-    let url = protocol + "//" + hostName + (port ? ":" + port : "");
-    url += "/callback/kakaotalk";
-    window.Kakao.Auth.authorize({
-      redirectUri: url,
-      throughTalk: true,
-    });
-  };
-
-  const onNaverClick = () => {
-    const state =
-      Math.random().toString(36).substring(2, 15) +
-      Math.random().toString(36).substring(2, 15);
-    window.localStorage.setItem("naverState", state);
-    const protocol = window.location.protocol;
-    const hostName = window.location.hostname;
-    const port = window.location.port;
-    let url = protocol + "//" + hostName + (port ? ":" + port : "");
-    url += "/callback/naver";
-    const authUrl = "https://nid.naver.com/oauth2.0/authorize";
-    const params = [];
-    params.push("response_type=code");
-    params.push("client_id=" + process.env.REACT_APP_NAVER_APP_CLIENT_ID);
-    params.push("redirect_uri=" + url);
-    params.push("state=" + state);
-    const authCodeUrl = authUrl + "?" + params.join("&");
-    console.log(authCodeUrl);
-    window.location.href = authCodeUrl;
-  };
-
+  const isSignup = true;
   return (
     <>
-      <div className="authContainer">
-        <div className="Social--container">
-          <div className="auth--container">
-            <button onClick={onNaverClick} name="naver" className="auth--item">
-              <SocialLogin socialType={"naver"} socialName="네이버" />
-            </button>
-            <button onClick={onKakaoClick} name="kakao" className="auth--item">
-              <SocialLogin socialType={"kakao"} socialName="카카오" />
-            </button>
-          </div>
-          <div className="auth--container">
-            <button
-              onClick={onSocialClick}
-              name="google"
-              className="auth--item"
-            >
-              <SocialLogin socialType={"google"} socialName="구글" />
-            </button>
-            <button
-              onClick={onSocialClick}
-              name="facebook"
-              className="auth--item"
-            >
-              <SocialLogin socialType={"facebook"} socialName={"페이스북"} />
-            </button>
-          </div>
-        </div>
+      <div className="blank" style={{ height: "10vh" }} />
+      <div className="authContainer"></div>
+      <SocialLoginBox />
+      <div className="dividing--container">
+        <div className="dividing--line"></div>
+        <h1 className="dividing--font">간편 가입</h1>
+        <div className="dividing--line"></div>
+      </div>
+      <LoginForm setSignInEmail={setSignInEmail} isSignUp={isSignup} />
+      <div className="auth--container signup ">
+        <h2 className="login-font">아이디가 있다면?</h2>
+        <Link to="/login">
+          <h1 className="auth--item--signup">로그인</h1>
+        </Link>
       </div>
     </>
   );

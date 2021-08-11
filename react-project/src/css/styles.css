@@ -5,19 +5,45 @@
 }
 
 body {
-  background-color: whitesmoke;
+  padding-top: 75px;
+  background-color: rgb(250, 250, 250);
   font-family: "NanumBarunGothic";
   font-size: 18px;
+}
+
+/* Nav */
+
+.header {
+  background-color: #c79a00;
+  height: 75px;
+  padding: 1rem;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  /* width: 100% */
+  left: 0;
+  right: 0;
+}
+
+.nav--login {
+  width: 80px;
+  font-size: 18px;
+  color: whitesmoke;
 }
 
 /* Home */
 
 .mbti-block--container {
   display: flex;
+  margin: 10px auto;
+  max-width: 600px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 10px;
 }
 
 .mbti-block--item {
@@ -52,7 +78,7 @@ body {
   display: block;
   width: 260px;
   height: 36px;
-  margin: 10px;
+  margin: 5px;
   padding: 9px 0px 7px 8px;
   border-radius: 5px;
   border: 0px;
@@ -65,9 +91,11 @@ body {
 
 .login--item.submit {
   font-size: 15px;
+  margin: 10px 0px;
   font-weight: bold;
   color: whitesmoke;
   background-color: #42a5f5;
+  cursor: pointer;
 }
 
 .auth--container {
@@ -78,9 +106,15 @@ body {
   margin: 10px;
 }
 
+.auth--container.signup {
+  justify-content: space-arounds;
+  margin-top: 20px;
+}
+
 .auth--item {
   display: inline-block;
   width: 140px;
+  min-width: 100px;
   margin: 0px 5px 0px 0px;
   height: 28px;
   border-radius: 5px;
@@ -88,4 +122,91 @@ body {
   cursor: pointer;
   background-color: rgb(245, 245, 245);
   border: 1px solid rgb(200, 200, 200);
+}
+
+.auth--item--signup {
+  display: inline-block;
+  color: #0077c2;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dividing--container {
+  display: flex;
+  height: 20px;
+  width: 280px;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dividing--line {
+  background-color: rgba(219, 219, 219);
+  height: 1.5px;
+  width: 100px;
+}
+
+.dividing--font {
+  color: rgba(200, 200, 200);
+  font-size: 12px;
+}
+
+.login-font {
+  font-size: 16px;
+}
+
+/* profile */
+
+.profile-font--title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.profile-head {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0px;
+}
+
+.profile-body {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+  margin: -110px auto 0px;
+  padding: 80px 20px 10px 20px;
+  width: 300px;
+  height: 400px;
+}
+
+.profile--item {
+  display: block;
+  margin: 10px;
+}
+
+.profile-font {
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+  display: block;
+  margin: 0px 0px 5px 0px;
+  background-color: rgb(245, 245, 245);
+}
+
+.profile-font--small {
+  font-size: 14px;
+  color: black;
+  margin: 10px;
+}
+
+.profile-mbti-block--item {
+  display: inline-block;
+  padding-top: 12px;
+  width: 40px;
+  height: 40px;
 }

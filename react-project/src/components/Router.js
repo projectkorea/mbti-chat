@@ -16,8 +16,6 @@ const Router = ({
   mbtiArray,
   typeInit,
   setTypeInit,
-  setSignInEmail,
-  signInEmail,
 }) => {
   return (
     <BrowserRouter>
@@ -26,7 +24,6 @@ const Router = ({
           <Navigation
             isLoggedin={isLoggedin}
             setUserObj={setUserObj}
-            setSignInEmail={setSignInEmail}
             setTypeInit={setTypeInit}
           />
           <Switch>
@@ -34,18 +31,13 @@ const Router = ({
               <Home mbtiArray={mbtiArray} />
             </Route>
             <Route path="/chat">
-              <Chat
-                userObj={userObj}
-                signInEmail={signInEmail}
-                typeInit={typeInit}
-              />
+              <Chat userObj={userObj} typeInit={typeInit} />
             </Route>
             <Route path="/profile">
               <Profile
                 userObj={userObj}
                 setUserObj={setUserObj}
                 typeInit={typeInit}
-                signInEmail={signInEmail}
                 setTypeInit={setTypeInit}
               />
             </Route>
@@ -63,9 +55,11 @@ const Router = ({
             </Route>
             <Route path="/chat" component={Chat} />
             <Route exact path="/login">
-              <Login setSignInEmail={setSignInEmail} />
+              <Login />
             </Route>
-            <Route exact path="/login/signup" component={SignUp} />
+            <Route exact path="/login/signup">
+              <SignUp />
+            </Route>
             <Route exact path="/callback/kakaotalk">
               <Kakaotalk />
             </Route>

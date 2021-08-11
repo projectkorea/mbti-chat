@@ -2,7 +2,7 @@ import { dbService, countService } from "myBase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const ChatGen = ({ userObj, signInEmail, typeInit }) => {
+const ChatGen = ({ userObj, typeInit }) => {
   const history = useHistory();
   const mbtiType = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
@@ -19,7 +19,10 @@ const ChatGen = ({ userObj, signInEmail, typeInit }) => {
     if (userObj) {
       event.preventDefault();
       // 00 통과  01 통과 11 통과 10 불통과
-      if (signInEmail === true && userObj.emailVerified === false) {
+      if (
+        userObj.providerData[0]["uid"].indexOf("@") !== -1 &&
+        userObj.emailVerified === false
+      ) {
         alert("이메일 인증 후 채팅하라능!");
         history.push("/profile");
         return;
@@ -70,6 +73,7 @@ const ChatGen = ({ userObj, signInEmail, typeInit }) => {
       }
     } else {
       alert("로그인 후 이용바랍니다.");
+      history.push("/login");
       event.preventDefault();
     }
   };

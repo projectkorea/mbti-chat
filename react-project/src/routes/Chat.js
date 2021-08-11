@@ -1,9 +1,9 @@
-import { dbService } from "myBase";
 import React, { useEffect, useState } from "react";
+import { dbService } from "myBase";
 import ChatBox from "components/ChatBox";
 import ChatGen from "components/ChatGen";
 
-const Chat = ({ userObj, signInEmail, typeInit }) => {
+const Chat = ({ userObj, typeInit }) => {
   const [chats, setChats] = useState([]);
   const mbtiType = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
@@ -37,11 +37,7 @@ const Chat = ({ userObj, signInEmail, typeInit }) => {
           : chats.map((nweet) => <ChatBox key={nweet.id} nweetObj={nweet} />)}
       </div>
       {userObj ? (
-        <ChatGen
-          userObj={userObj}
-          signInEmail={signInEmail}
-          typeInit={typeInit}
-        />
+        <ChatGen userObj={userObj} typeInit={typeInit} />
       ) : (
         <ChatGen />
       )}
