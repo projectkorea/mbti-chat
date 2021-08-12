@@ -20,9 +20,8 @@ const LoginForm = ({ isSignUp }) => {
 
   const onSubmitSignUp = async () => {
     try {
-      await authService
-        .createUserWithEmailAndPassword(email, password)
-        .then(() => history.push("/profile"));
+      await authService.createUserWithEmailAndPassword(email, password);
+      history.push("/profile");
     } catch (error) {
       setError(error.message);
     }

@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import { mbtiArray, mbtiColorArray } from "contents";
+import { mbtiArray } from "contents";
 import MbtiBlock from "components/MbtiBlock";
 import Auth from "components/Auth";
+import MbtiBadge from "components/MbtiBadge";
 
-function Profile({ userObj, typeInit, setTypeInit }) {
+function Profile({ userObj, typeChoose, setTypeChoose }) {
   //페이지 내 타입을 골랐는지 확인하는 state
   const [typeInput, setTypeInput] = useState(false);
-  const creatorType = userObj.displayName && userObj.displayName.toUpperCase();
-  const creatorTypeColor = mbtiColorArray[userObj.displayName];
-  const creatorTypeUrl = `https://img.shields.io/badge/${creatorType}-${creatorTypeColor}?style=flat-square`;
 
   return (
     <>
       <div className="profile">
         <div className="profile-head">
           <h1 className="profile-font--title">프로필</h1>
-          {typeInit || typeInput ? (
+          {typeChoose || typeInput ? (
             <div
               className="profile--item"
               src="default-profile.svg"
@@ -46,17 +44,19 @@ function Profile({ userObj, typeInit, setTypeInit }) {
           )}
         </div>
         <div className="profile-body">
-          {(typeInit || typeInput) && (
-            <img
-              alt="type"
-              src={creatorTypeUrl}
-              style={{ margin: "-5px 0px 10px" }}
-            />
-          )}
-          <div className="profile-font">{userObj.photoURL}</div>
-          {!(typeInit || typeInput) && (
+          {(typeChoose || typeInput) && (
             <>
-              <div className="profile-small">당신의 MBTI유형은?</div>
+              <div style={{ margin: "-20px 0px 10px" }}>
+                <MbtiBadge mbtiType={userObj.displayName} />
+              </div>
+              <div className="profile-font">{userObj.photoURL}</div>
+            </>
+          )}
+
+          {/* {!(typeChoose || typeInput) && ( */}
+          {true && (
+            <>
+              <div className="profile-small">나의 MBTI유형은?</div>
               <div className="mbti-block--container">
                 {mbtiArray.map((element) => (
                   <MbtiBlock
@@ -65,7 +65,7 @@ function Profile({ userObj, typeInit, setTypeInit }) {
                     forProfile="true"
                     userObj={userObj}
                     setTypeInput={setTypeInput}
-                    setTypeInit={setTypeInit}
+                    setTypeChoose={setTypeChoose}
                   />
                 ))}
               </div>

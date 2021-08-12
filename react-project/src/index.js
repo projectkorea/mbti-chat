@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "components/App";
 import "css/styles.css";
 import "css/loader.css";
+import "css/chat.css";
 import firebase from "firebase";
 
 if (window.location.hostname === "localhost") {

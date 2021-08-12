@@ -6,31 +6,44 @@ import Loading from "./Loading";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [dbInit, setdbInit] = useState(false);
-  const [typeInit, setTypeInit] = useState(false);
+  const [dbInit, setDbInit] = useState(false);
+  const [realTimeInit, setRealTimeInit] = useState(false);
+  const [typeChoose, setTypeChoose] = useState(false);
   const [userObj, setUserObj] = useState(null);
+
+  //Home화면에 보여질 리얼타임 체크
+  const realTimeUpdate = async () => {
+    //24시간 전에 채팅기록이 있는지 확인
+    let prevDate = Date.now();
+    prevDate -= 1000 * 60 * 60;
+    //최근에 생성된 다큐멘트가 있다면, element:realTime에 on 추가 시켜주기
+    mbtiArray.forEach((element) => {
+      dbService
+        .collection(`mbti-chat-${element.type}`)
+        .where("createdAt", ">", prevDate)
+        .get()
+        .then((querySnapshot) => {
+          if (querySnapshot.size) {
+            element["realTime"] = "on";
+          }
+        });
+    });
+    setRealTimeInit(true);
+  };
 
   // 메세지 대화 수, 사람 수 DB불러오기
   const dbUpdate = async () => {
     await dbService
-      .collection("mbti-chat-count")
-      .doc("U4cBg755pLzeo5Mi8BMe")
+      .collection("info")
+      .doc("w7wZ15buqtjglLIpYMjx")
       .get()
       .then((doc) => {
         mbtiArray.forEach((element) => {
-          element["count"] = doc.data()[element.type];
+          element["people"] = doc.data()[`${element.type}-people`];
+          element["msg"] = doc.data()[`${element.type}-msg`];
         });
       });
-    await dbService
-      .collection("mbti-chat-citizen")
-      .doc("mQsXVT0f9hXPuhuzspJH")
-      .get()
-      .then((doc) => {
-        mbtiArray.forEach((element) => {
-          element["citizen"] = doc.data()[element.type];
-        });
-      });
-    setdbInit(true);
+    setDbInit(true);
   };
 
   //type골랐는지 확인해서 프로필에 선택사항 주기
@@ -38,7 +51,7 @@ function App() {
     if (user) {
       mbtiArray.forEach((element) => {
         if (user.displayName === element["type"]) {
-          setTypeInit(true);
+          setTypeChoose(true);
         }
       });
     }
@@ -54,19 +67,20 @@ function App() {
       }
       setInit(true);
     });
+    realTimeUpdate();
     dbUpdate();
   }, []);
 
   return (
     <>
-      {init && dbInit ? (
+      {init && dbInit && realTimeInit ? (
         <Router
           isLoggedin={Boolean(userObj)}
           setUserObj={setUserObj}
           userObj={userObj}
           mbtiArray={mbtiArray}
-          typeInit={typeInit}
-          setTypeInit={setTypeInit}
+          typeChoose={typeChoose}
+          setTypeChoose={setTypeChoose}
         />
       ) : (
         <Loading mbtiArray={mbtiArray} />

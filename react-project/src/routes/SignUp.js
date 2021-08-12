@@ -8,19 +8,21 @@ const SignUp = ({ setSignInEmail }) => {
   return (
     <>
       <div className="blank" style={{ height: "10vh" }} />
-      <div className="authContainer"></div>
-      <SocialLoginBox />
-      <div className="dividing--container">
-        <div className="dividing--line"></div>
-        <h1 className="dividing--font">간편 가입</h1>
-        <div className="dividing--line"></div>
-      </div>
-      <LoginForm setSignInEmail={setSignInEmail} isSignUp={isSignup} />
-      <div className="auth--container signup ">
-        <h2 className="login-font">아이디가 있다면?</h2>
-        <Link to="/login">
-          <h1 className="auth--item--signup">로그인</h1>
-        </Link>
+      <div className="login-box">
+        <h1 className="logo-title-font">MBTI채팅</h1>
+        <SocialLoginBox />
+        <div className="dividing--container">
+          <div className="dividing--line"></div>
+          <h1 className="dividing--font">간편 가입</h1>
+          <div className="dividing--line"></div>
+        </div>
+        <LoginForm setSignInEmail={setSignInEmail} isSignUp={isSignup} />
+        <div className="auth--container signup ">
+          <h2 className="login-font">아이디가 있다면?</h2>
+          <Link to="/login">
+            <h1 className="auth--item--signup">로그인</h1>
+          </Link>
+        </div>
       </div>
     </>
   );

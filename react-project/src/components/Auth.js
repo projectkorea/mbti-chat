@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Auth = ({ userObj }) => {
-  const [timerDisplay, setTimerDisplay] = useState("");
+  const [timerDisplay, setTimerDisplay] = useState(false);
   const [newVerification, setNewVerification] = useState(true);
   const [verifiedBtn, setVerifiedBtn] = useState(false);
 
@@ -13,14 +13,13 @@ const Auth = ({ userObj }) => {
   const countDownTimer = () => {
     let timerInterval;
     let dateObj = new Date();
-    dateObj.setMinutes(dateObj.getMinutes() + 3);
+    dateObj.setMinutes(dateObj.getMinutes() + 5);
     const newDateObj = new Date(dateObj);
 
     const showRemaining = async () => {
       await userObj.reload();
       var now = new Date();
       var distDt = newDateObj - now;
-      console.log("작동중");
       if (distDt < 0 || userObj.emailVerified) {
         setTimerDisplay("시간이 초과했습니다. 다시 인증해주세요.");
         setVerifiedBtn("false");
@@ -72,19 +71,26 @@ const Auth = ({ userObj }) => {
   return (
     <>
       {!(isSignInEmail !== -1 && userObj.emailVerified === false) ? (
-        <div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <img
             alt="success"
             src="/green-check.svg"
             style={{
               width: "20px",
-              float: "left",
+              margin: "0px 5px 0px 0px",
             }}
           />
-          <h1>인증 완료</h1>
+          <h1>계정인증 완료</h1>
         </div>
       ) : (
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
           <img
             alt="failure"
             src="/red-x.svg"
@@ -94,13 +100,17 @@ const Auth = ({ userObj }) => {
               marginRight: "5px",
             }}
           />
-          <h1 className="profile-font--small">채팅 기능을 이용하려면,</h1>
-          <h1 className="profile-font--small">이메일 인증을 해야합니다.</h1>
+          <div>
+            <h1 className="profile-font--small">채팅 기능을 이용하려면,</h1>
+            <h1 className="profile-font--small">이메일 인증을 해야합니다.</h1>
+          </div>
           <br></br>
-          <button onClick={onVerification}>
+          <button className="auth--email-btn" onClick={onVerification}>
             {newVerification ? "인증 코드 전송" : "인증 확인하기"}
           </button>
-          <h1>{timerDisplay}</h1>
+          {timerDisplay && (
+            <h1 className="profile-font--small">남은시간: {timerDisplay}</h1>
+          )}
         </div>
       )}
     </>

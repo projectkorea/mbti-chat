@@ -1,0 +1,33 @@
+.chat-container {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.chat-box {
+  display: flex;
+}
+
+.chat-id-font {
+  font-size: 12px;
+  padding: 2px;
+}
+
+.chat-profile {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px 0px 0px;
+}
+
+.chat-text {
+  background-color: rgb(230, 230, 230);
+  border-radius: 5px;
+  margin: 5px 0px;
+  padding: 5px 8px 10px 5px;
+}
+
+.chat-text-font {
+  font-size: 12px;
+  margin-top: 8px;
+}

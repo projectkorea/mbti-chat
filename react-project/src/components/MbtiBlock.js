@@ -1,24 +1,21 @@
 import { countService, dbService } from "myBase";
 import { Link } from "react-router-dom";
 import { nickname } from "components/NicknameGen";
-import { useState } from "react";
 import { mbtiPronArray } from "contents";
 
 function MbtiBlock({
   mbtiType,
   forProfile,
-  mbtiCount,
-  mbtiCitizen,
+  mbtiMsg,
+  mbtiPeople,
   userObj,
   setTypeInput,
-  setTypeInit,
+  setTypeChoose,
+  isRecent,
 }) {
-  //hover
-  const [isHover, setIsHover] = useState(false);
-
-  const onMouseHover = () => {
-    setIsHover((prev) => !prev);
-  };
+  const imgSrc = `/char/${mbtiType}.svg`;
+  const lightImgSrc = `/icon/icon-light-${isRecent}.png`;
+  const peopleNumber = mbtiType + "-people";
 
   // 프로필에서 사용: 내 유형 고르기 && 사람수 DB업데이트하기
   const onClick = async () => {
@@ -31,10 +28,10 @@ function MbtiBlock({
     ) {
       //유형 인구수 1올리기
       await dbService
-        .collection("mbti-chat-citizen")
-        .doc("mQsXVT0f9hXPuhuzspJH")
+        .collection("info")
+        .doc("w7wZ15buqtjglLIpYMjx")
         .update({
-          [mbtiType]: countService.FieldValue.increment(1),
+          [peopleNumber]: countService.FieldValue.increment(1),
         });
 
       // 타입과 닉네임 업데이트
@@ -42,11 +39,11 @@ function MbtiBlock({
         displayName: mbtiType,
         photoURL: nickname,
       });
-
       setTypeInput(true);
-      setTypeInit(true);
+      setTypeChoose(true);
     }
   };
+
   return (
     <>
       {forProfile ? (
@@ -55,31 +52,40 @@ function MbtiBlock({
         </button>
       ) : (
         <div className="mbti-block--item">
+          <h1 className="mbti-block__title">{mbtiType.toUpperCase()}</h1>
           <Link to={`chat/${mbtiType}`}>
-            <button
-              className="mbti-block__btn"
+            <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+              <img
+                src={lightImgSrc}
+                alt="light"
+                style={{
+                  width: "15px",
+                  height: "15px",
+                  margin: "0px 5px 0px 0px",
+                }}
+              />
+            </div>
+            <img
+              alt="char"
+              src={imgSrc}
               style={{
-                width: "110px",
-                height: "110px",
-                backgroundImage: `url(/char/${mbtiType}.svg)`,
-                backgroundSize: "90%",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
+                width: "100px",
+                height: "100px",
+                imageRendering: "optimizeSpeed",
               }}
-              onMouseEnter={onMouseHover}
-              onMouseLeave={onMouseHover}
-            >
-              <h1 className="mbti-block__title">{mbtiType.toUpperCase()}</h1>
-              {isHover && (
-                <>
-                  <div className="mbti-block__subtitle">
-                    <h5>메세지 개수:{mbtiCount}</h5>
-                    <h5>사람 수:{mbtiCitizen}</h5>
-                  </div>
-                </>
-              )}
-            </button>
+            />
           </Link>
+          <div className="mbti-block__subtitle">
+            <img alt="user" src="/svg/user.svg" className="mbti-block__icon" />
+            <span>
+              {mbtiPeople.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}명
+            </span>
+            <br></br>
+            <img alt="chat" src="/svg/chat.svg" className="mbti-block__icon" />
+            <span>
+              {mbtiMsg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}개
+            </span>
+          </div>
         </div>
       )}
     </>

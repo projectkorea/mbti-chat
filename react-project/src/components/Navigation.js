@@ -4,12 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const Navigation = ({ isLoggedin, setUserObj, setTypeInit }) => {
+const Navigation = ({ isLoggedin, setUserObj, setTypeChoose }) => {
   const history = useHistory();
   const onLogOutClick = () => {
     authService.signOut();
     setUserObj(null);
-    setTypeInit(null);
+    setTypeChoose(null);
     history.push("/");
   };
   return (

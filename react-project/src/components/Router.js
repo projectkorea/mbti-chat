@@ -14,8 +14,8 @@ const Router = ({
   setUserObj,
   userObj,
   mbtiArray,
-  typeInit,
-  setTypeInit,
+  typeChoose,
+  setTypeChoose,
 }) => {
   return (
     <BrowserRouter>
@@ -24,21 +24,21 @@ const Router = ({
           <Navigation
             isLoggedin={isLoggedin}
             setUserObj={setUserObj}
-            setTypeInit={setTypeInit}
+            setTypeChoose={setTypeChoose}
           />
           <Switch>
             <Route exact path="/">
               <Home mbtiArray={mbtiArray} />
             </Route>
             <Route path="/chat">
-              <Chat userObj={userObj} typeInit={typeInit} />
+              <Chat userObj={userObj} typeChoose={typeChoose} />
             </Route>
             <Route path="/profile">
               <Profile
                 userObj={userObj}
                 setUserObj={setUserObj}
-                typeInit={typeInit}
-                setTypeInit={setTypeInit}
+                typeChoose={typeChoose}
+                setTypeChoose={setTypeChoose}
               />
             </Route>
             <Route>
