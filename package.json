@@ -2,7 +2,11 @@
   "name": "mbti-chat",
   "version": "1.0.0",
   "description": "mbti-chat",
-  "main": "server.js",
+  "main": "init.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/projectkorea/mbti-chat.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec npx babel-node init.js",
