@@ -8,6 +8,8 @@ import Kakaotalk from "routes/Kakaotalk";
 import Naver from "routes/Naver";
 import Navigation from "components/Navigation";
 import SignUp from "routes/SignUp";
+import Board from "routes/Board";
+import Rank from "routes/Rank";
 
 const Router = ({
   isLoggedin,
@@ -19,16 +21,18 @@ const Router = ({
 }) => {
   return (
     <BrowserRouter>
+      <Navigation isLoggedin={isLoggedin} />
       {isLoggedin ? (
         <>
-          <Navigation
-            isLoggedin={isLoggedin}
-            setUserObj={setUserObj}
-            setTypeChoose={setTypeChoose}
-          />
           <Switch>
             <Route exact path="/">
               <Home mbtiArray={mbtiArray} />
+            </Route>
+            <Route exact path="/rank">
+              <Rank mbtiArray={mbtiArray} />
+            </Route>
+            <Route exact path="/board">
+              <Board mbtiArray={mbtiArray} />
             </Route>
             <Route path="/chat">
               <Chat userObj={userObj} typeChoose={typeChoose} />
@@ -48,10 +52,15 @@ const Router = ({
         </>
       ) : (
         <>
-          <Navigation isLoggedin={isLoggedin} />
           <Switch>
             <Route exact path="/">
               <Home mbtiArray={mbtiArray} />
+            </Route>
+            <Route exact path="/rank">
+              <Home mbtiArray={mbtiArray} />
+            </Route>
+            <Route exact path="/board">
+              <Board mbtiArray={mbtiArray} />
             </Route>
             <Route path="/chat" component={Chat} />
             <Route exact path="/login">

@@ -28,7 +28,7 @@ function Home({ mbtiArray }) {
           className="mbti-block"
         />
       ))}
-      <button onClick={resetBtn}>DB 리셋하기</button>
+      {/* <button onClick={resetBtn}>DB 리셋하기</button> */}
     </div>
   );
 }

@@ -78,7 +78,7 @@ const ChatGen = ({ userObj, typeChoose }) => {
 
   return (
     <form onSubmit={onInspect}>
-      <div>
+      <div className="chat-gen">
         <input
           value={chat}
           onChange={(event) => setChat(event.target.value)}

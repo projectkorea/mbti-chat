@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec npx babel-node init.js"
+    "dev": "nodemon --exec npx babel-node init.js",
+    "build": "babel src --out-dir build",
+    "start": "npm run build && pm2 start build/init.js"
   },
   "author": "JunhaKim",
   "license": "ISC",

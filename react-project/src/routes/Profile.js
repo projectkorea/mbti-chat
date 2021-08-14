@@ -3,10 +3,19 @@ import { mbtiArray } from "contents";
 import MbtiBlock from "components/MbtiBlock";
 import Auth from "components/Auth";
 import MbtiBadge from "components/MbtiBadge";
+import { authService } from "myBase";
+import { useHistory } from "react-router-dom";
 
-function Profile({ userObj, typeChoose, setTypeChoose }) {
+function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
   //페이지 내 타입을 골랐는지 확인하는 state
   const [typeInput, setTypeInput] = useState(false);
+  const history = useHistory();
+  const onLogOutClick = () => {
+    authService.signOut();
+    setUserObj(null);
+    setTypeChoose(null);
+    history.push("/");
+  };
 
   return (
     <>
@@ -53,8 +62,7 @@ function Profile({ userObj, typeChoose, setTypeChoose }) {
             </>
           )}
 
-          {/* {!(typeChoose || typeInput) && ( */}
-          {true && (
+          {!(typeChoose || typeInput) && (
             <>
               <div className="profile-small">나의 MBTI유형은?</div>
               <div className="mbti-block--container">
@@ -72,6 +80,9 @@ function Profile({ userObj, typeChoose, setTypeChoose }) {
             </>
           )}
           <Auth userObj={userObj} />
+          <button style={{ margin: "20px 0px" }} onClick={onLogOutClick}>
+            Log Out
+          </button>
         </div>
       </div>
     </>

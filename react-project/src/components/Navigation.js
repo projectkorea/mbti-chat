@@ -1,20 +1,12 @@
 import React from "react";
-import { authService } from "myBase";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const Navigation = ({ isLoggedin, setUserObj, setTypeChoose }) => {
-  const history = useHistory();
-  const onLogOutClick = () => {
-    authService.signOut();
-    setUserObj(null);
-    setTypeChoose(null);
-    history.push("/");
-  };
+const Navigation = ({ isLoggedin }) => {
   return (
     <nav>
-      <div className="header">
+      <div className="nav-header">
         <Link to="/">
           <img
             alt="logo"
@@ -23,17 +15,28 @@ const Navigation = ({ isLoggedin, setUserObj, setTypeChoose }) => {
             height="60px"
           />
         </Link>
+        <div className="nav-menu">
+          <Link to="/">
+            <div className="nav-menu-item">
+              <span className="nav-menu-item-font">유형별</span>
+              <span className="nav-menu-item-font">채팅</span>
+            </div>
+          </Link>
+          <Link to="/board">
+            <div className="nav-menu-item">
+              <span className="nav-menu-item-font">유형별</span>
+              <span className="nav-menu-item-font">한 마디</span>
+            </div>
+          </Link>
+          <Link to="/rank">
+            <div className="nav-menu-item">
+              <span className="nav-menu-item-font">MBTI</span>
+              <span className="nav-menu-item-font">순위</span>
+            </div>
+          </Link>
+        </div>
         {isLoggedin ? (
           <>
-            <button>
-              <span
-                className="formBtn cancelBtn logOut"
-                onClick={onLogOutClick}
-              >
-                Log Out
-              </span>
-            </button>
-
             <Link to="/profile">
               <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
             </Link>

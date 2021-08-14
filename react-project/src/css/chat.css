@@ -12,6 +12,7 @@
 .chat-id-font {
   font-size: 12px;
   padding: 2px;
+  font-family: "ELAND_Choice_M";
 }
 
 .chat-profile {
@@ -25,9 +26,30 @@
   border-radius: 5px;
   margin: 5px 0px;
   padding: 5px 8px 10px 5px;
+  font-family: "ELAND_Choice_M";
 }
 
 .chat-text-font {
   font-size: 12px;
   margin-top: 8px;
+  font-family: "ELAND_Choice_M";
+}
+
+.chat-room {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 70vh;
+  margin: 10px auto;
+  flex-direction: column-reverse;
+  background-color: cornsilk;
+  width: 300px;
+}
+
+.chat-gen {
+  display: flex;
+  width: 300px;
+  margin: 10px auto;
+  justify-content: center;
+  align-items: center;
 }
