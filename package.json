@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec npx babel-node init.js",
+    "dev": "node init.js",
     "build": "npx babel src --out-file script-compiled.js",
     "start": "pm2 start init.js"
   },
