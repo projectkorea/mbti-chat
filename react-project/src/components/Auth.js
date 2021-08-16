@@ -74,7 +74,7 @@ const Auth = ({ userObj }) => {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img
             alt="success"
-            src="/green-check.svg"
+            src="/svg/green-check.svg"
             style={{
               width: "20px",
               margin: "0px 5px 0px 0px",
@@ -93,7 +93,7 @@ const Auth = ({ userObj }) => {
         >
           <img
             alt="failure"
-            src="/red-x.svg"
+            src="/svg/red-x.svg"
             style={{
               display: "inline-block",
               width: "20px",

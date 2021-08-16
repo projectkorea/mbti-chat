@@ -8,10 +8,8 @@
     "url": "git+https://github.com/projectkorea/mbti-chat.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node init.js",
-    "build": "npx babel src --out-file script-compiled.js",
-    "start": "pm2 start init.js"
+    "build": "cd react-project && npm run build",
+    "start": " pm2 start init.js"
   },
   "author": "JunhaKim",
   "license": "ISC",
@@ -23,7 +21,5 @@
     "helmet": "^4.6.0",
     "morgan": "^1.10.0"
   },
-  "devDependencies": {
-    "babel-cli": "^6.26.0"
-  }
+  "devDependencies": {}
 }

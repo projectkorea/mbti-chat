@@ -5,8 +5,27 @@
   flex-direction: column;
 }
 
+.chat-wrap {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0px 0px 0px 5px;
+}
+
+.chat-wrap--my {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  padding: 0px 5px 0px 0px;
+}
+
 .chat-box {
   display: flex;
+  align-items: flex-end;
+}
+
+.chat-box--my {
+  display: flex;
+  align-items: flex-end;
 }
 
 .chat-id-font {
@@ -29,9 +48,24 @@
   font-family: "ELAND_Choice_M";
 }
 
+.chat-text--my {
+  background-color: #ffeecc;
+  border-radius: 5px;
+  margin: 5px 0px;
+  padding: 5px 8px 10px 5px;
+  font-family: "ELAND_Choice_M";
+}
+
 .chat-text-font {
   font-size: 12px;
   margin-top: 8px;
+  font-family: "ELAND_Choice_M";
+}
+
+.chat-text-clock {
+  font-size: 8px;
+  margin-bottom: 4px;
+  padding: 2px 2px 2px 5px;
   font-family: "ELAND_Choice_M";
 }
 
@@ -42,14 +76,26 @@
   height: 70vh;
   margin: 10px auto;
   flex-direction: column-reverse;
-  background-color: cornsilk;
+  background-color: rgb(238, 255, 238);
   width: 300px;
 }
 
 .chat-gen {
   display: flex;
-  width: 300px;
   margin: 10px auto;
   justify-content: center;
   align-items: center;
+}
+
+.chat-gen-input {
+  display: block;
+  width: 250px;
+  height: 50px;
+}
+
+.chat-gen-submit {
+  height: 50px;
+  margin-left: 10px;
+  color: rgb(50, 50, 50);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }

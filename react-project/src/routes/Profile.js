@@ -25,7 +25,7 @@ function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
           {typeChoose || typeInput ? (
             <div
               className="profile--item"
-              src="default-profile.svg"
+              src="/svg/default-profile.svg"
               alt="profile"
               style={{
                 width: "150px",
@@ -41,7 +41,7 @@ function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
           ) : (
             <img
               className="profile--item"
-              src="default-profile.svg"
+              src="/svg/default-profile.svg"
               alt="profile"
               style={{
                 width: "150px",

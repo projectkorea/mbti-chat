@@ -19,11 +19,6 @@ function _interopRequireDefault(obj) {
 
 const app = (0, _express.default)();
 app.use((0, _morgan.default)("dev"));
-app.use(
-  (0, _helmet.default)({
-    contentSecurityPolicy: false,
-  })
-); //request body parsing code
 
 app.use(
   _express.default.urlencoded({

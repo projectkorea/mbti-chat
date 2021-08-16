@@ -53,10 +53,25 @@ const ChatGen = ({ userObj, typeChoose }) => {
   const onSubmit = async (event, pass) => {
     if (pass) {
       event.preventDefault();
+
+      //hh:mm으로 표현
+      const dateNow = new Date();
+      let hh = dateNow.getHours();
+      let mm = dateNow.getMinutes();
+      if (hh < 10) {
+        hh = "0" + hh;
+      }
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+      const hhmm = hh + ":" + mm;
+
       const chatObj = {
         createdAt: Date.now(),
+        creatorId: userObj.uid,
         creatorType: userObj.displayName,
         creatorNickname: userObj.photoURL,
+        clock: hhmm,
         text: chat, //state value:chat}
       };
       //발언권 -1
@@ -80,13 +95,14 @@ const ChatGen = ({ userObj, typeChoose }) => {
     <form onSubmit={onInspect}>
       <div className="chat-gen">
         <input
+          className="chat-gen-input"
           value={chat}
           onChange={(event) => setChat(event.target.value)}
           type="text"
           placeholder="채팅을 입력하세요"
           maxLength={120}
         />
-        <input type="submit" value="&rarr;" />
+        <input className="chat-gen-submit" type="submit" value="전송" />
       </div>
     </form>
   );

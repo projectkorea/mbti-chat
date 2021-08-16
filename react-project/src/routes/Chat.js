@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { dbService } from "myBase";
 import ChatBox from "components/ChatBox";
 import ChatGen from "components/ChatGen";
+import Inform from "components/Inform";
 
 const Chat = ({ userObj, typeChoose }) => {
   document.body.style.overscrollBehaviorY = "none";
@@ -42,6 +43,7 @@ const Chat = ({ userObj, typeChoose }) => {
         <>
           {/* 채팅방 스크롤 밑으로 내리기, column리버스 유의 */}
           <div className="chat-room">
+            {/* <Inform /> */}
             {chats.map((chat) => (
               <ChatBox
                 key={chat.id}
@@ -49,9 +51,7 @@ const Chat = ({ userObj, typeChoose }) => {
                 isOwner={chat.creatorId === userObj.uid}
               />
             ))}
-            <div ref={loaderRef} style={{ margin: "0px auto" }}>
-              로딩중
-            </div>
+            <div ref={loaderRef} style={{ margin: "0px auto" }}></div>
           </div>
           <ChatGen userObj={userObj} typeChoose={typeChoose} />
         </>
@@ -59,12 +59,11 @@ const Chat = ({ userObj, typeChoose }) => {
         //로그인 X
         <>
           <div className="chat-room">
+            {/* <Inform /> */}
             {chats.map((chat) => (
               <ChatBox key={chat.id} chatObj={chat} />
             ))}
-            <div ref={loaderRef} style={{ margin: "0px auto" }}>
-              로딩중
-            </div>
+            <div ref={loaderRef} style={{ margin: "0px auto" }}></div>
           </div>
           <ChatGen />
         </>
