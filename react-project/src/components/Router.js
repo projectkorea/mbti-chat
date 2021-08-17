@@ -69,7 +69,7 @@ const Router = ({
         <>
           <Switch>
             <Route exact path="/">
-              <Chat mbtiArray={mbtiArray} />
+              <Home />
             </Route>
             <Route exact path="/type">
               <Type mbtiArray={mbtiArray} />

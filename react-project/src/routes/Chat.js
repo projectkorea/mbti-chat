@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { dbService } from "myBase";
 import ChatBox from "components/ChatBox";
 import ChatGen from "components/ChatGen";
-import Inform from "components/Inform";
 
 const Chat = ({ userObj, typeChoose }) => {
+  //이전 채팅을 보기 위해 위로 스크롤 했을 때 새로고침 방지용, 바운스 효과도 없어짐
   document.body.style.overscrollBehaviorY = "none";
+
   const url = window.location.href;
   const mbtiType = url.substring(url.lastIndexOf("/") + 1);
   const [chats, setChats] = useState([]);
 
   //infinite loader
   const [loaderRef, inView] = useInView();
-  //limit variable for fiebase: number of dowcument
   const [limitNum, setLimitNum] = useState(10);
 
   //chatbox에 줄 정보 불러오기
@@ -31,43 +31,31 @@ const Chat = ({ userObj, typeChoose }) => {
         }));
         setChats(chatArray);
       });
+
+    //클린함수
     return () => {
       document.body.style.overscrollBehaviorY = "inherit";
     };
   }, [inView]);
 
   return (
+    //user가 로그인 상태일 때만 주는 값은 userObj&&로 표현
     <div className="chat-container">
-      {userObj ? (
-        //로그인 O
-        <>
-          {/* 채팅방 스크롤 밑으로 내리기, column리버스 유의 */}
-          <div className="chat-room">
-            {/* <Inform /> */}
-            {chats.map((chat) => (
-              <ChatBox
-                key={chat.id}
-                chatObj={chat}
-                isOwner={chat.creatorId === userObj.uid}
-              />
-            ))}
-            <div ref={loaderRef} style={{ margin: "0px auto" }}></div>
-          </div>
-          <ChatGen userObj={userObj} typeChoose={typeChoose} />
-        </>
-      ) : (
-        //로그인 X
-        <>
-          <div className="chat-room">
-            {/* <Inform /> */}
-            {chats.map((chat) => (
-              <ChatBox key={chat.id} chatObj={chat} />
-            ))}
-            <div ref={loaderRef} style={{ margin: "0px auto" }}></div>
-          </div>
-          <ChatGen />
-        </>
-      )}
+      <div className="chat-room">
+        {/* <Inform /> */}
+        {chats.map((chat) => (
+          <ChatBox
+            key={chat.id}
+            chatObj={chat}
+            isOwner={userObj && chat.creatorId === userObj.uid}
+          />
+        ))}
+        <div ref={loaderRef} style={{ margin: "0px auto" }}></div>
+      </div>
+      <ChatGen
+        userObj={userObj && userObj}
+        typeChoose={userObj && typeChoose}
+      />
     </div>
   );
 };

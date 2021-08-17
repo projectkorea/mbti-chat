@@ -6,6 +6,7 @@ import RoomGen from "components/RoomGen";
 function Free({ userObj, typeChoose, canMakeRoom, setCanMakeRoom }) {
   const [rooms, setRooms] = useState([]);
 
+  //자유 대화방 DB목록
   useEffect(() => {
     dbService
       .collection(`chat-room`)
