@@ -62,7 +62,9 @@ body {
 
 .nav-menu-item-font {
   margin: 2px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: normal;
+  text-decoration: none;
 }
 
 /* Home */
@@ -70,14 +72,14 @@ body {
 .mbti-block--container {
   display: flex;
   margin: 10px auto;
-  max-width: 600px;
+  max-width: 500px;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .mbti-block--item {
-  width: 100px;
+  width: 80px;
   margin: 15px 20px;
   cursor: pointer;
   border: 3px solid rgb(200, 200, 200);

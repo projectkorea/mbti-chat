@@ -78,7 +78,6 @@ const ChatGen = ({ userObj, typeChoose }) => {
       setChatCount(chatCount - 1);
       setChat("");
       //메시지 등록
-      console.log(chatObj);
       await dbService.collection(`mbti-chat-${mbtiType}`).add(chatObj);
 
       //메시지 개수 업데이트
@@ -88,6 +87,15 @@ const ChatGen = ({ userObj, typeChoose }) => {
         .update({
           [msgNumber]: countService.FieldValue.increment(1),
         });
+
+      //자유 채팅방 최신화
+      // 모든 채팅방에서 chat컴포넌트를 쓰고 있으니까, 자유채팅방만 최신화하기 위해
+      // 유니크 속성인 url path길이를 참고하여, createdAt을 작성시점으로 업데이트
+      if (mbtiType.toString().length > 5) {
+        await dbService.collection("chat-room").doc(mbtiType).update({
+          createdAt: Date.now(),
+        });
+      }
     }
   };
 

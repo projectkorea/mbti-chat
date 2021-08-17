@@ -10,6 +10,7 @@ function App() {
   const [realTimeInit, setRealTimeInit] = useState(false);
   const [typeChoose, setTypeChoose] = useState(false);
   const [userObj, setUserObj] = useState(null);
+  const [canMakeRoom, setCanMakeRoom] = useState(false);
 
   //Home화면에 보여질 리얼타임 체크
   const realTimeUpdate = async () => {
@@ -48,13 +49,26 @@ function App() {
 
   //type골랐는지 확인해서 프로필에 선택사항 주기
   const checkType = (user) => {
-    if (user) {
-      mbtiArray.forEach((element) => {
-        if (user.displayName === element["type"]) {
-          setTypeChoose(true);
+    mbtiArray.forEach((element) => {
+      if (user.displayName === element["type"]) {
+        setTypeChoose(true);
+      }
+    });
+  };
+
+  //채팅방 만들었는지 확인해서 free route에 주기
+  const checkCanMakeRoom = async (user) => {
+    await dbService
+      .collection("chat-room")
+      .doc(user.uid)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setCanMakeRoom(false);
+        } else {
+          setCanMakeRoom(true);
         }
       });
-    }
   };
 
   //로그인 상태 확인
@@ -64,6 +78,7 @@ function App() {
       if (user) {
         setUserObj(user);
         checkType(user);
+        checkCanMakeRoom(user);
       }
       setInit(true);
     });
@@ -81,6 +96,8 @@ function App() {
           mbtiArray={mbtiArray}
           typeChoose={typeChoose}
           setTypeChoose={setTypeChoose}
+          canMakeRoom={canMakeRoom}
+          setCanMakeRoom={setCanMakeRoom}
         />
       ) : (
         <Loading mbtiArray={mbtiArray} />

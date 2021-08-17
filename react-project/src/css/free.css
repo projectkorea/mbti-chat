@@ -1,0 +1,45 @@
+.free-chat--container {
+  display: flex;
+  margin: 10px auto;
+  max-width: 500px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.room-block--item {
+  display: flex;
+  margin: 15px 20px;
+  padding: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 2px;
+  border-radius: 6px;
+}
+
+.room-btn {
+  cursor: pointer;
+  margin: 0px 5px;
+}
+
+.room-block--item:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mbti-block__title {
+  font-size: 28px;
+  text-align: center;
+  margin-top: -20px;
+}
+
+.mbti-block__subtitle {
+  text-align: start;
+  font-size: 12px;
+  color: black;
+}
+
+.mbti-block__icon {
+  margin: 0px 2px 0px 5px;
+  display: inline;
+  width: 10px;
+}

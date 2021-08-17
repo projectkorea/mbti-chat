@@ -13,19 +13,26 @@ const Navigation = ({ isLoggedin }) => {
             src="/mbti-chat-icon-font.svg"
             width="60px"
             height="60px"
+            onClick={() => window.location.reload()}
           />
         </Link>
         <div className="nav-menu">
           <Link to="/">
             <div className="nav-menu-item">
-              <span className="nav-menu-item-font">유형별</span>
-              <span className="nav-menu-item-font">채팅</span>
+              <span className="nav-menu-item-font">전체</span>
+              <span className="nav-menu-item-font">채팅방</span>
             </div>
           </Link>
-          <Link to="/board">
+          <Link to="/type">
             <div className="nav-menu-item">
               <span className="nav-menu-item-font">유형별</span>
-              <span className="nav-menu-item-font">한 마디</span>
+              <span className="nav-menu-item-font">채팅방</span>
+            </div>
+          </Link>
+          <Link to="/free">
+            <div className="nav-menu-item">
+              <span className="nav-menu-item-font">자유</span>
+              <span className="nav-menu-item-font">채팅방</span>
             </div>
           </Link>
           <Link to="/rank">

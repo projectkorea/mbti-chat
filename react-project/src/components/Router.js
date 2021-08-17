@@ -10,6 +10,8 @@ import Navigation from "components/Navigation";
 import SignUp from "routes/SignUp";
 import Board from "routes/Board";
 import Rank from "routes/Rank";
+import Type from "routes/Type";
+import Free from "routes/Free";
 
 const Router = ({
   isLoggedin,
@@ -18,6 +20,8 @@ const Router = ({
   mbtiArray,
   typeChoose,
   setTypeChoose,
+  canMakeRoom,
+  setCanMakeRoom,
 }) => {
   return (
     <BrowserRouter>
@@ -26,24 +30,35 @@ const Router = ({
         <>
           <Switch>
             <Route exact path="/">
-              <Home mbtiArray={mbtiArray} />
+              <Home userObj={userObj} typeChoose={typeChoose} />
+            </Route>
+            <Route exact path="/type">
+              <Type mbtiArray={mbtiArray} />
             </Route>
             <Route exact path="/rank">
               <Rank mbtiArray={mbtiArray} />
             </Route>
-            <Route exact path="/board">
-              <Board mbtiArray={mbtiArray} />
-            </Route>
-            <Route path="/chat">
-              <Chat userObj={userObj} typeChoose={typeChoose} />
-            </Route>
-            <Route path="/profile">
+            <Route exact path="/profile">
               <Profile
                 userObj={userObj}
                 setUserObj={setUserObj}
                 typeChoose={typeChoose}
                 setTypeChoose={setTypeChoose}
               />
+            </Route>
+            <Route path="/free">
+              <Free
+                userObj={userObj}
+                typeChoose={typeChoose}
+                canMakeRoom={canMakeRoom}
+                setCanMakeRoom={setCanMakeRoom}
+              />
+            </Route>
+            <Route path="/room">
+              <Chat userObj={userObj} typeChoose={typeChoose} />
+            </Route>
+            <Route path="/chat">
+              <Chat userObj={userObj} typeChoose={typeChoose} />
             </Route>
             <Route>
               <Redirect to="/" />
@@ -54,15 +69,14 @@ const Router = ({
         <>
           <Switch>
             <Route exact path="/">
-              <Home mbtiArray={mbtiArray} />
+              <Chat mbtiArray={mbtiArray} />
+            </Route>
+            <Route exact path="/type">
+              <Type mbtiArray={mbtiArray} />
             </Route>
             <Route exact path="/rank">
-              <Home mbtiArray={mbtiArray} />
+              <Rank mbtiArray={mbtiArray} />
             </Route>
-            <Route exact path="/board">
-              <Board mbtiArray={mbtiArray} />
-            </Route>
-            <Route path="/chat" component={Chat} />
             <Route exact path="/login">
               <Login />
             </Route>
@@ -74,6 +88,15 @@ const Router = ({
             </Route>
             <Route exact path="/callback/naver">
               <Naver />
+            </Route>
+            <Route path="/free">
+              <Free />
+            </Route>
+            <Route path="/room">
+              <Chat />
+            </Route>
+            <Route path="/chat">
+              <Chat />
             </Route>
             <Route>
               <Redirect to="/" />
