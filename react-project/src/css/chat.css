@@ -31,7 +31,7 @@
 .chat-id-font {
   font-size: 12px;
   padding: 2px;
-  font-family: "ELAND_Choice_M";
+  font-family: "nanumbarungothic";
 }
 
 .chat-profile {
@@ -44,29 +44,29 @@
   background-color: rgb(230, 230, 230);
   border-radius: 5px;
   margin: 5px 0px;
-  padding: 5px 8px 10px 5px;
-  font-family: "ELAND_Choice_M";
+  padding: 3px 8px 10px 3px;
+  font-family: "nanumbarungothic";
 }
 
 .chat-text--my {
   background-color: #ffeecc;
   border-radius: 5px;
   margin: 5px 0px;
-  padding: 5px 8px 10px 5px;
-  font-family: "ELAND_Choice_M";
+  padding: 3px 8px 10px 3px;
+  font-family: "nanumbarungothic";
 }
 
 .chat-text-font {
   font-size: 12px;
   margin-top: 8px;
-  font-family: "ELAND_Choice_M";
+  font-family: "nanumbarungothic";
 }
 
 .chat-text-clock {
   font-size: 8px;
   margin-bottom: 4px;
   padding: 2px 2px 2px 5px;
-  font-family: "ELAND_Choice_M";
+  font-family: "nanumbarungothic";
 }
 
 .chat-room {
@@ -76,20 +76,20 @@
   height: 70vh;
   margin: 10px auto;
   flex-direction: column-reverse;
-  background-color: rgb(238, 255, 238);
+  background-color: rgb(238, 255, 242);
   width: 300px;
 }
 
 .chat-gen {
   display: flex;
-  margin: 10px auto;
+  margin: 10px;
   justify-content: center;
   align-items: center;
 }
 
 .chat-gen-input {
   display: block;
-  width: 250px;
+  width: 240px;
   height: 50px;
 }
 
@@ -98,4 +98,11 @@
   margin-left: 10px;
   color: rgb(50, 50, 50);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.chat-room-title {
+  border-radius: 10px;
+  font-size: 28px;
+  margin: auto;
+  padding: 0px 10px;
 }

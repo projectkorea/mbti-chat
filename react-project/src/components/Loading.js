@@ -33,9 +33,10 @@ function Loading({ mbtiArray }) {
             <span></span>
           </div>
           <br></br>
-          <h1> 로딩중...</h1>
+          <h1 style={{ fontFamily: "ONE-Mobile-POP", fontSize: "24px" }}>
+            로딩중...
+          </h1>
         </div>
-
         <img
           className="loader-char"
           alt="char"

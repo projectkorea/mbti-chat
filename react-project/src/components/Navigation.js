@@ -13,7 +13,6 @@ const Navigation = ({ isLoggedin }) => {
             src="/mbti-chat-icon-font.svg"
             width="60px"
             height="60px"
-            onClick={() => window.location.reload()}
           />
         </Link>
         <div className="nav-menu">
@@ -42,17 +41,34 @@ const Navigation = ({ isLoggedin }) => {
             </div>
           </Link>
         </div>
-        {isLoggedin ? (
-          <>
-            <Link to="/profile">
-              <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
+        <div
+          style={{
+            borderRadius: "10px",
+            backgroundColor: "#F1BE1E",
+            padding: "8px 9px",
+          }}
+        >
+          {isLoggedin ? (
+            <>
+              <Link to="/profile">
+                <FontAwesomeIcon icon={faUser} color={"#FFFFFF"} size="2x" />
+              </Link>
+            </>
+          ) : (
+            <Link to="/login">
+              <h3
+                className="nav--login"
+                style={{
+                  color: "white",
+                  fontFamily: "nanumbaremgodic",
+                  fontSize: "14px",
+                }}
+              >
+                로그인
+              </h3>
             </Link>
-          </>
-        ) : (
-          <Link to="/login">
-            <h3 className="nav--login">로그인</h3>
-          </Link>
-        )}
+          )}
+        </div>
       </div>
     </nav>
   );

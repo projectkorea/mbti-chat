@@ -8,6 +8,7 @@ import "css/board.css";
 import "css/rank.css";
 import "css/free.css";
 import "css/room.css";
+import "css/font.css";
 import firebase from "firebase";
 
 if (window.location.hostname === "localhost") {

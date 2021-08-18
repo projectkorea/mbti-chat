@@ -81,7 +81,7 @@ function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
           )}
           <Auth userObj={userObj} />
           <button style={{ margin: "20px 0px" }} onClick={onLogOutClick}>
-            Log Out
+            로그아웃
           </button>
         </div>
       </div>
