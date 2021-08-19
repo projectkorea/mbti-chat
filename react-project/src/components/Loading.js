@@ -1,6 +1,7 @@
 import React from "react";
+import { mbtiArray } from "contents";
 
-function Loading({ mbtiArray }) {
+function Loading() {
   //로더 mbtitype 랜덤하게 생성
   const mbtiType =
     mbtiArray[Math.floor(Math.random() * mbtiArray.length)]["type"];

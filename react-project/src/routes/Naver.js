@@ -1,4 +1,5 @@
 import Loading from "components/Loading";
+import saveUser from "components/SaveUser";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/functions";
@@ -37,6 +38,7 @@ const Naver = () => {
             // const user = result.user;
             // console.log("User : ", user);
             if (result.additionalUserInfo.isNewUser) {
+              saveUser();
               //   console.log("신규 사용자...");
             }
           })

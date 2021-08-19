@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Auth = ({ userObj }) => {
   const [timerDisplay, setTimerDisplay] = useState(false);
   const [newVerification, setNewVerification] = useState(true);
   const [verifiedBtn, setVerifiedBtn] = useState(false);
+  const [isSignInEmail, setIsSignInEmail] = useState();
 
-  //이메일 가입으로 들어왔는지 확인하기: 포함되지 않았으면 -1로 반환, 즉 -1과 같지 않으면 포함되었다는 뜻
-  const isSignInEmail = userObj.providerData[0]["uid"].indexOf("@");
+  //이메일 가입으로 들어왔는지 확인하기
+  useEffect(() => {
+    if (userObj.providerData[0]) {
+      //구글, 페이스북, 이메일 로그인
+      const viaEmail = userObj.providerData[0]["uid"].indexOf("@") !== -1;
+      // @가 포함되지 않았으면 -1로 반환
+      // -1과 같지 않다면, @가 포함
+      // @가 포함되면 true를 반환 = 이메일로 들어왔다는 뜻
+      if (viaEmail) {
+        setIsSignInEmail(true);
+      } else {
+        setIsSignInEmail(false);
+      }
+    } else {
+      //네이버 또는 카카오 로그인
+      setIsSignInEmail(false);
+    }
+  }, []);
 
   //timer
-
   const countDownTimer = () => {
     let timerInterval;
     let dateObj = new Date();
@@ -70,7 +86,7 @@ const Auth = ({ userObj }) => {
 
   return (
     <>
-      {!(isSignInEmail !== -1 && userObj.emailVerified === false) ? (
+      {!(isSignInEmail && userObj.emailVerified === false) ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img
             alt="success"

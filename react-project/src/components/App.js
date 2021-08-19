@@ -2,7 +2,7 @@ import Router from "components/Router";
 import { authService, dbService } from "myBase";
 import { useEffect, useState } from "react";
 import { mbtiArray } from "contents";
-import Loading from "./Loading";
+import Loading from "components/Loading";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -100,7 +100,7 @@ function App() {
           setCanMakeRoom={setCanMakeRoom}
         />
       ) : (
-        <Loading mbtiArray={mbtiArray} />
+        <Loading />
       )}
     </>
   );

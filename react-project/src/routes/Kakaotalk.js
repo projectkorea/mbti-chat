@@ -1,7 +1,6 @@
 import Loading from "components/Loading";
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/functions";
+import saveUser from "components/SaveUser";
+import { authService, functions } from "myBase";
 import { useHistory } from "react-router-dom";
 
 if (!window.Kakao.isInitialized()) {
@@ -17,7 +16,7 @@ const Kakaotalk = () => {
   if (kakaoAuthCode) {
     // this.token = kakaoAuthCode;
     // 카카오 로그인 토큰을 파이어베이스 함수에 전달합니다.
-    var kakaoAuth = firebase.functions().httpsCallable("KakaoAuth");
+    var kakaoAuth = functions.httpsCallable("KakaoAuth");
     kakaoAuth({ code: kakaoAuthCode })
       .then(function (result) {
         console.log(result);
@@ -25,14 +24,14 @@ const Kakaotalk = () => {
         var kakaoToken = result.data.kakao_token;
         var fireToken = result.data.firebase_token;
         // 토근이 정상적으로 처리될 경우 로그인 처리합니다.
-        firebase
-          .auth()
+        authService
           .signInWithCustomToken(fireToken)
           .then(function (result) {
             // token = kakaoToken;
             window.Kakao.Auth.setAccessToken(kakaoToken);
-            const user = result.user;
-            console.log("User : ", user);
+            // const user = result.user;
+            // console.log("User : ", user);
+            saveUser();
             history.push("/");
           })
           .catch(function (error) {
