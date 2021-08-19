@@ -44,7 +44,7 @@
   background-color: rgb(230, 230, 230);
   border-radius: 5px;
   margin: 5px 0px;
-  padding: 3px 8px 10px 3px;
+  padding: 5px 8px;
   font-family: "nanumbarungothic";
 }
 
@@ -52,12 +52,13 @@
   background-color: #ffeecc;
   border-radius: 5px;
   margin: 5px 0px;
-  padding: 3px 8px 10px 3px;
+  padding: 5px 8px;
   font-family: "nanumbarungothic";
 }
 
 .chat-text-font {
   font-size: 12px;
+  line-height: 16px;
   margin-top: 8px;
   font-family: "nanumbarungothic";
 }
@@ -73,10 +74,11 @@
   display: flex;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 70vh;
+  height: 65vh;
   margin: 10px auto;
   flex-direction: column-reverse;
   background-color: rgb(238, 255, 242);
+  border-radius: 10px;
   width: 300px;
 }
 

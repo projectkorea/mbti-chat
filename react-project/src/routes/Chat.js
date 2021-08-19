@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { dbService } from "myBase";
 import ChatBox from "components/ChatBox";
@@ -20,6 +20,17 @@ const Chat = ({ userObj, typeChoose }) => {
   //infinite loader
   const [loaderRef, inView] = useInView();
   const [limitNum, setLimitNum] = useState(10);
+  //   const [msgRef, inViewMsg] = useInView();
+
+  // 스크롤 이동
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  //채팅방 알림
+  //   const [newDate, setNewDate] = useState(Date.now());
+  //   const [newMsg, setNewMsg] = useState();
 
   //채팅방 제목 불러오기
   useEffect(() => {
@@ -48,20 +59,43 @@ const Chat = ({ userObj, typeChoose }) => {
           ...doc.data(),
         }));
         setChats(chatArray);
+        scrollToBottom();
       });
 
-    //클린함수
     return () => {
       document.body.style.overscrollBehaviorY = "inherit";
     };
+    //[inView]: 스크롤을 가장 위에 올렸을 때 inview값이 달라지며, chatBox를 리로드함
   }, [inView]);
+
+  //메세지 알림 기능: 가장 최근 메세지(limit(1))가 현재 시간(컴포넌트 랜더링 시간 기준)보다 크다면
+  //   useEffect(() => {
+  //     if (inViewMsg.toString()) {
+  //       dbService
+  //         .collection(`mbti-chat-${mbtiType}`)
+  //         .where("createdAt", ">", newDate)
+  //         .limit(1)
+  //         .onSnapshot((snapshot) => {
+  //           snapshot.docs.map((doc) => console.log(doc.data().createdAt));
+  //         });
+  //     }
+  //     return () => {
+  //       setNewDate(Date.now());
+  //     };
+  //   }, [inViewMsg]);
 
   return (
     <>
       {/* user가 로그인 상태일 때만 주는 값은 userObj&&로 표현 */}
       <div className="chat-container">
         <h1 className="chat-room-title">{chatTitle}</h1>
+        {/* {inViewMsg.toString()} */}
         <div className="chat-room">
+          <div className="fake-div">
+            <div ref={messagesEndRef}>ㅤ</div>
+            {/* <div ref={msgRef} style={{ margin: "0px auto" }}> */}ㅤ
+          </div>
+          {/* </div> */}
           {/* <Inform /> */}
           {chats.map((chat) => (
             <ChatBox
@@ -70,7 +104,9 @@ const Chat = ({ userObj, typeChoose }) => {
               isOwner={userObj && chat.creatorId === userObj.uid}
             />
           ))}
-          <div ref={loaderRef} style={{ margin: "0px auto" }}></div>
+          <div ref={loaderRef} style={{ margin: "0px auto" }}>
+            ㅤㅤ
+          </div>
         </div>
         <ChatGen
           userObj={userObj && userObj}

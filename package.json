@@ -8,8 +8,8 @@
     "url": "git+https://github.com/projectkorea/mbti-chat.git"
   },
   "scripts": {
-    "build": "cd react-project && npm run build",
-    "start": " pm2 start init.js"
+    "build": "npm install && cd react-project && npm install && npm run build",
+    "start": "pm2 start init.js"
   },
   "author": "JunhaKim",
   "license": "ISC",

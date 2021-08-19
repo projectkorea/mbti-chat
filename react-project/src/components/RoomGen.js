@@ -26,8 +26,15 @@ const RoomGen = ({ userObj, typeChoose, canMakeRoom, setCanMakeRoom }) => {
               onSubmit(event, true);
             }
           } else {
-            alert("이미 생성한 방이 있습니다.");
-            event.preventDefault();
+            if (
+              window.confirm(
+                `이미 생성한 채팅방이 있습니다. '${title}'로 방 제목을 바꾸시겠습니까?`
+              )
+            ) {
+              onSubmit(event, true);
+            } else {
+              event.preventDefault();
+            }
           }
         } else {
           alert("유형을 고르고 채팅하라능!");

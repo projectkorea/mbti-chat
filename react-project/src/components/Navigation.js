@@ -56,16 +56,7 @@ const Navigation = ({ isLoggedin }) => {
             </>
           ) : (
             <Link to="/login">
-              <h3
-                className="nav--login"
-                style={{
-                  color: "white",
-                  fontFamily: "nanumbaremgodic",
-                  fontSize: "14px",
-                }}
-              >
-                로그인
-              </h3>
+              <h1 className="nav--login-btn">로그인</h1>
             </Link>
           )}
         </div>

@@ -5,6 +5,7 @@ import Auth from "components/Auth";
 import MbtiBadge from "components/MbtiBadge";
 import { authService } from "myBase";
 import { useHistory } from "react-router-dom";
+import Footer from "components/Footer";
 
 function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
   //페이지 내 타입을 골랐는지 확인하는 state
@@ -80,11 +81,12 @@ function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
             </>
           )}
           <Auth userObj={userObj} />
-          <button style={{ margin: "20px 0px" }} onClick={onLogOutClick}>
+          <button className="logout-btn" onClick={onLogOutClick}>
             로그아웃
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

@@ -1,6 +1,6 @@
 .mbti-block-board--container {
   display: flex;
-  margin: 10px auto;
+  margin: 20px auto;
   flex-direction: column;
   align-content: center;
   max-width: 600px;

@@ -1,14 +1,28 @@
 .free-chat--container {
   display: flex;
-  margin: 10px auto;
+  margin: 20px auto;
   max-width: 500px;
   flex-direction: column;
   justify-content: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
+.room-btn {
+  cursor: pointer;
+  margin: 0px 5px;
+  background-color: #f1be1e;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 40px;
+}
 .room-block--item {
   display: flex;
-  margin: 15px 20px;
+  margin: 10px 20px;
   padding: 10px;
   flex-direction: row;
   justify-content: space-between;
@@ -16,12 +30,6 @@
   border: solid 2px;
   border-radius: 6px;
 }
-
-.room-btn {
-  cursor: pointer;
-  margin: 0px 5px;
-}
-
 .room-block--item:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }

@@ -3,7 +3,13 @@ import React from "react";
 const SocialLogin = ({ socialType, socialName }) => {
   const imgSrc = `/icon/icon-${socialType}.png`;
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <img
         alt={socialType}
         src={imgSrc}
