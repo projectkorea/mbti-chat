@@ -1,7 +1,17 @@
 import MbtiBadge from "components/MbtiBadge";
+import { useEffect, useState } from "react";
 
-function Ranking({ value, sum, unit, type }) {
+function Ranking({ value, sum, unit, type, target }) {
   const widthValue = (value / sum) * 100;
+  const [barType, setBarType] = useState("");
+
+  useEffect(() => {
+    if (target === "msg") setBarType("danger");
+    else if (target === "people") setBarType("waring");
+    else if (target === "goingToBeDevelop1") setBarType("info");
+    else if (target === "goingToBeDevelop2") setBarType("success");
+  }, [target]);
+
   return (
     <>
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -20,8 +30,7 @@ function Ranking({ value, sum, unit, type }) {
           >
             <div className="progress">
               <div
-                className="progress-bar progress-bar-danger progress-bar-striped"
-                // progress-bar type: info waring success
+                className={`progress-bar progress-bar-${barType} progress-bar-striped`}
                 style={{ width: `${widthValue}%` }}
               ></div>
             </div>

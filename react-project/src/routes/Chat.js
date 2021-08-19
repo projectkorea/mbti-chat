@@ -55,7 +55,7 @@ const Chat = ({ userObj, typeChoose }) => {
           ...doc.data(),
         }));
         setChats(chatArray);
-        console.log(scrollOn);
+        // console.log(scrollOn);
         if (scrollOn) scrollToBottom();
         //위로 올렸을 때 내려가지 않고, snapshot이 바뀌었을 때(=새로운 채팅이 발생했을 때)만 내려가게
       });
@@ -73,16 +73,10 @@ const Chat = ({ userObj, typeChoose }) => {
   return (
     <>
       {/* user가 로그인 상태일 때만 주는 값은 userObj&&로 표현 */}
+      {/* <Inform /> */}
       <div className="chat-container">
         <h1 className="chat-room-title">{chatTitle}</h1>
-        {/* {inViewMsg.toString()} */}
         <div className="chat-room" ref={containerRef}>
-          <div className="fake-div">
-            <div>ㅤ</div>
-            {/* <div ref={msgRef} style={{ margin: "0px auto" }}> */}ㅤ
-          </div>
-          {/* </div> */}
-          {/* <Inform /> */}
           {chats.map((chat) => (
             <ChatBox
               key={chat.id}

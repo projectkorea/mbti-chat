@@ -39,7 +39,7 @@ function Rank({ mbtiArray }) {
             }}
           >
             {mbtiArray.map((element, index) => (
-              <h1 style={{ margin: "5px", textAlign: "center" }}>
+              <h1 key={index} style={{ margin: "5px", textAlign: "center" }}>
                 {index + 1}등:
               </h1>
             ))}
@@ -57,12 +57,17 @@ function Rank({ mbtiArray }) {
             }}
           >
             {mbtiArray.map((element) => (
-              <div style={{ order: element[target], margin: "5px 0px" }}>
+              <div
+                key={element.type}
+                style={{ order: element[target], margin: "5px 0px" }}
+              >
                 <Ranking
+                  key={element.type}
                   value={element[target]}
                   sum={sum}
                   unit={unit}
                   type={element.type}
+                  target={target}
                 />
               </div>
             ))}

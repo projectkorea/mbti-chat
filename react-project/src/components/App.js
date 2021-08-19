@@ -74,7 +74,7 @@ function App() {
   //로그인 상태 확인
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
-      console.log(user);
+      //   console.log(user);
       if (user) {
         setUserObj(user);
         checkType(user);
