@@ -1,12 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { mbtiArray } from "contents";
 
 function Loading() {
-  //로더 mbtitype 랜덤하게 생성
   const mbtiType =
     mbtiArray[Math.floor(Math.random() * mbtiArray.length)]["type"];
-  //로더 img 경로
-  const charUrl = "/char/" + mbtiType + ".svg";
 
   return (
     <>
@@ -34,14 +31,15 @@ function Loading() {
             <span></span>
           </div>
           <br></br>
-          <h1 style={{ fontFamily: "ONE-Mobile-POP", fontSize: "24px" }}>
+          <h1 style={{ fontFamily: "ONE-Mobile-POP", fontSize: "28px" }}>
             로딩중...
           </h1>
+          <br></br>
         </div>
         <img
           className="loader-char"
           alt="char"
-          src={charUrl}
+          src={`/char/${mbtiType}.svg`}
           style={{
             position: "absolute",
             zIndex: 2,

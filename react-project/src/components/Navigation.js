@@ -10,7 +10,7 @@ const Navigation = ({ isLoggedin }) => {
         <Link to="/">
           <img
             alt="logo"
-            src="/mbti-chat-icon-font.svg"
+            src="/mbti-chat-icon-font.png"
             width="60px"
             height="60px"
           />
