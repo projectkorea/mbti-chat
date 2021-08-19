@@ -39,13 +39,13 @@ function Rank({ mbtiArray }) {
             }}
           >
             {mbtiArray.map((element, index) => (
-              <h1 style={{ margin: "5px 5px 5px 0px", textAlign: "right" }}>
+              <h1 style={{ margin: "5px", textAlign: "center" }}>
                 {index + 1}등:
               </h1>
             ))}
           </div>
 
-          {mbtiArray.map((element) => {
+          {mbtiArray.forEach((element) => {
             sum += element[target];
           })}
 

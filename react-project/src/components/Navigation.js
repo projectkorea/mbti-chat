@@ -37,7 +37,7 @@ const Navigation = ({ isLoggedin }) => {
           <Link to="/rank">
             <div className="nav-menu-item">
               <span className="nav-menu-item-font">MBTI</span>
-              <span className="nav-menu-item-font">순위</span>
+              <span className="nav-menu-item-font">랭킹</span>
             </div>
           </Link>
         </div>

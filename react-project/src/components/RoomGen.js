@@ -1,5 +1,5 @@
-import { dbService, countService } from "myBase";
-import React, { useEffect, useState } from "react";
+import { dbService } from "myBase";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const RoomGen = ({ userObj, typeChoose, canMakeRoom, setCanMakeRoom }) => {
@@ -26,13 +26,18 @@ const RoomGen = ({ userObj, typeChoose, canMakeRoom, setCanMakeRoom }) => {
               onSubmit(event, true);
             }
           } else {
-            if (
-              window.confirm(
-                `이미 생성한 채팅방이 있습니다. '${title}'로 방 제목을 바꾸시겠습니까?`
-              )
-            ) {
-              onSubmit(event, true);
+            if (title !== "") {
+              if (
+                window.confirm(
+                  `이미 생성한 채팅방이 있습니다. '${title}'로 방 제목을 바꾸시겠습니까?`
+                )
+              ) {
+                onSubmit(event, true);
+              } else {
+                event.preventDefault();
+              }
             } else {
+              alert("제목을 입력해주세요");
               event.preventDefault();
             }
           }

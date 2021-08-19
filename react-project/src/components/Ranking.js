@@ -7,16 +7,17 @@ function Ranking({ value, sum, unit, type }) {
       <div style={{ display: "flex", alignItems: "center" }}>
         <div
           style={{
-            margin: "0px 10px 0px 0px",
             display: "flex",
-            justifyContent: "center",
-            textAlign: "center",
+            width: "50px",
           }}
         >
           <MbtiBadge mbtiType={type} />
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div className="progress_wrapper" style={{ width: "200px" }}>
+        <div style={{ display: "flex" }}>
+          <div
+            className="progress_wrapper"
+            style={{ width: "200px", justifyContent: "center" }}
+          >
             <div className="progress">
               <div
                 className="progress-bar progress-bar-danger progress-bar-striped"

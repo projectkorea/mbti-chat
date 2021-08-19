@@ -8,7 +8,6 @@ import Kakaotalk from "routes/Kakaotalk";
 import Naver from "routes/Naver";
 import Navigation from "components/Navigation";
 import SignUp from "routes/SignUp";
-import Board from "routes/Board";
 import Rank from "routes/Rank";
 import Type from "routes/Type";
 import Free from "routes/Free";

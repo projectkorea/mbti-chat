@@ -34,7 +34,7 @@ const Naver = () => {
           .then(function (result) {
             // _this.token = naverToken;
             window.localStorage.setItem("NaverToken", naverToken);
-            const user = result.user;
+            // const user = result.user;
             // console.log("User : ", user);
             if (result.additionalUserInfo.isNewUser) {
               //   console.log("신규 사용자...");
