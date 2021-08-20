@@ -2,19 +2,20 @@ import { dbService } from "myBase";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const RoomGen = ({ userObj, typeChoose, canMakeRoom, setCanMakeRoom }) => {
+const RoomGen = ({
+  userObj,
+  typeChoose,
+  canMakeRoom,
+  setCanMakeRoom,
+  isSignInEmail,
+}) => {
   const history = useHistory();
   const [title, setTitle] = useState("");
 
   const onInspect = (event) => {
     if (userObj) {
       // 00 통과  01 통과 11 통과 10 불통과
-      if (
-        !(
-          userObj.providerData[0]["uid"].indexOf("@") !== -1 &&
-          userObj.emailVerified === false
-        )
-      ) {
+      if (!(isSignInEmail && userObj.emailVerified === false)) {
         //로그인 여부 확인 끝
         //타입 선택여부
         if (typeChoose) {

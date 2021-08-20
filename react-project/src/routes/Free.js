@@ -3,7 +3,13 @@ import { dbService } from "myBase";
 import RoomBlock from "components/RoomBlock";
 import RoomGen from "components/RoomGen";
 
-function Free({ userObj, typeChoose, canMakeRoom, setCanMakeRoom }) {
+function Free({
+  userObj,
+  typeChoose,
+  canMakeRoom,
+  setCanMakeRoom,
+  isSignInEmail,
+}) {
   const [rooms, setRooms] = useState([]);
 
   //자유 대화방 DB목록
@@ -30,6 +36,7 @@ function Free({ userObj, typeChoose, canMakeRoom, setCanMakeRoom }) {
         typeChoose={typeChoose}
         canMakeRoom={canMakeRoom}
         setCanMakeRoom={setCanMakeRoom}
+        isSignInEmail={isSignInEmail}
       />
       <div className="free-chat--container">
         {rooms.map((element) => (

@@ -21,6 +21,7 @@ const Router = ({
   setTypeChoose,
   canMakeRoom,
   setCanMakeRoom,
+  isSignInEmail,
 }) => {
   return (
     <BrowserRouter>
@@ -43,6 +44,7 @@ const Router = ({
                 setUserObj={setUserObj}
                 typeChoose={typeChoose}
                 setTypeChoose={setTypeChoose}
+                isSignInEmail={isSignInEmail}
               />
             </Route>
             <Route path="/free">
@@ -51,13 +53,18 @@ const Router = ({
                 typeChoose={typeChoose}
                 canMakeRoom={canMakeRoom}
                 setCanMakeRoom={setCanMakeRoom}
+                isSignInEmail={isSignInEmail}
               />
             </Route>
             <Route path="/room">
               <Chat userObj={userObj} typeChoose={typeChoose} />
             </Route>
             <Route path="/chat">
-              <Chat userObj={userObj} typeChoose={typeChoose} />
+              <Chat
+                userObj={userObj}
+                typeChoose={typeChoose}
+                isSignInEmail={isSignInEmail}
+              />
             </Route>
             <Route>
               <Redirect to="/" />
@@ -65,6 +72,7 @@ const Router = ({
           </Switch>
         </>
       ) : (
+        //   로그인 안함
         <>
           <Switch>
             <Route exact path="/">

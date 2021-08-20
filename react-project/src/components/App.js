@@ -11,6 +11,7 @@ function App() {
   const [typeChoose, setTypeChoose] = useState(false);
   const [userObj, setUserObj] = useState(null);
   const [canMakeRoom, setCanMakeRoom] = useState(false);
+  const [isSignInEmail, setIsSignInEmail] = useState(false);
 
   //Home화면에 보여질 리얼타임 체크
   const realTimeUpdate = async () => {
@@ -71,6 +72,27 @@ function App() {
       });
   };
 
+  //이메일 가입으로 들어왔는지 확인하기
+  const checkSigninEmail = () => {
+    //구글, 페이스북, 이메일 로그인
+    if (userObj.providerData[0]) {
+      // @가 포함되지 않았으면 -1로 반환
+      // -1과 같지 않다면, @가 포함
+      // @가 포함되면 true를 반환 = 이메일로 들어왔다는 뜻
+      const viaEmail = userObj.providerData[0]["uid"].indexOf("@") !== -1;
+      if (viaEmail) {
+        //이메일 로그인
+        setIsSignInEmail(true);
+      } else {
+        //구글, 페이스북 로그인
+        setIsSignInEmail(false);
+      }
+    } else {
+      //네이버 또는 카카오 로그인
+      setIsSignInEmail(false);
+    }
+  };
+
   //로그인 상태 확인
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
@@ -79,6 +101,7 @@ function App() {
         setUserObj(user);
         checkType(user);
         checkCanMakeRoom(user);
+        checkSigninEmail();
       }
       setInit(true);
     });
@@ -98,6 +121,8 @@ function App() {
           setTypeChoose={setTypeChoose}
           canMakeRoom={canMakeRoom}
           setCanMakeRoom={setCanMakeRoom}
+          isSignInEmail={isSignInEmail}
+          setIsSignInEmail={setIsSignInEmail}
         />
       ) : (
         <Loading />

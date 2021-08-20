@@ -19,7 +19,7 @@ const Kakaotalk = () => {
     var kakaoAuth = functions.httpsCallable("KakaoAuth");
     kakaoAuth({ code: kakaoAuthCode })
       .then(function (result) {
-        console.log(result);
+        // console.log(result);
         // Read result of the Cloud Function.
         var kakaoToken = result.data.kakao_token;
         var fireToken = result.data.firebase_token;
@@ -29,9 +29,8 @@ const Kakaotalk = () => {
           .then(function (result) {
             // token = kakaoToken;
             window.Kakao.Auth.setAccessToken(kakaoToken);
-            // const user = result.user;
-            // console.log("User : ", user);
-            saveUser();
+            const user = result.user;
+            saveUser(user);
             history.push("/");
           })
           .catch(function (error) {

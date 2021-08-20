@@ -2,7 +2,7 @@ import { dbService, countService } from "myBase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const ChatGen = ({ userObj, typeChoose }) => {
+const ChatGen = ({ userObj, typeChoose, isSignInEmail }) => {
   const url = window.location.href;
   const mbtiType = url.substring(url.lastIndexOf("/") + 1);
   const msgNumber = mbtiType + "-msg";
@@ -17,12 +17,7 @@ const ChatGen = ({ userObj, typeChoose }) => {
   const onInspect = (event) => {
     if (userObj) {
       // 00 통과  01 통과 11 통과 10 불통과
-      if (
-        !(
-          userObj.providerData[0]["uid"].indexOf("@") !== -1 &&
-          userObj.emailVerified === false
-        )
-      ) {
+      if (!(isSignInEmail && userObj.emailVerified === false)) {
         //로그인 여부 확인 끝
         //타입 선택여부
         if (typeChoose) {

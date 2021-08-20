@@ -80,7 +80,7 @@ function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
               </div>
             </>
           )}
-          <Auth userObj={userObj} />
+          <Auth userObj={userObj} isSignInEmail={isSignInEmail} />
           <button className="logout-btn" onClick={onLogOutClick}>
             로그아웃
           </button>

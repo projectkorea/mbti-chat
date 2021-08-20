@@ -1,6 +1,6 @@
 import { dbService } from "myBase";
 
-function saveUser({ userObj }) {
+function saveUser(userObj) {
   const user = {
     createdAt: new Date(),
     uid: userObj.uid,
