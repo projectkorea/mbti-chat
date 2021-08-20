@@ -7,7 +7,13 @@ import { authService } from "myBase";
 import { useHistory } from "react-router-dom";
 import Footer from "components/Footer";
 
-function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
+function Profile({
+  userObj,
+  typeChoose,
+  setTypeChoose,
+  setUserObj,
+  isSignInEmail,
+}) {
   //페이지 내 타입을 골랐는지 확인하는 state
   const [typeInput, setTypeInput] = useState(false);
   const history = useHistory();

@@ -30,8 +30,13 @@ const Kakaotalk = () => {
             // token = kakaoToken;
             window.Kakao.Auth.setAccessToken(kakaoToken);
             const user = result.user;
-            saveUser(user);
-            history.push("/");
+
+            if (result.additionalUserInfo.isNewUser) {
+              saveUser(user);
+              //   console.log("신규 사용자...");
+            }
+            //업데이트 예정
+            history.push("/profile");
           })
           .catch(function (error) {
             console.log(error);

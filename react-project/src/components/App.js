@@ -73,13 +73,15 @@ function App() {
   };
 
   //이메일 가입으로 들어왔는지 확인하기
-  const checkSigninEmail = () => {
+  const checkSigninEmail = (user) => {
     //구글, 페이스북, 이메일 로그인
-    if (userObj.providerData[0]) {
+    console.log(user);
+    console.log(user.providerData.length);
+    if (user.providerData.length !== 0) {
       // @가 포함되지 않았으면 -1로 반환
       // -1과 같지 않다면, @가 포함
       // @가 포함되면 true를 반환 = 이메일로 들어왔다는 뜻
-      const viaEmail = userObj.providerData[0]["uid"].indexOf("@") !== -1;
+      const viaEmail = user.providerData[0]["uid"].indexOf("@") !== -1;
       if (viaEmail) {
         //이메일 로그인
         setIsSignInEmail(true);
@@ -101,7 +103,7 @@ function App() {
         setUserObj(user);
         checkType(user);
         checkCanMakeRoom(user);
-        checkSigninEmail();
+        checkSigninEmail(user);
       }
       setInit(true);
     });

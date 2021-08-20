@@ -3,8 +3,10 @@ import saveUser from "components/SaveUser";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/functions";
+import { useHistory } from "react-router-dom";
 
 const Naver = () => {
+  const history = useHistory();
   const urlSearchParams = new URLSearchParams(window.location.search);
   const params = Object.fromEntries(urlSearchParams.entries());
   const naverState = params.state;
@@ -35,12 +37,13 @@ const Naver = () => {
           .then(function (result) {
             // _this.token = naverToken;
             window.localStorage.setItem("NaverToken", naverToken);
-            // const user = result.user;
+            const user = result.user;
             // console.log("User : ", user);
             if (result.additionalUserInfo.isNewUser) {
-              saveUser();
+              saveUser(user);
               //   console.log("신규 사용자...");
             }
+            history.push("/profile");
           })
           .catch(function (error) {
             // Handle Errors here.
