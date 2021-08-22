@@ -20,6 +20,7 @@ function Footer() {
           <h1 style={{ padding: "1px" }}>문의</h1>
         </Link>
       </button>
+      <br></br>
     </div>
   );
 }
