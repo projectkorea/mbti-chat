@@ -56,7 +56,10 @@ const Chat = ({ userObj, typeChoose, isSignInEmail }) => {
         }));
         setChats(chatArray);
         // console.log(scrollOn);
-        if (scrollOn && containerRef) scrollToBottom();
+        //useRef null방지용
+        if (containerRef) {
+          if (scrollOn) scrollToBottom();
+        }
         //div element가 넣어지기 전에 current.scrollTo 함수 실행하면 null오류 발생 방지
         //위로 올렸을 때 내려가지 않고, snapshot이 바뀌었을 때(=새로운 채팅이 발생했을 때)만 내려가게
       });

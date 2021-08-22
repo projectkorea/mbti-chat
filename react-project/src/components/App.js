@@ -75,8 +75,6 @@ function App() {
   //이메일 가입으로 들어왔는지 확인하기
   const checkSigninEmail = (user) => {
     //구글, 페이스북, 이메일 로그인
-    console.log(user);
-    console.log(user.providerData.length);
     if (user.providerData.length !== 0) {
       // @가 포함되지 않았으면 -1로 반환
       // -1과 같지 않다면, @가 포함

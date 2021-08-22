@@ -41,7 +41,7 @@ function Free({
       <div className="free-chat--container">
         {rooms.map((element) => (
           <RoomBlock
-            key={element.creatorType}
+            key={element.creatorType + Math.random()}
             mbtiType={element.creatorType}
             title={element.title}
             path={element.creatorId}
