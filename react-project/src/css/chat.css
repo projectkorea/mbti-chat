@@ -75,7 +75,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   height: 65vh;
-  margin: 10px auto;
+  margin: 5px auto;
   flex-direction: column-reverse;
   background-color: rgb(238, 250, 255);
   border-radius: 10px;

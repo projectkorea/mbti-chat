@@ -1,5 +1,5 @@
 import { dbService } from "myBase";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Qna() {
   const [chat, setChat] = useState("");
@@ -20,6 +20,10 @@ function Qna() {
     }
   };
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <>
       <div
@@ -28,9 +32,9 @@ function Qna() {
           justifyContent: "center",
           alignContent: "center",
           flexDirection: "column",
-          margin: "100px auto 0px",
-          width: "400px",
-          padding: "20px",
+          margin: "50px auto 0px",
+          width: "350px",
+          padding: "10px",
           backgroundColor: "white",
           borderRadius: "10px",
           fontFamily: "NanumBarunGothic",
