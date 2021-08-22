@@ -5,7 +5,6 @@ import Auth from "components/Auth";
 import MbtiBadge from "components/MbtiBadge";
 import { authService } from "myBase";
 import { useHistory } from "react-router-dom";
-import Footer from "components/Footer";
 
 function Profile({
   userObj,

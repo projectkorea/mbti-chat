@@ -1,4 +1,3 @@
-import Footer from "components/Footer";
 import LoginForm from "components/LoginForm";
 import SocialLoginBox from "components/SocialLoginBox";
 import React from "react";

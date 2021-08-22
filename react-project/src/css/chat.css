@@ -31,7 +31,7 @@
 .chat-id-font {
   font-size: 12px;
   padding: 2px;
-  font-family: "nanumbarungothic";
+  font-family: "NanumBarunGothic";
 }
 
 .chat-profile {
@@ -45,7 +45,7 @@
   border-radius: 5px;
   margin: 5px 0px;
   padding: 5px 8px;
-  font-family: "nanumbarungothic";
+  font-family: "NanumBarunGothic";
 }
 
 .chat-text--my {
@@ -53,28 +53,28 @@
   border-radius: 5px;
   margin: 5px 0px;
   padding: 5px 8px;
-  font-family: "nanumbarungothic";
+  font-family: "NanumBarunGothic";
 }
 
 .chat-text-font {
   font-size: 12px;
   line-height: 16px;
   margin-top: 8px;
-  font-family: "nanumbarungothic";
+  font-family: "NanumBarunGothic";
 }
 
 .chat-text-clock {
   font-size: 8px;
   margin-bottom: 4px;
   padding: 2px 2px 2px 5px;
-  font-family: "nanumbarungothic";
+  font-family: "NanumBarunGothic";
 }
 
 .chat-room {
   display: flex;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 65vh;
+  height: 60vh;
   margin: 5px auto;
   flex-direction: column-reverse;
   background-color: rgb(238, 250, 255);
@@ -87,7 +87,16 @@
   margin: 10px;
   justify-content: center;
   align-items: center;
-  font-family: "nanumbarungothic";
+  font-family: "NanumBarunGothic";
+}
+
+.chat-my-profile {
+  display: flex;
+  width: 300px;
+  margin: 5px auto -5px auto;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "NanumBarunGothic";
 }
 
 .chat-gen-input {

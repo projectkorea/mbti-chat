@@ -1,6 +1,7 @@
 import { dbService, countService } from "myBase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import MbtiBadge from "./MbtiBadge";
 
 const ChatGen = ({ userObj, typeChoose, isSignInEmail }) => {
   const url = window.location.href;
@@ -96,6 +97,13 @@ const ChatGen = ({ userObj, typeChoose, isSignInEmail }) => {
 
   return (
     <form onSubmit={onInspect}>
+      {userObj && (
+        <div className="chat-my-profile">
+          <MbtiBadge mbtiType={userObj.displayName} />
+          <span className="chat-id-font">{userObj.photoURL} </span>
+        </div>
+      )}
+
       <div className="chat-gen">
         <input
           className="chat-gen-input"

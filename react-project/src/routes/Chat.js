@@ -5,7 +5,6 @@ import ChatBox from "components/ChatBox";
 import ChatGen from "components/ChatGen";
 import { useLocation } from "react-router-dom";
 import Inform from "components/Inform";
-import Admin from "components/Admin";
 
 const Chat = ({ userObj, typeChoose, isSignInEmail }) => {
   //이전 채팅을 보기 위해 위로 스크롤 했을 때 새로고침 방지용, 바운스 효과도 없어짐
