@@ -1,7 +1,7 @@
 import { dbService, countService } from "myBase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import MbtiBadge from "./MbtiBadge";
+import MbtiBadge from "components/MbtiBadge";
 
 const ChatGen = ({ userObj, typeChoose, isSignInEmail }) => {
   const url = window.location.href;
@@ -10,9 +10,21 @@ const ChatGen = ({ userObj, typeChoose, isSignInEmail }) => {
   const history = useHistory();
   const [chat, setChat] = useState("");
   const [chatCount, setChatCount] = useState(4);
+  const [displayMyname, setDisplayMyname] = useState(false);
 
   useEffect(() => {
-    setInterval(() => setChatCount(4), 10000);
+    //
+    if (userObj) {
+      //채팅 칠 조건이 됐으면
+      if (!(isSignInEmail && userObj.emailVerified === false)) {
+        setDisplayMyname(true);
+      }
+    }
+    //채팅창 도배 방지
+    const preventOverChat = setInterval(() => setChatCount(4), 10000);
+    return () => {
+      clearInterval(preventOverChat);
+    };
   }, []);
 
   const onInspect = (event) => {
@@ -22,6 +34,7 @@ const ChatGen = ({ userObj, typeChoose, isSignInEmail }) => {
         //로그인 여부 확인 끝
         //타입 선택여부
         if (typeChoose) {
+          //타입을 골랐다면, 채팅방에 타입과 닉네임을 나타내기
           //채팅검열시작
           if (chat === "") {
             alert("입력하라능!");
@@ -97,13 +110,14 @@ const ChatGen = ({ userObj, typeChoose, isSignInEmail }) => {
 
   return (
     <form onSubmit={onInspect}>
-      {userObj && (
-        <div className="chat-my-profile">
-          <MbtiBadge mbtiType={userObj.displayName} />
-          <span className="chat-id-font">{userObj.photoURL} </span>
-        </div>
+      {displayMyname && typeChoose && (
+        <>
+          <div className="chat-my-profile">
+            <MbtiBadge mbtiType={userObj.displayName} />
+            <span className="chat-id-font">{userObj.photoURL} </span>
+          </div>
+        </>
       )}
-
       <div className="chat-gen">
         <input
           className="chat-gen-input"

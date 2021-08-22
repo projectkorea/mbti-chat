@@ -65,6 +65,8 @@ const Chat = ({ userObj, typeChoose, isSignInEmail }) => {
         //위로 올렸을 때 내려가지 않고, snapshot이 바뀌었을 때(=새로운 채팅이 발생했을 때)만 내려가게
       });
     return () => {
+      //unmounted componet error 방지
+      setChats([]);
       document.body.style.overscrollBehaviorY = "inherit";
     };
     //스크롤을 가장 위에 올렸을 때 inview값이 달라지며, chatBox를 리로드함
