@@ -65,15 +65,17 @@ function MbtiBlock({
                 }}
               />
             </div>
-            <img
-              alt="char"
-              src={imgSrc}
-              style={{
-                width: "50px",
-                height: "50px",
-                imageRendering: "optimizeSpeed",
-              }}
-            />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <img
+                alt="char"
+                src={imgSrc}
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  imageRendering: "optimizeSpeed",
+                }}
+              />
+            </div>
           </Link>
           <div className="mbti-block__subtitle">
             <img alt="user" src="/svg/user.svg" className="mbti-block__icon" />

@@ -1,5 +1,6 @@
 .notify-wrap {
-  background: #dcdddd;
+  z-index: -1;
+  background-color: #dcdddd;
   width: 300px;
   margin: 10px auto;
   font-size: 12px;

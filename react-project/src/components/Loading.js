@@ -22,7 +22,7 @@ function Loading() {
             display: "inline-block",
             position: "absolute",
             top: "80%",
-            left: "65%",
+            left: "62%",
             transform: "translate(-50%, -50%)",
             zIndex: 3,
           }}
@@ -46,7 +46,7 @@ function Loading() {
             width: "300px",
             height: "300px",
             top: "50%",
-            left: "65%",
+            left: "62%",
             transform: "translate(-50%, -50%)",
           }}
         />
