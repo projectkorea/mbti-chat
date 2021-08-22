@@ -105,7 +105,7 @@ const ChatGen = ({ userObj, typeChoose, isSignInEmail }) => {
           placeholder="채팅을 입력하세요"
           maxLength={120}
         />
-        <input className="chat-gen-submit" type="submit" value="전송" />
+        <input className="chat-gen-btn" type="submit" value="전송" />
       </div>
     </form>
   );

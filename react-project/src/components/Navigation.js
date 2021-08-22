@@ -8,12 +8,8 @@ const Navigation = ({ isLoggedin }) => {
     <nav>
       <div className="nav-header">
         <Link to="/">
-          <img
-            alt="logo"
-            src="/mbti-chat-icon-font.png"
-            width="60px"
-            height="60px"
-          />
+          <h1 className="logo">유유</h1>
+          <h1 className="logo">상종</h1>
         </Link>
         <div className="nav-menu">
           <Link to="/">

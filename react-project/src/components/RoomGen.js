@@ -86,7 +86,7 @@ const RoomGen = ({
           placeholder="채팅방 제목을 입력하세요"
           maxLength={30}
         />
-        <input className="chat-gen-submit" type="submit" value="방 만들기" />
+        <input className="chat-gen-btn" type="submit" value="방 만들기" />
       </div>
     </form>
   );

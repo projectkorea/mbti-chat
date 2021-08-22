@@ -12,4 +12,9 @@
 .rank-btn {
   margin-right: 5px;
   padding: 10px;
+  color: white;
+  background-color: #50b0ff;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
 }

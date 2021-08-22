@@ -87,6 +87,7 @@
   margin: 10px;
   justify-content: center;
   align-items: center;
+  font-family: "nanumbarungothic";
 }
 
 .chat-gen-input {
@@ -95,14 +96,22 @@
   height: 50px;
 }
 
-.chat-gen-submit {
+.chat-gen-btn {
   height: 50px;
   margin-left: 10px;
-  color: rgb(50, 50, 50);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+  background-color: #50b0ff;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  margin: 0px 5px;
+  padding: 10px 10px;
+  font-family: "SEBANG_Gothic_Regular";
 }
 
 .chat-room-title {
+  font-family: "SEBANG_Gothic_Bold";
   border-radius: 10px;
   font-size: 28px;
   margin: auto;

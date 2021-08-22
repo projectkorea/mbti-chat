@@ -92,7 +92,6 @@ function Profile({
           </button>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

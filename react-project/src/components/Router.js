@@ -11,6 +11,8 @@ import SignUp from "routes/SignUp";
 import Rank from "routes/Rank";
 import Type from "routes/Type";
 import Free from "routes/Free";
+import Footer from "./Footer";
+import Qna from "./Qna";
 
 const Router = ({
   isLoggedin,
@@ -66,6 +68,10 @@ const Router = ({
                 isSignInEmail={isSignInEmail}
               />
             </Route>
+            <Route path="/qna">
+              {" "}
+              <Qna />
+            </Route>
             <Route>
               <Redirect to="/" />
             </Route>
@@ -105,12 +111,16 @@ const Router = ({
             <Route path="/chat">
               <Chat />
             </Route>
+            <Route path="/qna">
+              <Qna />
+            </Route>
             <Route>
               <Redirect to="/" />
             </Route>
           </Switch>
         </>
       )}
+      <Footer />
     </BrowserRouter>
   );
 };

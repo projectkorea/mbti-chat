@@ -9,7 +9,13 @@ const Login = ({ setSignInEmail }) => {
     <>
       <div className="blank" style={{ height: "10vh" }} />
       <div className="login-box">
-        <h1 className="logo-title-font">MBTI채팅</h1>
+        <h1 className="logo-title-font">유유상종</h1>
+        <div className="subtitle-font-wrapper">
+          <h1 className="subtitle-font">MBTI에 진심인 당신,</h1>
+          <h1 className="subtitle-font">
+            원하는 유형의 사람들과 무료로 대화해보세요.
+          </h1>
+        </div>
         <LoginForm setSignInEmail={setSignInEmail} isSignup={isSignup} />
         <div className="dividing--container">
           <div className="dividing--line"></div>

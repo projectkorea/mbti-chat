@@ -57,7 +57,7 @@ const Chat = ({ userObj, typeChoose, isSignInEmail }) => {
         setChats(chatArray);
         // console.log(scrollOn);
         //useRef null방지용
-        if (containerRef) {
+        if (containerRef.current) {
           if (scrollOn) scrollToBottom();
         }
         //div element가 넣어지기 전에 current.scrollTo 함수 실행하면 null오류 발생 방지
