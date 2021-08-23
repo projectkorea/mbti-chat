@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { mbtiArray } from "contents";
 
 function Loading() {

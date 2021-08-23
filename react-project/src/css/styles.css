@@ -119,9 +119,14 @@ body {
 }
 
 .mbti-block__icon {
-  margin: 0px 2px 0px 5px;
   display: inline;
-  width: 10px;
+  width: 12px;
+  margin: 0px 2px;
+}
+
+.mbti-block__detail {
+  display: flex;
+  align-items: center;
 }
 
 /* login */

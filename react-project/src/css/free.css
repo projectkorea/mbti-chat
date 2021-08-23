@@ -11,7 +11,7 @@
 .room-btn {
   cursor: pointer;
   margin: 0px 5px;
-  background-color: #f1be1e;
+  background-color: #61f11e;
   color: white;
   border-radius: 5px;
   border: none;
@@ -27,7 +27,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: solid 2px;
+  border: solid black 2px;
   border-radius: 6px;
 }
 .room-block--item:hover {
@@ -40,8 +40,8 @@
   margin-top: -20px;
 }
 
-.mbti-block__icon {
-  margin: 0px 2px 0px 5px;
+.room-block__icon {
   display: inline;
-  width: 10px;
+  width: 20px;
+  margin: 0px 4px;
 }

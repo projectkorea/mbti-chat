@@ -46,7 +46,7 @@ const Chat = ({ userObj, typeChoose, isSignInEmail }) => {
   //chatbox에 줄 정보 불러오기
   // 로딩될 때 chat box가 리로딩 되려면 이 hooks를 실행해야함
   useEffect(() => {
-    dbService
+    const unsubscribe = dbService
       .collection(`mbti-chat-${mbtiType}`)
       .orderBy("createdAt", "desc")
       .limit(limitNum)
@@ -56,17 +56,15 @@ const Chat = ({ userObj, typeChoose, isSignInEmail }) => {
           ...doc.data(),
         }));
         setChats(chatArray);
-        // console.log(scrollOn);
-        //useRef null방지용
         if (containerRef.current) {
+          //useRef null방지용: div element 넣기 전 current.scrollTo 함수 실행 null오류 발생
           if (scrollOn) scrollToBottom();
+          //위로 올렸을 때 내려가지 않고, 새로운 채팅이 발생했을 때만 내려가게
         }
-        //div element가 넣어지기 전에 current.scrollTo 함수 실행하면 null오류 발생 방지
-        //위로 올렸을 때 내려가지 않고, snapshot이 바뀌었을 때(=새로운 채팅이 발생했을 때)만 내려가게
       });
     return () => {
       //unmounted componet error 방지
-      setChats([]);
+      unsubscribe();
       document.body.style.overscrollBehaviorY = "inherit";
     };
     //스크롤을 가장 위에 올렸을 때 inview값이 달라지며, chatBox를 리로드함

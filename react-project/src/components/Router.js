@@ -11,8 +11,8 @@ import SignUp from "routes/SignUp";
 import Rank from "routes/Rank";
 import Type from "routes/Type";
 import Free from "routes/Free";
-import Footer from "./Footer";
-import Qna from "./Qna";
+import Qna from "routes/Qna";
+import Footer from "components/Footer";
 
 const Router = ({
   isLoggedin,
