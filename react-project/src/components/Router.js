@@ -11,7 +11,8 @@ import SignUp from "routes/SignUp";
 import Rank from "routes/Rank";
 import Type from "routes/Type";
 import Free from "routes/Free";
-import Qna from "routes/Qna";
+import Qna1 from "routes/Qna1";
+import Qna2 from "routes/Qna2";
 import Footer from "components/Footer";
 
 const Router = ({
@@ -68,9 +69,11 @@ const Router = ({
                 isSignInEmail={isSignInEmail}
               />
             </Route>
-            <Route path="/qna">
-              {" "}
-              <Qna />
+            <Route path="/qna/1">
+              <Qna1 />
+            </Route>
+            <Route path="/qna/2">
+              <Qna2 />
             </Route>
             <Route>
               <Redirect to="/" />
@@ -108,11 +111,11 @@ const Router = ({
             <Route path="/room">
               <Chat />
             </Route>
-            <Route path="/chat">
-              <Chat />
+            <Route path="/qna/1">
+              <Qna1 />
             </Route>
-            <Route path="/qna">
-              <Qna />
+            <Route path="/qna/2">
+              <Qna2 />
             </Route>
             <Route>
               <Redirect to="/" />

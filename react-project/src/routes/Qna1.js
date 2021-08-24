@@ -1,7 +1,7 @@
 import { dbService } from "myBase";
 import React, { useEffect, useState } from "react";
 
-function Qna() {
+function Qna1() {
   const [chat, setChat] = useState("");
 
   const onSubmit = async (event) => {
@@ -86,4 +86,4 @@ function Qna() {
   );
 }
 
-export default Qna;
+export default Qna1;
