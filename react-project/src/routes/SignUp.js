@@ -9,7 +9,8 @@ const SignUp = ({ setSignInEmail }) => {
     <>
       <div className="blank" style={{ height: "10vh" }} />
       <div className="login-box">
-        <h1 className="logo-title-font">MBTI채팅</h1>
+        <h1 className="logo-title-font">유유상종</h1>
+        <div className="subtitle-font-wrapper"></div>
         <SocialLoginBox />
         <div className="dividing--container">
           <div className="dividing--line"></div>

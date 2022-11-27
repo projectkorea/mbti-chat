@@ -9,6 +9,8 @@ var _express = _interopRequireDefault(require("express"));
 
 var _path = _interopRequireDefault(require("path"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
 var _helmet = _interopRequireDefault(require("helmet"));
 
 var _morgan = _interopRequireDefault(require("morgan"));
@@ -19,6 +21,11 @@ function _interopRequireDefault(obj) {
 
 const app = (0, _express.default)();
 app.use((0, _morgan.default)("dev"));
+app.use(
+  (0, _cors.default)({
+    origin: true,
+  })
+);
 app.use(
   (0, _helmet.default)({
     contentSecurityPolicy: false,
@@ -45,11 +52,13 @@ exports.default = _default;
 
 // import express from "express";
 // import path from "path";
+// import cors from "cors";
 // import helmet from "helmet";
 // import morgan from "morgan";
 
 // const app = express();
 // app.use(morgan("dev"));
+// app.use(cors({ origin: true }));
 // app.use(
 //   helmet({
 //     contentSecurityPolicy: false,

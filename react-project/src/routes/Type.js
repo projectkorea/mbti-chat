@@ -1,10 +1,10 @@
-import MbtiBlockBoard from "components/MbtiBlockBoard";
+import MbtiBlock from "components/MbtiBlock";
 
-function Board({ mbtiArray }) {
+function Type({ mbtiArray }) {
   return (
-    <div className="mbti-block-board--container">
+    <div className="mbti-block--container">
       {mbtiArray.map((element) => (
-        <MbtiBlockBoard
+        <MbtiBlock
           key={element.type}
           mbtiType={element.type}
           mbtiMsg={element.msg}
@@ -17,4 +17,4 @@ function Board({ mbtiArray }) {
   );
 }
 
-export default Board;
+export default Type;

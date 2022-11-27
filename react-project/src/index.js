@@ -4,8 +4,11 @@ import App from "components/App";
 import "css/styles.css";
 import "css/loader.css";
 import "css/chat.css";
-import "css/board.css";
 import "css/rank.css";
+import "css/free.css";
+import "css/font.css";
+import "css/progressBar.css";
+import "css/inform.css";
 import firebase from "firebase";
 
 if (window.location.hostname === "localhost") {

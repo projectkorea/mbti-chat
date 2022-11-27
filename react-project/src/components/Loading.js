@@ -1,11 +1,9 @@
 import React from "react";
+import { mbtiArray } from "contents";
 
-function Loading({ mbtiArray }) {
-  //로더 mbtitype 랜덤하게 생성
+function Loading() {
   const mbtiType =
     mbtiArray[Math.floor(Math.random() * mbtiArray.length)]["type"];
-  //로더 img 경로
-  const charUrl = "/char/" + mbtiType + ".svg";
 
   return (
     <>
@@ -24,7 +22,7 @@ function Loading({ mbtiArray }) {
             display: "inline-block",
             position: "absolute",
             top: "80%",
-            left: "65%",
+            left: "62%",
             transform: "translate(-50%, -50%)",
             zIndex: 3,
           }}
@@ -33,20 +31,22 @@ function Loading({ mbtiArray }) {
             <span></span>
           </div>
           <br></br>
-          <h1> 로딩중...</h1>
+          <h1 style={{ fontFamily: "ONE-Mobile-POP", fontSize: "28px" }}>
+            로딩중...
+          </h1>
+          <br></br>
         </div>
-
         <img
           className="loader-char"
           alt="char"
-          src={charUrl}
+          src={`/char/${mbtiType}.svg`}
           style={{
             position: "absolute",
             zIndex: 2,
             width: "300px",
             height: "300px",
             top: "50%",
-            left: "65%",
+            left: "62%",
             transform: "translate(-50%, -50%)",
           }}
         />

@@ -8,19 +8,27 @@
     "url": "git+https://github.com/projectkorea/mbti-chat.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec npx babel-node init.js",
-    "build": "npx babel src --out-file script-compiled.js",
+    "react": "cd react-project && npm install && npm run build",
+    "build": "npm install && npm run react",
     "start": "pm2 start init.js"
   },
   "author": "JunhaKim",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "core-js": "^3.15.2",
+    "cors": "^2.8.5",
+>>>>>>> b5a71e0927c641dad0234beddf70134da8e921ac
     "express": "^4.17.1",
-    "firebase-admin": "^9.11.0",
-    "firebase-functions": "^3.14.1",
+    "firebase-admin": "^9.11.1",
+    "firebase-functions": "^3.15.4",
     "helmet": "^4.6.0",
     "morgan": "^1.10.0"
+<<<<<<< HEAD
   },
   "devDependencies": {}
+=======
+  }
+>>>>>>> b5a71e0927c641dad0234beddf70134da8e921ac
 }

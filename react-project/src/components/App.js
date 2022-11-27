@@ -2,7 +2,7 @@ import Router from "components/Router";
 import { authService, dbService } from "myBase";
 import { useEffect, useState } from "react";
 import { mbtiArray } from "contents";
-import Loading from "./Loading";
+import Loading from "components/Loading";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -10,6 +10,8 @@ function App() {
   const [realTimeInit, setRealTimeInit] = useState(false);
   const [typeChoose, setTypeChoose] = useState(false);
   const [userObj, setUserObj] = useState(null);
+  const [canMakeRoom, setCanMakeRoom] = useState(false);
+  const [isSignInEmail, setIsSignInEmail] = useState(false);
 
   //Home화면에 보여질 리얼타임 체크
   const realTimeUpdate = async () => {
@@ -48,22 +50,58 @@ function App() {
 
   //type골랐는지 확인해서 프로필에 선택사항 주기
   const checkType = (user) => {
-    if (user) {
-      mbtiArray.forEach((element) => {
-        if (user.displayName === element["type"]) {
-          setTypeChoose(true);
+    mbtiArray.forEach((element) => {
+      if (user.displayName === element["type"]) {
+        setTypeChoose(true);
+      }
+    });
+  };
+
+  //채팅방 만들었는지 확인해서 free route에 주기
+  const checkCanMakeRoom = async (user) => {
+    await dbService
+      .collection("chat-room")
+      .doc(user.uid)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setCanMakeRoom(false);
+        } else {
+          setCanMakeRoom(true);
         }
       });
+  };
+
+  //이메일 가입으로 들어왔는지 확인하기
+  const checkSigninEmail = (user) => {
+    //구글, 페이스북, 이메일 로그인
+    if (user.providerData.length !== 0) {
+      // @가 포함되지 않았으면 -1로 반환
+      // -1과 같지 않다면, @가 포함
+      // @가 포함되면 true를 반환 = 이메일로 들어왔다는 뜻
+      const viaEmail = user.providerData[0]["uid"].indexOf("@") !== -1;
+      if (viaEmail) {
+        //이메일 로그인
+        setIsSignInEmail(true);
+      } else {
+        //구글, 페이스북 로그인
+        setIsSignInEmail(false);
+      }
+    } else {
+      //네이버 또는 카카오 로그인
+      setIsSignInEmail(false);
     }
   };
 
   //로그인 상태 확인
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
-      console.log(user);
+      //   console.log(user);
       if (user) {
         setUserObj(user);
         checkType(user);
+        checkCanMakeRoom(user);
+        checkSigninEmail(user);
       }
       setInit(true);
     });
@@ -81,9 +119,13 @@ function App() {
           mbtiArray={mbtiArray}
           typeChoose={typeChoose}
           setTypeChoose={setTypeChoose}
+          canMakeRoom={canMakeRoom}
+          setCanMakeRoom={setCanMakeRoom}
+          isSignInEmail={isSignInEmail}
+          setIsSignInEmail={setIsSignInEmail}
         />
       ) : (
-        <Loading mbtiArray={mbtiArray} />
+        <Loading />
       )}
     </>
   );

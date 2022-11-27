@@ -1,36 +1,11 @@
-import MbtiBlock from "components/MbtiBlock";
-import { dbService } from "myBase";
+import React from "react";
+import Chat from "routes/Chat";
 
-function Home({ mbtiArray }) {
-  const resetBtn = () => {
-    mbtiArray.map((element) => {
-      const msgNumber = element.type + "-msg";
-      const peopleNumber = element.type + "-people";
-      dbService
-        .collection("info")
-        .doc("w7wZ15buqtjglLIpYMjx")
-        .update({
-          [msgNumber]: 0,
-          [peopleNumber]: 0,
-        });
-    });
-  };
+// Chat 컴포넌트 재랜더링
+// 채팅방으로 바로 넘어오면, chat이 재랜더링이 안되서 그대로임
 
-  return (
-    <div className="mbti-block--container">
-      {mbtiArray.map((element) => (
-        <MbtiBlock
-          key={element.type}
-          mbtiType={element.type}
-          mbtiMsg={element.msg}
-          mbtiPeople={element.people}
-          isRecent={element.realTime}
-          className="mbti-block"
-        />
-      ))}
-      {/* <button onClick={resetBtn}>DB 리셋하기</button> */}
-    </div>
-  );
+function Home({ userObj, typeChoose }) {
+  return <Chat userObj={userObj} typeChoose={typeChoose} />;
 }
 
 export default Home;

@@ -8,8 +8,12 @@ import Kakaotalk from "routes/Kakaotalk";
 import Naver from "routes/Naver";
 import Navigation from "components/Navigation";
 import SignUp from "routes/SignUp";
-import Board from "routes/Board";
 import Rank from "routes/Rank";
+import Type from "routes/Type";
+import Free from "routes/Free";
+import Qna1 from "routes/Qna1";
+import Qna2 from "routes/Qna2";
+import Footer from "components/Footer";
 
 const Router = ({
   isLoggedin,
@@ -18,6 +22,9 @@ const Router = ({
   mbtiArray,
   typeChoose,
   setTypeChoose,
+  canMakeRoom,
+  setCanMakeRoom,
+  isSignInEmail,
 }) => {
   return (
     <BrowserRouter>
@@ -26,24 +33,47 @@ const Router = ({
         <>
           <Switch>
             <Route exact path="/">
-              <Home mbtiArray={mbtiArray} />
+              <Home userObj={userObj} typeChoose={typeChoose} />
+            </Route>
+            <Route exact path="/type">
+              <Type mbtiArray={mbtiArray} />
             </Route>
             <Route exact path="/rank">
               <Rank mbtiArray={mbtiArray} />
             </Route>
-            <Route exact path="/board">
-              <Board mbtiArray={mbtiArray} />
-            </Route>
-            <Route path="/chat">
-              <Chat userObj={userObj} typeChoose={typeChoose} />
-            </Route>
-            <Route path="/profile">
+            <Route exact path="/profile">
               <Profile
                 userObj={userObj}
                 setUserObj={setUserObj}
                 typeChoose={typeChoose}
                 setTypeChoose={setTypeChoose}
+                isSignInEmail={isSignInEmail}
               />
+            </Route>
+            <Route path="/free">
+              <Free
+                userObj={userObj}
+                typeChoose={typeChoose}
+                canMakeRoom={canMakeRoom}
+                setCanMakeRoom={setCanMakeRoom}
+                isSignInEmail={isSignInEmail}
+              />
+            </Route>
+            <Route path="/room">
+              <Chat userObj={userObj} typeChoose={typeChoose} />
+            </Route>
+            <Route path="/chat">
+              <Chat
+                userObj={userObj}
+                typeChoose={typeChoose}
+                isSignInEmail={isSignInEmail}
+              />
+            </Route>
+            <Route path="/qna/1">
+              <Qna1 />
+            </Route>
+            <Route path="/qna/2">
+              <Qna2 />
             </Route>
             <Route>
               <Redirect to="/" />
@@ -51,18 +81,18 @@ const Router = ({
           </Switch>
         </>
       ) : (
+        //   로그인 안함
         <>
           <Switch>
             <Route exact path="/">
-              <Home mbtiArray={mbtiArray} />
+              <Home />
+            </Route>
+            <Route exact path="/type">
+              <Type mbtiArray={mbtiArray} />
             </Route>
             <Route exact path="/rank">
-              <Home mbtiArray={mbtiArray} />
+              <Rank mbtiArray={mbtiArray} />
             </Route>
-            <Route exact path="/board">
-              <Board mbtiArray={mbtiArray} />
-            </Route>
-            <Route path="/chat" component={Chat} />
             <Route exact path="/login">
               <Login />
             </Route>
@@ -75,12 +105,25 @@ const Router = ({
             <Route exact path="/callback/naver">
               <Naver />
             </Route>
+            <Route path="/free">
+              <Free />
+            </Route>
+            <Route path="/room">
+              <Chat />
+            </Route>
+            <Route path="/qna/1">
+              <Qna1 />
+            </Route>
+            <Route path="/qna/2">
+              <Qna2 />
+            </Route>
             <Route>
               <Redirect to="/" />
             </Route>
           </Switch>
         </>
       )}
+      <Footer />
     </BrowserRouter>
   );
 };

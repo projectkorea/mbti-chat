@@ -6,7 +6,13 @@ import MbtiBadge from "components/MbtiBadge";
 import { authService } from "myBase";
 import { useHistory } from "react-router-dom";
 
-function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
+function Profile({
+  userObj,
+  typeChoose,
+  setTypeChoose,
+  setUserObj,
+  isSignInEmail,
+}) {
   //페이지 내 타입을 골랐는지 확인하는 state
   const [typeInput, setTypeInput] = useState(false);
   const history = useHistory();
@@ -25,7 +31,7 @@ function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
           {typeChoose || typeInput ? (
             <div
               className="profile--item"
-              src="default-profile.svg"
+              src="/svg/default-profile.svg"
               alt="profile"
               style={{
                 width: "150px",
@@ -41,7 +47,7 @@ function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
           ) : (
             <img
               className="profile--item"
-              src="default-profile.svg"
+              src="/svg/default-profile.svg"
               alt="profile"
               style={{
                 width: "150px",
@@ -79,9 +85,9 @@ function Profile({ userObj, typeChoose, setTypeChoose, setUserObj }) {
               </div>
             </>
           )}
-          <Auth userObj={userObj} />
-          <button style={{ margin: "20px 0px" }} onClick={onLogOutClick}>
-            Log Out
+          <Auth userObj={userObj} isSignInEmail={isSignInEmail} />
+          <button className="logout-btn" onClick={onLogOutClick}>
+            로그아웃
           </button>
         </div>
       </div>

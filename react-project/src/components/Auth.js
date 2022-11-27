@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 
-const Auth = ({ userObj }) => {
+const Auth = ({ userObj, isSignInEmail }) => {
   const [timerDisplay, setTimerDisplay] = useState(false);
   const [newVerification, setNewVerification] = useState(true);
   const [verifiedBtn, setVerifiedBtn] = useState(false);
 
-  //이메일 가입으로 들어왔는지 확인하기: 포함되지 않았으면 -1로 반환, 즉 -1과 같지 않으면 포함되었다는 뜻
-  const isSignInEmail = userObj.providerData[0]["uid"].indexOf("@");
-
   //timer
-
   const countDownTimer = () => {
     let timerInterval;
     let dateObj = new Date();
@@ -70,11 +66,11 @@ const Auth = ({ userObj }) => {
 
   return (
     <>
-      {!(isSignInEmail !== -1 && userObj.emailVerified === false) ? (
+      {!(isSignInEmail && userObj.emailVerified === false) ? (
         <div style={{ display: "flex", justifyContent: "center" }}>
           <img
             alt="success"
-            src="/green-check.svg"
+            src="/svg/green-check.svg"
             style={{
               width: "20px",
               margin: "0px 5px 0px 0px",
@@ -93,7 +89,7 @@ const Auth = ({ userObj }) => {
         >
           <img
             alt="failure"
-            src="/red-x.svg"
+            src="/svg/red-x.svg"
             style={{
               display: "inline-block",
               width: "20px",

@@ -1,0 +1,39 @@
+.notify-wrap {
+  z-index: -1;
+  background-color: #dcdddd;
+  width: 300px;
+  margin: 10px auto 0px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+.notify-wrap-inner {
+  line-height: 30px;
+  padding: 0 20px;
+  margin: 0 10px;
+  text-align: center;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.notify-scroll {
+  display: inline-block;
+  animation: text-scroll 30s linear infinite;
+}
+@keyframes text-scroll {
+  from {
+    transform: translateX(35%);
+    -moz-transform: translateX(35%);
+    -webkit-transform: translateX(35%);
+    -o-transform: translateX(35%);
+    -ms-transform: translateX(35%);
+  }
+  to {
+    transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+  }
+}

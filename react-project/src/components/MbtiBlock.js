@@ -65,24 +65,27 @@ function MbtiBlock({
                 }}
               />
             </div>
-            <img
-              alt="char"
-              src={imgSrc}
-              style={{
-                width: "100px",
-                height: "100px",
-                imageRendering: "optimizeSpeed",
-              }}
-            />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <img
+                alt="char"
+                src={imgSrc}
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  imageRendering: "optimizeSpeed",
+                }}
+              />
+            </div>
           </Link>
-          <div className="mbti-block__subtitle">
+          <div className="mbti-block__detail">
             <img alt="user" src="/svg/user.svg" className="mbti-block__icon" />
-            <span>
+            <span className="mbti-block__subtitle">
               {mbtiPeople.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}명
             </span>
-            <br></br>
+          </div>
+          <div className="mbti-block__detail">
             <img alt="chat" src="/svg/chat.svg" className="mbti-block__icon" />
-            <span>
+            <span className="mbti-block__subtitle">
               {mbtiMsg.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}개
             </span>
           </div>
