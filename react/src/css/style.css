@@ -1,0 +1,613 @@
+@import "https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css";
+
+* {
+  box-sizing: border-box;
+}
+
+a:hover,
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+body {
+  padding-top: 75px;
+  background-color: rgb(250, 250, 250);
+  font-family: "SEBANG_Gothic_Regular";
+  font-size: 14px;
+}
+
+/* Nav */
+
+.logo {
+  color: white;
+  font-family: "SEBANG_Gothic_Bold";
+  font-size: 24px;
+}
+
+.nav-header {
+  background-color: #c79a00;
+  height: 75px;
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  /* width: 100% */
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu-item {
+  background-color: rgb(245, 245, 245);
+  padding: 8px 5px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-menu-item-font {
+  margin: 1px;
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.nav--login-btn {
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 10px 0px;
+}
+
+.footer {
+  margin-top: 10px;
+  color: rgb(150, 150, 150);
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Home */
+
+.mbti-block--container {
+  display: flex;
+  margin: 40px auto;
+  max-width: 800px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mbti-block--item {
+  width: 70px;
+  margin: 10px 10px;
+  cursor: pointer;
+  border: 3px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  padding-bottom: 2px;
+}
+
+.mbti-block--item:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mbti-block__title {
+  font-size: 28px;
+  text-align: center;
+  margin-top: -20px;
+  font-family: "ONE-Mobile-POP";
+}
+
+.mbti-block__subtitle {
+  text-align: start;
+  font-size: 11px;
+  color: black;
+}
+
+.mbti-block__icon {
+  display: inline;
+  width: 12px;
+  margin: 0px 2px;
+}
+
+.mbti-block__detail {
+  display: flex;
+  align-items: center;
+}
+
+/* login */
+
+.login--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.login--item {
+  display: block;
+  width: 260px;
+  height: 36px;
+  margin: 5px;
+  padding: 9px 0px 7px 8px;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.login--item.input {
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(200, 200, 200);
+}
+
+.login--item.submit {
+  font-size: 15px;
+  margin: 10px 0px;
+  font-weight: bold;
+  color: white;
+  background-color: #42a5f5;
+  cursor: pointer;
+}
+
+.logout-btn {
+  font-size: 15px;
+  margin: 10px 0px 5px;
+  font-weight: bold;
+  color: white;
+  background-color: #50b0ff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.auth--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.auth--container.signup {
+  justify-content: space-arounds;
+  margin-top: 20px;
+}
+
+.auth--item {
+  display: inline-block;
+  width: 60px;
+  margin: 0 4px;
+  height: 30px;
+  border-radius: 5px;
+  border: 0px;
+  cursor: pointer;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(200, 200, 200);
+}
+
+.auth--item.kakao {
+  background-color: #ffeb00;
+  border: 1px solid #ffeb00;
+}
+.auth--item.naver {
+  background-color: #1ec800;
+  border: 1px solid #1ec800;
+}
+.auth--item.google {
+  background-color: #f1f2f3;
+  border: 1px solid #f1f2f3;
+}
+.auth--item.facebook {
+  background-color: rgb(25, 119, 243);
+  border: 1px solid rgb(25, 119, 243);
+}
+
+
+
+.auth--item--signup {
+  display: inline-block;
+  color: #0077c2;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dividing--container {
+  display: flex;
+  height: 20px;
+  width: 280px;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dividing--line {
+  background-color: rgba(219, 219, 219);
+  height: 1.5px;
+  width: 100px;
+}
+
+.dividing--font {
+  color: rgba(200, 200, 200);
+  font-size: 12px;
+}
+
+.login-font {
+  font-size: 16px;
+}
+
+.logo-title-font {
+  font-family: "SEBANG_Gothic_Bold";
+  display: flex;
+  font-size: 38px;
+  margin: 30px auto 10px auto;
+  justify-content: center;
+}
+
+.subtitle-font-wrapper {
+  margin: 20px 0px;
+}
+
+.subtitle-font {
+  display: flex;
+  margin: 5px auto;
+  justify-content: center;
+  color: #b1aeae;
+}
+
+.login-box {
+  font-family: "ELAND_Choice_M";
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background-color: white;
+  width: 350px;
+  margin: 0px auto;
+  border-radius: 10px;
+}
+
+/* profile */
+.profile-font--title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.profile-head {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0px;
+}
+
+.profile-body {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  margin: -110px auto 0px;
+  padding: 80px 20px 10px 20px;
+  width: 300px;
+}
+
+.profile--item {
+  display: block;
+  margin: 10px;
+}
+
+.profile--item.mine {
+  width: 150px;
+  height: 150px;
+  border-radius: 70%;
+  background-color: rgb(200,200,200);
+  background-size: 150%;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+.profile--item.default {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+.profile-font {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  display: block;
+  margin: 0px 0px 15px 0px;
+}
+
+.profile-font--small {
+  font-size: 14px;
+  color: black;
+  margin: 5px 0px;
+}
+
+.profile-mbti-block--item {
+  display: inline-block;
+  padding: 12px 0px;
+  width: 40px;
+  height: 40px;
+}
+
+.auth--email-btn {
+  font-weight: bold;
+  padding: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
+/* rank */
+.rank-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.rank-btn-bar {
+  margin: 10px;
+}
+
+.rank-btn {
+  margin-right: 5px;
+  padding: 10px;
+  color: white;
+  background-color: #50b0ff;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.rank-column {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* notify */
+.notify-wrap {
+  z-index: -1;
+  background-color: #dcdddd;
+  width: 300px;
+  margin: 10px auto 0px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+.notify-wrap-inner {
+  line-height: 30px;
+  padding: 0 20px;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.notify-scroll {
+  display: inline-block;
+  animation: text-scroll 30s linear infinite;
+}
+
+@keyframes text-scroll {
+  from { transform: translateX(35%); }
+  to { transform: translateX(-100%); }
+}
+
+/* chat */
+.chat-container {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.chat-wrap {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 0px 0px 0px 5px;
+}
+
+.chat-wrap--my {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  padding: 0px 5px 0px 0px;
+}
+
+.chat-room--new-msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  bottom: 20%;
+}
+
+.chat-box {
+  display: flex;
+  align-items: flex-end;
+}
+
+.chat-box--my {
+  display: flex;
+  align-items: flex-end;
+}
+
+.chat-id-font {
+  font-size: 12px;
+  padding: 2px;
+  font-family: "NanumBarunGothic";
+}
+
+.chat-profile {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px 0px 0px;
+}
+
+.chat-text {
+  background-color: rgb(230, 230, 230);
+  border-radius: 5px;
+  margin: 5px 0px;
+  padding: 5px 8px;
+  font-family: "NanumBarunGothic";
+}
+
+.chat-text--my {
+  background-color: #ffeecc;
+  border-radius: 5px;
+  margin: 5px 0px;
+  padding: 5px 8px;
+  font-family: "NanumBarunGothic";
+}
+
+.chat-text-font {
+  font-size: 13px;
+  line-height: 16px;
+  margin-top: 8px;
+  font-family: "NanumBarunGothic";
+}
+
+.chat-text-clock {
+  font-size: 8px;
+  margin-bottom: 4px;
+  padding: 2px 2px 2px 5px;
+  font-family: "NanumBarunGothic";
+}
+
+.chat-room {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 60vh;
+  margin: 5px auto;
+  flex-direction: column-reverse;
+  background-color: rgb(238, 250, 255);
+  border-radius: 10px;
+  width: 300px;
+  position: relative;
+}
+
+.chat-gen {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: "NanumBarunGothic";
+}
+
+.chat-my-profile {
+  display: flex;
+  width: 300px;
+  margin: 5px auto -5px auto;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "NanumBarunGothic";
+}
+
+.chat-gen-input {
+  display: block;
+  width: 240px;
+  height: 50px;
+}
+
+.chat-gen-btn {
+  height: 50px;
+  margin-left: 10px;
+  color: white;
+  background-color: #50b0ff;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  margin: 0px 5px;
+  padding: 10px 10px;
+  font-family: "SEBANG_Gothic_Regular";
+}
+
+.chat-room-title {
+  font-family: "SEBANG_Gothic_Bold";
+  border-radius: 10px;
+  font-size: 28px;
+  margin: auto;
+  padding: 0px 10px;
+}
+
+.free-chat--container {
+  display: flex;
+  margin: 20px auto;
+  max-width: 500px;
+  flex-direction: column;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.room-btn {
+  cursor: pointer;
+  margin: 0px 5px;
+  background-color: #61f11e;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  width: 40px;
+}
+.room-block--item {
+  display: flex;
+  margin: 10px 20px;
+  padding: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: solid black 2px;
+  border-radius: 6px;
+}
+.room-block--item:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mbti-block__title {
+  font-size: 28px;
+  text-align: center;
+  margin-top: -20px;
+}
+
+.room-block__icon {
+  display: inline;
+  width: 20px;
+  margin: 0px 4px;
+}

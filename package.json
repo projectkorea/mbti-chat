@@ -4,10 +4,6 @@
   "main": "build/init.js",
   "author": "JunhaKim",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/projectkorea/mbti-chat.git"
-  },
   "scripts": {
     "postinstall": "npm run install:all",
     "install:all": "npm run install:server && npm run install:react && npm run install:functions",

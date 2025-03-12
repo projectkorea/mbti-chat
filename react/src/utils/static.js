@@ -1,0 +1,16 @@
+export { default as intp } from '/src/assets/images/char/intp.svg';
+export { default as entp } from '/src/assets/images/char/entp.svg';
+export { default as infp } from '/src/assets/images/char/infp.svg';
+export { default as enfp } from '/src/assets/images/char/enfp.svg';
+export { default as istp } from '/src/assets/images/char/istp.svg';
+export { default as estp } from '/src/assets/images/char/estp.svg';
+export { default as isfp } from '/src/assets/images/char/isfp.svg';
+export { default as esfp } from '/src/assets/images/char/esfp.svg';
+export { default as intj } from '/src/assets/images/char/intj.svg';
+export { default as entj } from '/src/assets/images/char/entj.svg';
+export { default as infj } from '/src/assets/images/char/infj.svg';
+export { default as enfj } from '/src/assets/images/char/enfj.svg';
+export { default as istj } from '/src/assets/images/char/istj.svg';
+export { default as estj } from '/src/assets/images/char/estj.svg';
+export { default as isfj } from '/src/assets/images/char/isfj.svg';
+export { default as esfj } from '/src/assets/images/char/esfj.svg';
