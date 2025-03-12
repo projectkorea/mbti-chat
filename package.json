@@ -9,9 +9,11 @@
     "url": "git+https://github.com/projectkorea/mbti-chat.git"
   },
   "scripts": {
-    "react_old": "cd react-project && npm install && npm run build",
-    "build_old": "npm install && npm run react",
-    "start_old": "pm2 start init.js",
+    "postinstall": "npm run install:all",
+    "install:all": "npm run install:server && npm run install:react && npm run install:functions",
+    "install:server": "cd server && npm install",
+    "install:react": "cd react && npm install",
+    "install:functions": "cd functions && npm install",
     "build:server": "tsc -p server/tsconfig.json",
     "build:assets": "cross-env WEBPACK_ENV=production webpack --config src/webpack.config.js",
     "copyfiles": "copyfiles -u 1 \"src/static/**/*\" build && copyfiles -u 1 \"src/views/**/*\" build && copyfiles -u 1 \"src/.env\" build",
@@ -22,34 +24,15 @@
     "prod": "npm run build && cross-env NODE_ENV=production node build/server/init.js"
   },
   "dependencies": {
-    "core-js": "^3.15.2",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "firebase-admin": "^9.11.1",
-    "firebase-functions": "^3.15.4",
-    "helmet": "^4.6.0",
-    "morgan": "^1.10.0",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.6"
+    "firebase-admin": "^9.11.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.14.8",
-    "@babel/preset-env": "^7.14.8",
-    "@babel/preset-typescript": "^7.14.5",
-    "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.13",
-    "@types/morgan": "^1.9.3",
     "@types/node": "^16.4.0",
-    "@types/request-promise": "^4.1.48",
-    "babel-loader": "^8.2.2",
     "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.12",
     "rimraf": "^3.0.2",
     "typescript": "^4.3.5",
-    "vite": "^6.2.1",
     "webpack": "^5.45.1",
     "webpack-cli": "^4.7.2"
   }
