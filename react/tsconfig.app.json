@@ -15,12 +15,37 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* JavaScript Support */
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"],
+      "@/*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "pages/*": ["src/components/pages/*"],
+      "hooks/*": ["src/hooks/*"],
+      "utils/*": ["src/utils/*"],
+      "store/*": ["src/store/*"],
+      "assets/*": ["src/assets/*"],
+      "routes/*": ["src/routes/*"],
+      "common/*": ["src/components/common/*"]
+    },
+
     /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    
+    /* During migration */
+    "noImplicitAny": false
   },
-  "include": ["src"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

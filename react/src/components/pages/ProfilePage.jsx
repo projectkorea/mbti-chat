@@ -1,13 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { mbtiArray } from "utils/mbtiContent.js";
 import { authService } from "utils/myBase.js";
-import ProfileChooseBlock from "../login/ProfileChooseBlock.jsx";
-import Verification from "../login/Verification.jsx";
+import ProfileChooseBlock from "components/login/ProfileChooseBlock.jsx";
+import Verification from "components/login/Verification.jsx";
 import MbtiBadge from "common/MbtiBadge.jsx";
 import Navigation from "common/Navigation";
 import * as MbtiSVG from "utils/static";
-
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import { useUserStore } from "store/useStore.js";
 
 function ProfilePage() {

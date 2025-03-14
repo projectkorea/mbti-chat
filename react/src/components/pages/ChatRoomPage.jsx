@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import ChatBox from "chat/ChatBox.jsx";
-import ChatForm from "chat/ChatForm.jsx";
+import { useParams } from "react-router-dom";
+import ChatBox from "components/chat/ChatBox.jsx";
+import ChatForm from "components/chat/ChatForm.jsx";
 import Inform from "components/chat/Inform.jsx";
 import Navigation from "common/Navigation";
 import { useUserStore } from "store/useStore.js";
-import { MyBase } from "../../utils/myBase.js";
+import { MyBase } from "utils/myBase.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 
 const ChatRoomPage = ({ colName, title }) => {
   // 위로 스크롤 했을 때 새로고침 방지용, 바운스 버그도 제거
@@ -91,6 +92,6 @@ const ChatRoomPage = ({ colName, title }) => {
 export default ChatRoomPage;
 
 ChatRoomPage.propTypes = {
-  colName: PropType.string.isRequired,
-  title: PropType.string.isRequired,
+  colName: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };

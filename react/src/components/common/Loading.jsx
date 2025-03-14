@@ -1,4 +1,4 @@
-import { mbtiArray } from "../../utils/mbtiContent.js";
+import { mbtiArray } from "utils/mbtiContent.js";
 import * as MbtiSVG from "utils/static";
 
 function Loading() {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import RoomBlock from "../RoomBlock.jsx";
-import RoomGen from "chat/RoomGen.jsx";
+import RoomBlock from "components/RoomBlock.jsx";
+import RoomGen from "components/chat/RoomGen.jsx";
 import { useUserStore } from "store/useStore.js";
 import Navigation from "common/Navigation";
-import { MyBase } from "../../utils/myBase.js";
+import { MyBase } from "utils/myBase.js";
 
 function FreeBoardPage() {
   const [rooms, setRooms] = useState([]);

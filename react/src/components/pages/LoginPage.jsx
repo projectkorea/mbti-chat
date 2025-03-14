@@ -1,7 +1,7 @@
-import LoginForm from "../login/LoginForm.jsx";
-import { Link } from "react-router-dom";
-import SocialLoginBox from "../login/SocialLoginBox.jsx";
-import Navigation from "../common/Navigation.jsx";
+import LoginForm from "components/login/LoginForm.jsx";
+import { Link, Navigate } from "react-router-dom";
+import SocialLoginBox from "components/login/SocialLoginBox.jsx";
+import Navigation from "common/Navigation.jsx";
 
 const LoginPage = () => {
   return (

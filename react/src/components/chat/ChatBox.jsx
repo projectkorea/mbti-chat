@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import MbtiBadge from "common/MbtiBadge";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 
 const ChatBox = forwardRef(({ chatObj, isOwner }, ref) => {
   return (
@@ -39,8 +39,8 @@ const ChatBox = forwardRef(({ chatObj, isOwner }, ref) => {
 });
 
 ChatBox.propTypes = {
-  chatObj: PropType.object.isRequired,
-  isOwner: PropType.bool,
+  chatObj: PropTypes.object.isRequired,
+  isOwner: PropTypes.bool,
 };
 
 ChatBox.displayName = "ChatBox";

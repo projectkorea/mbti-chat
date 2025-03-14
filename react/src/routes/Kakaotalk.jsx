@@ -1,10 +1,10 @@
-import Loading from "../components/common/Loading.jsx";
-import { saveUser } from "../utils/db.js";
+import Loading from "components/common/Loading.jsx";
+import { saveUser } from "utils/db.js";
 import {
   authService,
   functionsService,
   VITE_KAKAO_APP_KEY_REST,
-} from "../utils/myBase.js";
+} from "utils/myBase.js";
 import { useNavigate } from "react-router-dom";
 
 if (!window.Kakao.isInitialized()) {

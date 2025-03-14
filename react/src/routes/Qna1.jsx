@@ -1,4 +1,4 @@
-import { db } from "../utils/myBase.js";
+import { db } from "utils/myBase.js";
 import React, { useEffect, useState } from "react";
 
 function Qna1() {

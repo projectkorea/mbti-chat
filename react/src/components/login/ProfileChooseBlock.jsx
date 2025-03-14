@@ -1,4 +1,4 @@
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 import { mbtiPronArray } from "utils/mbtiContent.js";
 import { nickname } from "utils/nicknameGen.js";
 import { MyBase } from "utils/myBase.js";
@@ -30,8 +30,8 @@ function ProfileChooseBlock({ mbtiType }) {
 }
 
 ProfileChooseBlock.propTypes = {
-  mbtiType: PropType.string.isRequired,
-  setTypeInput: PropType.func,
+  mbtiType: PropTypes.string.isRequired,
+  setTypeInput: PropTypes.func,
 };
 
 export default ProfileChooseBlock;

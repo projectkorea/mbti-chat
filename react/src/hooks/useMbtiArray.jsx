@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { MyBase } from "../utils/myBase.js";
-import { useUserStore } from "../store/useStore.js";
+import { MyBase } from "utils/myBase.js";
+import { useUserStore } from "store/useStore.js";
 
 const useMbtiArray = () => {
   const { setInitDone } = useUserStore();

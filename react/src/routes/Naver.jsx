@@ -1,6 +1,6 @@
-import Loading from "../components/common/Loading.jsx";
-import {saveUser} from "../utils/db.js";
-import { authService, functionsService } from "../utils/myBase.js";
+import Loading from "components/common/Loading.jsx";
+import {saveUser} from "utils/db.js";
+import { authService, functionsService } from "utils/myBase.js";
 import { useNavigate } from "react-router-dom";
 
 const Naver = () => {

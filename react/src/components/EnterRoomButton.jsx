@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 import * as MbtiSVG from "utils/static";
 import { loadFiles } from "utils/loadFiles";
 function EnterRoomButton ({ mbtiType, msg, people, realTime }) {
@@ -53,10 +53,10 @@ function EnterRoomButton ({ mbtiType, msg, people, realTime }) {
 }
 
 EnterRoomButton.propTypes = {
-  mbtiType: PropType.string,
-  msg: PropType.number,
-  people: PropType.number,
-  realTime: PropType.string,
+  mbtiType: PropTypes.string,
+  msg: PropTypes.number,
+  people: PropTypes.number,
+  realTime: PropTypes.string,
 };
 
 export default EnterRoomButton;

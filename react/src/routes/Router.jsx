@@ -11,7 +11,7 @@ import ChatRoomPage from "pages/ChatRoomPage.jsx";
 import TypePage from "pages/TypePage.jsx";
 import FreeBoardPage from "pages/FreeBoardPage.jsx";
 
-import Profile from "../components/pages/ProfilePage.jsx";
+import Profile from "pages/ProfilePage.jsx";
 import Kakaotalk from "./Kakaotalk.jsx";
 import Naver from "./Naver.jsx";
 
@@ -19,7 +19,7 @@ import Qna1 from "./Qna1.jsx";
 import Qna2 from "./Qna2.jsx";
 
 import { useUserStore } from "store/useStore.js";
-import useTitleAndColName from "hooks/useTitleAndColName";
+import useTitleAndColName from "hooks/useTitleAndColName.jsx";
 
 const MainRouter = () => {
   const { user } = useUserStore();

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import PropType from "prop-types";
+import PropTypes from "prop-types";
 import MbtiBadge from "common/MbtiBadge";
 import { loadFiles } from "utils/loadFiles"; 
 
@@ -39,11 +39,11 @@ function RoomBlock({ title, path, mbtiType, isMine, msgNum }) {
 }
 
 RoomBlock.propTypes = {
-  title: PropType.string.isRequired,
-  path: PropType.string.isRequired,
-  mbtiType: PropType.string.isRequired,
-  isMine: PropType.bool.isRequired,
-  msgNum: PropType.number.isRequired,
+  title: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  mbtiType: PropTypes.string.isRequired,
+  isMine: PropTypes.bool.isRequired,
+  msgNum: PropTypes.number.isRequired,
 }
 
 export default RoomBlock;

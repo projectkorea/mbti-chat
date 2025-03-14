@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MbtiBadge from "common/MbtiBadge";
 import { useUserStore } from "store/useStore.js";
 import { useNavigate } from "react-router-dom";
-import { MyBase } from "../../utils/myBase.js";
+import { MyBase } from "utils/myBase.js";
 
 const ChatForm = () => {
   const [chat, setChat] = useState("");

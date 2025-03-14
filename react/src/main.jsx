@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import "./css/style.css";
-import "./css/loader.css";
-import "./css/font.css";
+import App from '@/App.tsx'
+import "src/css/style.css";
+import "src/css/loader.css";
+import "src/css/font.css";
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 

@@ -1,7 +1,7 @@
 import Ranking from "components/Ranking";
 import { useState } from "react";
 import { mbtiArray } from "utils/mbtiContent.js";
-import Navigation from "common/Navigation";
+import Navigation from "components/common/Navigation";
 
 function RankPage() {
   const [target, setTarget] = useState("msg");
