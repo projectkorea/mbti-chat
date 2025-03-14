@@ -11,12 +11,12 @@
     "install:react": "cd react && npm install",
     "install:functions": "cd functions && npm install",
     "build:server": "tsc -p server/tsconfig.json",
-    "build:assets": "cross-env WEBPACK_ENV=production webpack --config src/webpack.config.js",
+    "build:assets": "cd react && npm run build",
     "copyfiles": "copyfiles -u 1 \"src/static/**/*\" build && copyfiles -u 1 \"src/views/**/*\" build && copyfiles -u 1 \"src/.env\" build",
     "build": "rimraf build && npm run build:server && npm run build:assets && npm run copyfiles",
     "type-check": "tsc --noEmit",
     "watch": "nodemon --watch server --ext ts,json --exec",
-    "dev": "npm run watch \"npm run build:server && cross-env NODE_ENV=development node build/server/init.js\"",
+    "dev": "npm run watch \"npm run build && cross-env NODE_ENV=development node build/server/init.js\"",
     "prod": "npm run build && cross-env NODE_ENV=production node build/server/init.js"
   },
   "dependencies": {
@@ -28,8 +28,6 @@
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.12",
     "rimraf": "^3.0.2",
-    "typescript": "^4.3.5",
-    "webpack": "^5.45.1",
-    "webpack-cli": "^4.7.2"
+    "typescript": "^4.3.5"
   }
 } 

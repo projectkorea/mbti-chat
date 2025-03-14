@@ -1,48 +1,21 @@
 {
   "name": "mbti-chat",
   "version": "1.0.0",
-  "main": "init.js",
+  "main": "app.ts",
   "author": "JunhaKim",
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/projectkorea/mbti-chat.git"
   },
-  "scripts": {
-    "react_old": "cd react-project && npm install && npm run build",
-    "build_old": "npm install && npm run react",
-    "start_old": "pm2 start init.js",
-    "build:server": "babel src -d build --extensions \".js,.ts\" --ignore \"src/assets/**,src/static/**,src/webpack.config.js\"",
-    "build:assets": "cross-env WEBPACK_ENV=production webpack --config src/webpack.config.js",
-    "copyfiles": "copyfiles -u 1 \"src/static/**/*\" build && copyfiles -u 1 \"src/views/**/*\" build && copyfiles -u 1 \"src/.env\" build",
-    "build": "rimraf build && npm run build:server && npm run build:assets && npm run copyfiles",
-    "type-check": "tsc --noEmit",
-    "watch": "nodemon --watch src --ext js,ts,css --exec",
-    "dev": "npm run watch \"npm run type-check && npm run build && cross-env NODE_ENV=development node build/app.js\"",
-    "prod": "npm run type-check && npm run build && cross-env NODE_ENV=production node build/app.js"
-  },
+  "scripts": {},
   "dependencies": {
-    "core-js": "^3.15.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase-admin": "^9.11.1",
-    "firebase-functions": "^3.15.4",
-    "helmet": "^4.6.0",
-    "morgan": "^1.10.0"
+    "helmet": "^4.6.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.14.8",
-    "@babel/preset-env": "^7.14.8",
-    "@babel/preset-typescript": "^7.14.5",
-    "babel-loader": "^8.2.2",
-    "copyfiles": "^2.4.1",
-    "cross-env": "^7.0.3",
-    "nodemon": "^2.0.12",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.3.5",
-    "vite": "^6.2.1",
-    "webpack": "^5.45.1",
-    "webpack-cli": "^4.7.2"
+    "typescript": "^4.3.5"
   }
 }
