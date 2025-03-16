@@ -5,9 +5,12 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: '../build/react',
+    emptyOutDir: true
+  },
   resolve: {
     alias: {
-      // 절대 경로 설정
       'src': path.resolve(__dirname, './src'),
       '@': path.resolve(__dirname, './src'),
       'components': path.resolve(__dirname, './src/components'),

@@ -1,6 +1,10 @@
 {
   "presets": [
-    "@babel/preset-typescript",
+    ["@babel/preset-typescript", {
+      "allowNamespaces": true,
+      "onlyRemoveTypeImports": true,
+      "allowDeclareFields": true
+    }],
     [
       "@babel/preset-env",
       {
@@ -25,4 +29,4 @@
     ],
     "@babel/plugin-transform-object-rest-spread"
   ]
-}
+} 
