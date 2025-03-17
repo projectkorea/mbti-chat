@@ -3,7 +3,6 @@
     "target": "ES2018",
     "module": "CommonJS",
     "lib": ["ES2018", "DOM"],
-    "noEmit": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,7 +11,8 @@
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "outDir": "../build/server"
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]
