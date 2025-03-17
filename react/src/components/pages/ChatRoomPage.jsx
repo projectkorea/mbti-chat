@@ -12,8 +12,13 @@ import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 
 const ChatRoomPage = ({ colName, title }) => {
-  // 위로 스크롤 했을 때 새로고침 방지용, 바운스 버그도 제거
-  document.body.style.overscrollBehaviorY = "none";
+  // Set overscroll behavior inside useEffect with cleanup
+  useEffect(() => {
+    document.body.style.overscrollBehaviorY = "none";
+    return () => {
+      document.body.style.overscrollBehaviorY = "inherit";
+    };
+  }, []);
 
   const { user } = useUserStore();
   const [chats, setChats] = useState([]);
@@ -26,23 +31,29 @@ const ChatRoomPage = ({ colName, title }) => {
   const [prevChatId, setPrevChatId] = useState("");
 
   const scrollToBottom = () => {
-    containerRef.current.scrollTo(0, 0, { behavior: "smooth" });
+    if (containerRef.current) {
+      containerRef.current.scrollTo(0, 0, { behavior: "smooth" });
+    }
   };
 
   const onUpdate = (chats) => {
-    setChats(chats);
+    if (Array.isArray(chats)) {
+      setChats(chats);
+    }
   };
 
   useEffect(() => {
     const unsubscribe = MyBase.onChat(colName, limitNum, onUpdate);
     return () => unsubscribe();
-  }, [limitNum]);
+  }, [limitNum, colName]);
 
   useEffect(() => {
     setLimitNum((prevNum) => prevNum + 5);
   }, [inTopView]);
 
   useEffect(() => {
+    if (!chats.length) return;
+    
     const currentChatId = chats[0]?.id;
     const isNewChat = prevChatId !== currentChatId;
 
@@ -52,10 +63,7 @@ const ChatRoomPage = ({ colName, title }) => {
     } else if (!isNewChat || inBottomView) {
       setNewMsg(false);
     }
-    return () => {
-      document.body.style.overscrollBehaviorY = "inherit";
-    };
-  }, [chats, inBottomView]);
+  }, [chats, inBottomView, prevChatId]);
 
   return (
     <>

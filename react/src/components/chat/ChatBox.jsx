@@ -3,6 +3,8 @@ import MbtiBadge from "common/MbtiBadge";
 import PropTypes from "prop-types";
 
 const ChatBox = forwardRef(({ chatObj, isOwner }, ref) => {
+  if (!chatObj) return null;
+  
   return (
     <>
       {isOwner ? (

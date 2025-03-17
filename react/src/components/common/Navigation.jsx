@@ -5,7 +5,7 @@ import {useUserStore} from "store/useStore.js";
 
 const Navigation = () => {
   const { user } = useUserStore();
-  const _user = JSON.parse(localStorage.getItem("user"));
+  const _user = JSON.parse(localStorage.getItem("user")) || null;
 
   return (
     <nav>
@@ -16,7 +16,7 @@ const Navigation = () => {
           <h1 className="logo">상종</h1>
         </NavLink>
         <div className="nav-menu">
-          <NavLink to="/" end>
+          <NavLink to="/" end className={({isActive}) => isActive ? "active" : ""}>
             <div className="nav-menu-item">
               <span className="nav-menu-item-font">전체</span>
               <span className="nav-menu-item-font">채팅방</span>
