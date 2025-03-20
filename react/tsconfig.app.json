@@ -37,14 +37,12 @@
     },
 
     /* Linting */
+    "noImplicitAny": true,
     "strict": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    
-    /* During migration */
-    "noImplicitAny": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
