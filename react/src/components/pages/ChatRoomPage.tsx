@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useParams } from "react-router-dom";
 import ChatBox from "components/chat/ChatBox.jsx";
 import ChatForm from "components/chat/ChatForm.jsx";
 import Inform from "components/chat/Inform.jsx";
@@ -9,9 +8,23 @@ import { useUserStore } from "store/useStore.js";
 import { MyBase } from "utils/myBase.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import PropTypes from "prop-types";
 
-const ChatRoomPage = ({ colName, title }) => {
+interface ChatRoomPageProps {
+  colName: string;
+  title: string;
+}
+
+interface ChatData {
+  id: string;
+  creatorId: string;
+  clock: string;
+  text: string;
+  creatorType: string;
+  creatorNickname: string;
+  [key: string]: string | number | boolean; // More specific index signature
+}
+
+const ChatRoomPage = ({ colName, title }: ChatRoomPageProps) => {
   // Set overscroll behavior inside useEffect with cleanup
   useEffect(() => {
     document.body.style.overscrollBehaviorY = "none";
@@ -21,22 +34,22 @@ const ChatRoomPage = ({ colName, title }) => {
   }, []);
 
   const { user } = useUserStore();
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState<ChatData[]>([]);
 
   const [topViewRef, inTopView] = useInView();
   const [bottomViewRef, inBottomView] = useInView();
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [limitNum, setLimitNum] = useState(10);
   const [newMsg, setNewMsg] = useState(false);
   const [prevChatId, setPrevChatId] = useState("");
 
   const scrollToBottom = () => {
     if (containerRef.current) {
-      containerRef.current.scrollTo(0, 0, { behavior: "smooth" });
+      containerRef.current.scrollTo(0, 0);
     }
   };
 
-  const onUpdate = (chats) => {
+  const onUpdate = (chats: ChatData[]) => {
     if (Array.isArray(chats)) {
       setChats(chats);
     }
@@ -84,7 +97,7 @@ const ChatRoomPage = ({ colName, title }) => {
               isOwner: user && chat.creatorId === user.uid,
             };
             return index === 1 ? (
-              <ChatBox {...chatBoxProps} ref={bottomViewRef} />
+              <ChatBox {...chatBoxProps} observerRef={bottomViewRef} />
             ) : (
               <ChatBox {...chatBoxProps} />
             );
@@ -98,8 +111,3 @@ const ChatRoomPage = ({ colName, title }) => {
 };
 
 export default ChatRoomPage;
-
-ChatRoomPage.propTypes = {
-  colName: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};

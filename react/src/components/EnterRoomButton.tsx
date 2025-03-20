@@ -1,10 +1,27 @@
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import * as MbtiSVG from "utils/static";
 import { loadFiles } from "utils/loadFiles";
-function EnterRoomButton ({ mbtiType, msg, people, realTime }) {
-  const svgMap = loadFiles("svg"); 
-  const iconMap = loadFiles("icon");
+
+interface EnterRoomButtonProps {
+  mbtiType: string;
+  msg: number;
+  people: number;
+  realTime: string;
+}
+
+interface SvgMap {
+  [key: string]: string;
+  user: string;
+  chat: string;
+}
+
+interface IconMap {
+  [key: string]: string;
+}
+
+function EnterRoomButton ({ mbtiType, msg, people, realTime }: EnterRoomButtonProps) {
+  const svgMap = loadFiles("svg") as SvgMap; 
+  const iconMap = loadFiles("icon") as IconMap;
   const lightSrc = iconMap["light-" + realTime];
 
   return (
@@ -12,26 +29,19 @@ function EnterRoomButton ({ mbtiType, msg, people, realTime }) {
       <div className="mbti-block--item">
         <h1 className="mbti-block__title">{mbtiType.toUpperCase()}</h1>
         <Link to={`/room/${mbtiType}`}>
-          <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+          <div className="flex flex-row-reverse">
             <img
               src={lightSrc}
               alt="light"
-              style={{
-                width: "15px",
-                height: "15px",
-                margin: "0px 5px 0px 0px",
-              }}
+              className="w-[15px] h-[15px] mr-[5px]"
             />
           </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div className="flex justify-center">
             <img
               alt="char"
-              src={MbtiSVG[mbtiType]}
-              style={{
-                width: "100px",
-                height: "100px",
-                imageRendering: "optimizeSpeed",
-              }}
+              src={MbtiSVG[mbtiType as keyof typeof MbtiSVG]}
+              className="w-[100px] h-[100px]"
+              style={{ imageRendering: "pixelated" }}
             />
           </div>
         </Link>
@@ -51,12 +61,5 @@ function EnterRoomButton ({ mbtiType, msg, people, realTime }) {
     </>
   );
 }
-
-EnterRoomButton.propTypes = {
-  mbtiType: PropTypes.string,
-  msg: PropTypes.number,
-  people: PropTypes.number,
-  realTime: PropTypes.string,
-};
 
 export default EnterRoomButton;

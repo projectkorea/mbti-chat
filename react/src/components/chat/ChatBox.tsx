@@ -1,14 +1,25 @@
-import { forwardRef } from "react";
 import MbtiBadge from "common/MbtiBadge";
-import PropTypes from "prop-types";
 
-const ChatBox = forwardRef(({ chatObj, isOwner }, ref) => {
+interface ChatObject {
+  clock: string;
+  text: string;
+  creatorType: string;
+  creatorNickname: string;
+}
+
+interface ChatBoxProps {
+  chatObj: ChatObject;
+  isOwner: boolean;
+  observerRef?: React.RefObject<HTMLDivElement> | ((node?: Element | null) => void);
+}
+
+function ChatBox({ chatObj, isOwner, observerRef }: ChatBoxProps) {
   if (!chatObj) return null;
   
   return (
     <>
       {isOwner ? (
-        <div className="chat-wrap--my" ref={ref}>
+        <div className="chat-wrap--my" ref={observerRef}>
           <div className="chat-box--my">
             <span className="chat-text-clock">{chatObj.clock}</span>
             <div className="chat-text--my">
@@ -23,7 +34,7 @@ const ChatBox = forwardRef(({ chatObj, isOwner }, ref) => {
           )}
         </div>
       ) : (
-        <div className="chat-wrap" ref={ref}>
+        <div className="chat-wrap" ref={observerRef}>
           <div className="chat-box">
             <div className="chat-text">
               <span className="chat-text-font">{chatObj.text}</span>
@@ -38,13 +49,6 @@ const ChatBox = forwardRef(({ chatObj, isOwner }, ref) => {
       )}
     </>
   );
-});
-
-ChatBox.propTypes = {
-  chatObj: PropTypes.object.isRequired,
-  isOwner: PropTypes.bool,
-};
-
-ChatBox.displayName = "ChatBox";
+}
 
 export default ChatBox;
