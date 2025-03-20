@@ -1,14 +1,25 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import path from 'path'
+import tailwindcssPostcss from '@tailwindcss/postcss'
+import autoprefixer from 'autoprefixer'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: '/chat/',
+  css: {
+    postcss: {
+      plugins: [
+        tailwindcssPostcss,
+        autoprefixer,
+      ],
+    },
+  },
   build: {
     outDir: '../build/react',
-    emptyOutDir: true
+    emptyOutDir: true,
+    cssCodeSplit: true,
   },
   resolve: {
     alias: {
