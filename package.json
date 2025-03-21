@@ -10,10 +10,10 @@
     "install:server": "cd server && npm install",
     "install:react": "cd react && npm install",
     "install:functions": "cd functions && npm install",
-    "build:server": "rimraf build/server && tsc -p server/tsconfig.json",
-    "build:client": "cd react && rimraf ../build/react && npm run build",
-    "build": "npm run build:server && npm run build:client",
-    "dev": "nodemon --watch \"server/**/*\" --watch \"react/src/**/*\" --ext js,jsx,ts,tsx,json,css --exec \"npm run build && cross-env NODE_ENV=development node build/server/app.js\"",
+    "build:client": "cd react && npm run build",
+    "build:server": "tsc -p server/tsconfig.json",
+    "build": "rimraf build && npm run build:server && npm run build:client",
+    "dev": "nodemon --watch \"**/*\" --ignore \"build/**\" --ext js,jsx,ts,tsx,json,css --exec \"npm run build && cross-env NODE_ENV=development node build/server/app.js\"",
     "prod": "npm run build && cross-env NODE_ENV=production node build/server/app.js"
   },
   "dependencies": {
