@@ -1,4 +1,4 @@
-import Ranking from "components/Ranking";
+import MBTIRankingBar from "src/components/MBTIRankingBar";
 import { useState } from "react";
 import { mbtiArray } from "utils/mbtiContent.js";
 import Navigation from "components/common/Navigation";
@@ -53,7 +53,7 @@ function RankPage() {
                 key={element.type}
                 style={{ order: element[target], margin: "5px 0px" }}
               >
-                <Ranking
+                <MBTIRankingBar
                   key={element.type}
                   value={element[target]}
                   sum={sum}

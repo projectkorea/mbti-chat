@@ -7,13 +7,13 @@ interface ChatObject {
   creatorNickname: string;
 }
 
-interface ChatBoxProps {
+interface ChatMessageProps {
   chatObj: ChatObject;
   isOwner: boolean;
   observerRef?: React.RefObject<HTMLDivElement> | ((node?: Element | null) => void);
 }
 
-function ChatBox({ chatObj, isOwner, observerRef }: ChatBoxProps) {
+function ChatMessage({ chatObj, isOwner, observerRef }: ChatMessageProps) {
   if (!chatObj) return null;
   
   return (
@@ -51,4 +51,4 @@ function ChatBox({ chatObj, isOwner, observerRef }: ChatBoxProps) {
   );
 }
 
-export default ChatBox;
+export default ChatMessage;

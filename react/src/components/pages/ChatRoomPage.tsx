@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import ChatBox from "components/chat/ChatBox.jsx";
-import ChatForm from "components/chat/ChatForm.jsx";
-import Inform from "components/chat/Inform.jsx";
+import ChatMessage from "src/components/chat/ChatMessage.js";
+import ChatInput from "src/components/chat/ChatInput.jsx";
+import ChatHeader from "src/components/chat/ChatHeader.jsx";
 import Navigation from "common/Navigation";
 import { useUserStore } from "store/useStore.js";
 import { MyBase } from "utils/myBase.js";
@@ -83,7 +83,7 @@ const ChatRoomPage = ({ colName, title }: ChatRoomPageProps) => {
       <Navigation />
       <div className="chat-container">
         <h1 className="chat-room-title">{title + "채팅방"}</h1>
-        <Inform />
+        <ChatHeader />
         <div className="chat-room" ref={containerRef}>
           {newMsg && (
             <div className="chat-room--new-msg" onClick={scrollToBottom}>
@@ -91,20 +91,20 @@ const ChatRoomPage = ({ colName, title }: ChatRoomPageProps) => {
             </div>
           )}
           {chats.map((chat, index) => {
-            const chatBoxProps = {
+            const ChatMessageProps = {
               key: chat.id,
               chatObj: chat,
               isOwner: user && chat.creatorId === user.uid,
             };
             return index === 1 ? (
-              <ChatBox {...chatBoxProps} observerRef={bottomViewRef} />
+              <ChatMessage {...ChatMessageProps} observerRef={bottomViewRef} />
             ) : (
-              <ChatBox {...chatBoxProps} />
+              <ChatMessage {...ChatMessageProps} />
             );
           })}
           <div ref={topViewRef} style={{ margin: "1px auto" }}></div>
         </div>
-        <ChatForm />
+        <ChatInput />
       </div>
     </>
   );

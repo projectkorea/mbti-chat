@@ -1,4 +1,4 @@
-function Inform() {
+function ChatHeader() {
   return (
     <>
       <div className="notify-wrap">
@@ -16,4 +16,4 @@ function Inform() {
   );
 }
 
-export default Inform;
+export default ChatHeader;

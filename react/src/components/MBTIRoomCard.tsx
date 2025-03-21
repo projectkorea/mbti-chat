@@ -19,7 +19,7 @@ interface IconMap {
   [key: string]: string;
 }
 
-function EnterRoomButton ({ mbtiType, msg, people, realTime }: EnterRoomButtonProps) {
+function MBTIRoomCard ({ mbtiType, msg, people, realTime }: EnterRoomButtonProps) {
   const svgMap = loadFiles("svg") as SvgMap; 
   const iconMap = loadFiles("icon") as IconMap;
   const lightSrc = iconMap["light-" + realTime];
@@ -62,4 +62,4 @@ function EnterRoomButton ({ mbtiType, msg, people, realTime }: EnterRoomButtonPr
   );
 }
 
-export default EnterRoomButton;
+export default MBTIRoomCard;

@@ -6,8 +6,7 @@
   "license": "ISC",
   "scripts": {
     "postinstall": "npm run install:all",
-    "install:all": "npm run install:server && npm run install:react && npm run install:functions",
-    "install:server": "cd server && npm install",
+    "install:all": "npm run install:react && npm run install:functions",
     "install:react": "cd react && npm install",
     "install:functions": "cd functions && npm install",
     "build:client": "cd react && npm run build",

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import RoomBlock from "components/RoomBlock.jsx";
-import RoomGen from "components/chat/RoomGen.jsx";
+import CustomRoom from "src/components/CustomRoom.js";
+import ChatRoomCreator from "src/components/chat/ChatRoomCreator.jsx";
 import { useUserStore } from "store/useStore.js";
 import Navigation from "common/Navigation";
 import { MyBase } from "utils/myBase.js";
@@ -21,10 +21,10 @@ function FreeBoardPage() {
   return (
     <>
       <Navigation />
-      <RoomGen />
+      <ChatRoomCreator />
       <div className="free-chat--container">
         {rooms.map((element) => (
-          <RoomBlock
+          <CustomRoom
             key={element.creatorType + Math.random()}
             mbtiType={element.creatorType}
             title={element.title}

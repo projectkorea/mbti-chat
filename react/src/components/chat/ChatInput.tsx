@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import MbtiBadge from "common/MbtiBadge";
 import { useUserStore } from "store/useStore.js";
 import { useNavigate } from "react-router-dom";
 import { MyBase } from "utils/myBase.js";
 
-const ChatForm = () => {
+const ChatInput = () => {
   const [chat, setChat] = useState("");
   const [chatCount, setChatCount] = useState(4);
   const { user, isSignInWithEmail, typeChoose } = useUserStore();
@@ -19,12 +19,12 @@ const ChatForm = () => {
     return () => clearInterval(preventOverChat);
   }, [user, isSignInWithEmail]);
 
-  const showAlertAndNavigate = (msg, path) => {
+  const showAlertAndNavigate = (msg: string, path: string): void => {
     alert(msg);
     navigate(path);
   };
 
-  const onInspect = (e) => {
+  const onInspect = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     if (!user) {
@@ -47,10 +47,12 @@ const ChatForm = () => {
       return alert("도배하지말라능!");
     }
 
-    onSubmit(e, true);
+    onSubmit(e);
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>, pass: boolean = true): Promise<void> => {
+    if (!pass) return;
+    
     e.preventDefault();
 
     const dateNow = new Date();
@@ -104,4 +106,4 @@ const ChatForm = () => {
   );
 };
 
-export default ChatForm;
+export default ChatInput;

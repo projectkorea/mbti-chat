@@ -10,7 +10,7 @@ interface RoomBlockProps {
   msgNum: number;
 }
 
-function RoomBlock({ title, path, mbtiType, isMine, msgNum }: RoomBlockProps) {
+function CustomRoom({ title, path, mbtiType, isMine, msgNum }: RoomBlockProps) {
   const svgMap = loadFiles("svg") as Record<string, string>;
   return (
     <>
@@ -41,4 +41,4 @@ function RoomBlock({ title, path, mbtiType, isMine, msgNum }: RoomBlockProps) {
   );
 }
 
-export default RoomBlock;
+export default CustomRoom;

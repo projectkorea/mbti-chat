@@ -9,7 +9,7 @@ interface RankingProps {
   target: string;
 }
 
-function Ranking({ value, sum, unit, type, target }: RankingProps) {
+function MBTIRankingBar({ value, sum, unit, type, target }: RankingProps) {
   const widthValue = (value / sum) * 100;
   const [barType, setBarType] = useState("");
 
@@ -49,4 +49,4 @@ function Ranking({ value, sum, unit, type, target }: RankingProps) {
   );
 }
 
-export default Ranking;
+export default MBTIRankingBar;

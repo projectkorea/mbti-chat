@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { db } from "utils/myBase.js";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "store/useStore.js";
 
-const RoomGen = () => {
+const ChatRoomCreator = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const { user, isSignInWithEmail, typeChoose, canMakeRoom, setCanMakeRoom } = useUserStore();
 
-  const onInspect = (e) => {
+  const onInspect = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     if (!user) {
@@ -46,7 +46,7 @@ const RoomGen = () => {
     }
   };
 
-  const onSubmit = async (e, pass) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>, pass: boolean): Promise<void> => {
     if (!pass) return;
 
     e.preventDefault();
@@ -62,6 +62,7 @@ const RoomGen = () => {
     setCanMakeRoom(false);
 
     // Register the chat room in the database
+    // @ts-expect-error - Firestore typing issue
     await db.collection("chat-room").doc(user.uid).set(roomObj);
   };
 
@@ -82,4 +83,4 @@ const RoomGen = () => {
   );
 };
 
-export default RoomGen;
+export default ChatRoomCreator;

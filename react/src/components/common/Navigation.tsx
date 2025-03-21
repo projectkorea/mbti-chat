@@ -41,13 +41,7 @@ const Navigation = () => {
             </div>
           </NavLink>
         </div>
-        <div
-          style={{
-            borderRadius: "10px",
-            backgroundColor: "#F1BE1E",
-            padding: "8px 9px",
-          }}
-        >
+        <div className="rounded-lg bg-[#F1BE1E] p-[8px_9px]">
           {user || _user ? (
               <NavLink to="/profile">
                 <FontAwesomeIcon icon={faUser} color={"#FFFFFF"} size="2x" />
