@@ -27,7 +27,7 @@
       "src/*": ["src/*"],
       "@/*": ["src/*"],
       "components/*": ["src/components/*"],
-      "pages/*": ["src/components/pages/*"],
+      "pages/*": ["src/pages/*"],
       "hooks/*": ["src/hooks/*"],
       "utils/*": ["src/utils/*"],
       "store/*": ["src/store/*"],

@@ -4,14 +4,14 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import LoginPage from "pages/LoginPage.jsx";
-import SignUpPage from "pages/SignUpPage.jsx";
-import RankPage from "pages/RankPage.jsx";
-import ChatRoomPage from "pages/ChatRoomPage.jsx";
-import TypePage from "pages/TypePage.jsx";
-import FreeBoardPage from "pages/FreeBoardPage.jsx";
+import LoginPage from "src/pages/LoginPage.jsx";
+import SignUpPage from "src/pages/SignUpPage.jsx";
+import RankPage from "src/pages/RankPage.jsx";
+import ChatRoomPage from "src/pages/ChatRoomPage.js";
+import TypePage from "src/pages/TypePage.jsx";
+import FreeBoardPage from "src/pages/FreeBoardPage.jsx";
 
-import Profile from "pages/ProfilePage.jsx";
+import Profile from "src/pages/ProfilePage.jsx";
 import Kakaotalk from "./Kakaotalk.jsx";
 import Naver from "./Naver.jsx";
 
