@@ -56,7 +56,7 @@ const ChatRoomPage = ({ colName, title }: ChatRoomPageProps) => {
   };
 
   useEffect(() => {
-    const unsubscribe = MyBase.onChat(colName, limitNum, onUpdate);
+    const unsubscribe = MyBase.subscribeToChatMessages(colName, limitNum, onUpdate);
     return () => unsubscribe();
   }, [limitNum, colName]);
 

@@ -1,4 +1,4 @@
-import { mbtiArray } from 'src/utils/MBTIContents';
+import { mbtiArray } from 'src/utils/mbtiContents';
 import { db } from 'utils/myBase.js';
 import { doc, getDoc } from 'firebase/firestore';
 import { User } from 'firebase/auth';

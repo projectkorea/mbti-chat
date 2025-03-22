@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { MyBase } from "utils/myBase.js";
 import { useUserStore } from "store/useStore.js";
 
-const useMbtiArray = () => {
+const useInitializeMbtiData = () => {
   const { setInitDone } = useUserStore();
 
   useEffect(() => {
     const fetchData = async () => {
-      await MyBase.updateMbtiArray();
-      await MyBase.updateRealTime();
+      await MyBase.loadMbtiStatistics();
+      await MyBase.updateMbtiRealTimeStatus();
       setInitDone(true);
     };
 
@@ -16,4 +16,4 @@ const useMbtiArray = () => {
   }, [setInitDone]);
 };
 
-export default useMbtiArray;
+export default useInitializeMbtiData;

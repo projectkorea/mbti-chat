@@ -21,7 +21,7 @@ function CustomPage() {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await MyBase.getFreeBoardInfo() as RoomElement[];
+      const res = await MyBase.getRecentBoardPosts() as RoomElement[];
       setRooms(res);
     }
 

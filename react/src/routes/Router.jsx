@@ -14,8 +14,9 @@ import MyPage from "pages/MyPage";
 import AboutDeveloperPage from "pages/AboutDeveloperPage";
 import PrivacyPolicyPage from "pages/PrivacyPolicyPage";
 
-import Kakaotalk from "./Kakaotalk.jsx";
-import Naver from "./Naver.jsx";
+// OAuth 콜백 페이지 임포트
+import KakaoCallbackPage from "pages/auth/KakaoCallbackPage";
+import NaverCallbackPage from "pages/auth/NaverCallbackPage";
 
 import { useUserStore } from "store/useStore";
 import useTitleAndColName from "hooks/useTitleAndColName";
@@ -67,11 +68,11 @@ const MainRouter = () => {
       },
       {
         path: "/callback/kakaotalk",
-        element: <Kakaotalk />,
+        element: <KakaoCallbackPage />,
       },
       {
         path: "/callback/naver",
-        element: <Naver />,
+        element: <NaverCallbackPage />,
       },
     ],
     {
