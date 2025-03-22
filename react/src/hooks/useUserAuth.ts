@@ -2,25 +2,23 @@ import { useEffect } from "react";
 import { authService } from "utils/myBase.js";
 import {
   checkType,
-  checkCanMakeRoom,
   checkFromEmailLogin,
 } from "utils/authService.js";
 import { useUserStore } from "store/useStore.js";
+import { User } from "firebase/auth";
 
-const useUserAuth = () => {
+const useUserAuth = (): null => {
   const { setUser, setIsSignInWithEmail, setTypeChoose, setCanMakeRoom } = useUserStore();
 
   useEffect(() => {
-    authService.onAuthStateChanged((authUser) => {
+    authService.onAuthStateChanged((authUser: User | null) => {
       if (authUser) {
         setUser(authUser);
         const signInWithEmail = checkFromEmailLogin(authUser);
         const typeChosen = checkType(authUser);
-        // const roomCreationAllowed = checkCanMakeRoom(authUser);
 
         setIsSignInWithEmail(signInWithEmail);
         setTypeChoose(typeChosen);
-        // setCanMakeRoom(roomCreationAllowed);
       } else {
         setUser(null);
         setIsSignInWithEmail(false);

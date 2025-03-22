@@ -1,16 +1,17 @@
 import { db } from "utils/myBase.js";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-function Qna1() {
+function AboutDeveloper() {
   const [chat, setChat] = useState("");
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: React.FormEvent) => {
     if (chat !== "") {
       event.preventDefault();
       const qnaObj = {
         createdAt: new Date(),
         text: chat, //state value:chat}
       };
+      // @ts-expect-error - 타입 추론 문제
       await db.collection(`qna`).add(qnaObj);
       setChat("");
       alert("소중한 의견 감사합니다.");
@@ -27,19 +28,7 @@ function Qna1() {
   return (
     <>
       <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-          flexDirection: "column",
-          margin: "50px auto 0px",
-          width: "350px",
-          padding: "10px",
-          backgroundColor: "white",
-          borderRadius: "10px",
-          fontFamily: "NanumBarunGothic",
-          lineHeight: "1.5",
-        }}
+        className="flex flex-col justify-center items-center mx-auto mt-[50px] w-[350px] p-[10px] bg-white rounded-[10px] font-['NanumBarunGothic'] leading-[1.5]"
       >
         <div className="notice">
           <h1>안녕하세요.</h1>
@@ -86,4 +75,4 @@ function Qna1() {
   );
 }
 
-export default Qna1;
+export default AboutDeveloper;

@@ -1,5 +1,5 @@
 import SocialLogin from "./SocialLogin.jsx";
-import useOAuthLogin from "hooks/useOAuthLogin.jsx";
+import useOAuthLogin from "hooks/useOAuthLogin";
 
 const SocialLoginBox = () => {
   const { onNaverClick, onKakaoClick, onGoogleClick, onFacebookClick } =

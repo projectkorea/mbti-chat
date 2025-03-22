@@ -15,11 +15,11 @@ import Profile from "pages/ProfilePage.jsx";
 import Kakaotalk from "./Kakaotalk.jsx";
 import Naver from "./Naver.jsx";
 
-import Qna1 from "./Qna1.jsx";
-import Qna2 from "./Qna2.jsx";
+import AboutDeveloper from "./AboutDeveloper.jsx";
+import PrivacyPolicy from "./PrivacyPolicy";
 
-import { useUserStore } from "store/useStore.js";
-import useTitleAndColName from "hooks/useTitleAndColName.jsx";
+import { useUserStore } from "store/useStore";
+import useTitleAndColName from "hooks/useTitleAndColName";
 
 const MainRouter = () => {
   const { user } = useUserStore();
@@ -44,11 +44,11 @@ const MainRouter = () => {
       },
       {
         path: "/qna/1",
-        element: <Qna1 />,
+        element: <AboutDeveloper />,
       },
       {
         path: "/qna/2",
-        element: <Qna2 />,
+        element: <PrivacyPolicy />,
       },
       {
         path: "/free",

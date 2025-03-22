@@ -1,8 +1,8 @@
 import Router from "routes/Router.jsx";
-import useUserAuth from "hooks/useUserAuth.jsx";
-import useMbtiArray from "hooks/useMbtiArray.jsx";
+import useUserAuth from "hooks/useUserAuth";
+import useMbtiArray from "hooks/useMbtiArray";
 import Loading from "components/common/Loading.jsx";
-import { useUserStore } from "store/useStore.js";
+import { useUserStore } from "store/useStore";
 
 function App() {
   const { initDone } = useUserStore();

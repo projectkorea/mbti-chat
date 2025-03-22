@@ -9,6 +9,24 @@ import {
   VITE_NAVER_APP_CLIENT_ID,
 } from "../utils/myBase.js";
 
+// Add Kakao SDK type declaration
+interface KakaoAuth {
+  authorize: (options: { redirectUri: string; throughTalk: boolean }) => void;
+}
+
+interface Kakao {
+  init: (appKey: string) => void;
+  isInitialized: () => boolean;
+  Auth: KakaoAuth;
+}
+
+// Extend Window interface to include Kakao
+declare global {
+  interface Window {
+    Kakao: Kakao;
+  }
+}
+
 const useOAuthLogin = () => {
   const navigate = useNavigate();
 
