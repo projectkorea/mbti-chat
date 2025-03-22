@@ -25,7 +25,7 @@ import {
   getCountFromServer,
 } from 'firebase/firestore';
 import { getFunctions } from 'firebase/functions';
-import { mbtiArray } from 'utils/mbtiContent.js';
+import { mbtiArray } from 'src/utils/MBTIContents';
 
 const {
   VITE_API_KEY,

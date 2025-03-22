@@ -1,6 +1,8 @@
 import { db } from './myBase.js';
+import { collection, addDoc } from 'firebase/firestore';
+import { User } from 'firebase/auth';
 
-function saveUser(userObj) {
+function saveUser(userObj: User): void {
   const user = {
     createdAt: new Date(),
     uid: userObj.uid,
@@ -9,7 +11,7 @@ function saveUser(userObj) {
     email: userObj.email,
   };
 
-  db.collection('user').add(user);
+  addDoc(collection(db, 'user'), user);
 }
 
 export { saveUser };

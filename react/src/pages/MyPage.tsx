@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { mbtiArray } from "utils/mbtiContent.js";
+import { mbtiArray } from "src/utils/MBTIContents";
 import { authService } from "utils/myBase.js";
 import ProfileSelector from "src/components/auth/ProfileSelector.js";
 import AccountVerifier from "src/components/auth/AccountVerifier.jsx";
@@ -9,7 +9,7 @@ import * as MbtiSVG from "utils/static";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "store/useStore.js";
 import { FirebaseUser } from "types/firebase";
-import { mbtiPronArray } from "utils/mbtiContent.js";
+import { mbtiPronArray } from "src/utils/MBTIContents";
 
 // Define the MBTI type based on mbtiPronArray keys
 type MBTIType = keyof typeof mbtiPronArray;

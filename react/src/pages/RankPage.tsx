@@ -1,6 +1,6 @@
 import MBTIRankingBar from "src/components/MBTIRankingBar";
 import { useState } from "react";
-import { mbtiArray } from "utils/mbtiContent.js";
+import { mbtiArray } from "src/utils/MBTIContents";
 import Navigation from "components/common/Navigation";
 
 // Define the type for MBTI array elements
