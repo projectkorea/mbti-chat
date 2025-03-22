@@ -1,7 +1,7 @@
-import SocialLogin from "./SocialLogin.jsx";
+import SocialAuthButton from "./SocialAuthButton";
 import useOAuthLogin from "hooks/useOAuthLogin";
 
-const SocialLoginBox = () => {
+const SocialAuthButtons = () => {
   const { onNaverClick, onKakaoClick, onGoogleClick, onFacebookClick } =
     useOAuthLogin();
 
@@ -9,20 +9,20 @@ const SocialLoginBox = () => {
     <>
       <div className="auth--container">
         <button onClick={onGoogleClick} className="auth--item google">
-          <SocialLogin socialType="google" socialName="구글" />
+          <SocialAuthButton socialType="google" />
         </button>
         <button onClick={onFacebookClick} className="auth--item facebook">
-          <SocialLogin socialType="facebook" socialName="페이스북" />
+          <SocialAuthButton socialType="facebook" />
         </button>
         <button onClick={onNaverClick} className="auth--item naver">
-          <SocialLogin socialType="naver" socialName="네이버" />
+          <SocialAuthButton socialType="naver" />
         </button>
         <button onClick={onKakaoClick} className="auth--item kakao">
-          <SocialLogin socialType="kakao" socialName="카카오" />
+          <SocialAuthButton socialType="kakao" />
         </button>
       </div>
     </>
   );
 };
 
-export default SocialLoginBox;
+export default SocialAuthButtons;

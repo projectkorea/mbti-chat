@@ -8,7 +8,7 @@ import { useUserStore } from "store/useStore.js";
 import { MyBase } from "utils/myBase.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-
+import Footer from "common/Footer";
 interface ChatRoomPageProps {
   colName: string;
   title: string;
@@ -94,6 +94,7 @@ const ChatRoomPage = ({ colName, title }: ChatRoomPageProps) => {
             const ChatMessageProps = {
               key: chat.id,
               chatObj: chat,
+              // @ts-expect-error - user is not null
               isOwner: user && chat.creatorId === user.uid,
             };
             return index === 1 ? (
@@ -106,6 +107,7 @@ const ChatRoomPage = ({ colName, title }: ChatRoomPageProps) => {
         </div>
         <ChatInput />
       </div>
+      <Footer />
     </>
   );
 };

@@ -2,43 +2,52 @@ import { useState } from "react";
 import { useUserStore } from "store/useStore.js";
 import { loadFiles } from "utils/loadFiles";
 
-const Verification = () => {
-  const [timerDisplay, setTimerDisplay] = useState(false);
+// Extend User type to include Firebase Auth properties
+interface ExtendedUser {
+  email: string;
+  emailVerified: boolean;
+  reload: () => Promise<void>;
+  sendEmailVerification: () => Promise<void>;
+}
+
+const AccountVerifier = () => {
+  const [timerDisplay, setTimerDisplay] = useState<string | boolean>(false);
   const [newVerification, setNewVerification] = useState(true);
   const [verifiedBtn, setVerifiedBtn] = useState(false);
   const { user, isSignInWithEmail } = useUserStore();
-  const svgMap = loadFiles("svg")
+  // Using type assertion to inform TypeScript about the expected structure
+  const svgMap = loadFiles("svg") as Record<string, string>;
+  
   //timer
   const countDownTimer = () => {
-    let timerInterval;
-    let dateObj = new Date();
+    const dateObj = new Date();
     dateObj.setMinutes(dateObj.getMinutes() + 5);
     const newDateObj = new Date(dateObj);
 
     const showRemaining = async () => {
-      await user.reload();
-      var now = new Date();
-      var distDt = newDateObj - now;
-      if (distDt < 0 || user.emailVerified) {
+      await (user as ExtendedUser).reload();
+      const now = new Date();
+      const distDt = newDateObj.getTime() - now.getTime();
+      if (distDt < 0 || (user as ExtendedUser).emailVerified) {
         setTimerDisplay("시간이 초과했습니다. 다시 인증해주세요.");
-        setVerifiedBtn("false");
+        setVerifiedBtn(false);
         clearInterval(timerInterval);
         return;
       }
-      var minutes = Math.floor(distDt / 60000);
-      var seconds = Math.floor((distDt % 60000) / 1000);
+      const minutes = Math.floor(distDt / 60000);
+      const seconds = Math.floor((distDt % 60000) / 1000);
       setTimerDisplay(`${minutes}분 ${seconds}초`);
     };
-
-    timerInterval = setInterval(showRemaining, 1000);
+    
+    const timerInterval = setInterval(showRemaining, 1000);
   };
 
   const onCheckVerification = async () => {
     if (verifiedBtn) {
-      if (!user.emailVerified) {
-        await user.reload();
+      if (!(user as ExtendedUser).emailVerified) {
+        await (user as ExtendedUser).reload();
         // await window.location.reload();
-        if (!user.emailVerified) {
+        if (!(user as ExtendedUser).emailVerified) {
           alert("인증 실패. 메일을 확인해주세요.");
         }
       }
@@ -52,10 +61,10 @@ const Verification = () => {
     setVerifiedBtn(true);
     if (!verifiedBtn) {
       countDownTimer(); //타이머 함수 실행하기
-      user.sendEmailVerification(); //인증 메일 보내기
-      alert(`${user.email} 주소로 인증 코드를 발송했습니다.`);
+      (user as ExtendedUser).sendEmailVerification(); //인증 메일 보내기
+      alert(`${(user as ExtendedUser).email} 주소로 인증 코드를 발송했습니다.`);
     } else {
-      alert(`이미 발송했습니다. ${user.email} 주소를 확인해주세요.`);
+      alert(`이미 발송했습니다. ${(user as ExtendedUser).email} 주소를 확인해주세요.`);
     }
   };
 
@@ -69,35 +78,21 @@ const Verification = () => {
 
   return (
     <>
-      {user && (!isSignInWithEmail || user.emailVerified) ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+      {user && (!isSignInWithEmail || (user as ExtendedUser).emailVerified) ? (
+        <div className="flex justify-center">
           <img
             alt="success"
             src={svgMap["green-check"]}
-            style={{
-              width: "20px",
-              margin: "0px 5px 0px 0px",
-            }}
+            className="w-5 mr-1.5"
           />
           <h1>계정인증 완료</h1>
         </div>
       ) : (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="flex flex-row justify-center flex-wrap">
           <img
             alt="failure"
             src={svgMap["red-x"]}
-            style={{
-              display: "inline-block",
-              width: "20px",
-              marginRight: "5px",
-            }}
+            className="inline-block w-5 mr-1.5"
           />
           <div>
             <h1 className="profile-font--small">채팅 기능을 이용하려면,</h1>
@@ -115,4 +110,4 @@ const Verification = () => {
   );
 };
 
-export default Verification;
+export default AccountVerifier;

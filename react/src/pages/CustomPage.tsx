@@ -5,18 +5,34 @@ import { useUserStore } from "store/useStore.js";
 import Navigation from "common/Navigation";
 import { MyBase } from "utils/myBase.js";
 
-function FreeBoardPage() {
-  const [rooms, setRooms] = useState([]);
+interface RoomElement {
+  id: string;
+  creatorId: string;
+  creatorType: string;
+  title: string;
+  msgNum?: number;
+  createdAt: number;
+  [key: string]: string | number | boolean | undefined;
+}
+
+function CustomPage() {
+  const [rooms, setRooms] = useState<RoomElement[]>([]);
   const { user } = useUserStore();
 
   useEffect(() => {
     async function fetchData() {
-      const res = await MyBase.getFreeBoardInfo();
+      const res = await MyBase.getFreeBoardInfo() as RoomElement[];
       setRooms(res);
     }
 
     fetchData();
-  }, [rooms]);
+  }, []);  // Removed rooms dependency to avoid infinite loop
+
+  // Helper function to safely check if element creator matches current user
+  const isCreatorCurrentUser = (creatorId: string) => {
+    // Using type assertion to access uid property that TypeScript doesn't recognize
+    return user && creatorId === (user as {uid: string}).uid;
+  };
 
   return (
     <>
@@ -29,8 +45,8 @@ function FreeBoardPage() {
             mbtiType={element.creatorType}
             title={element.title}
             path={element.creatorId}
-            isMine={user && element.creatorId === user.uid}
-            msgNum={element.msgNum}
+            isMine={isCreatorCurrentUser(element.creatorId)}
+            msgNum={element.msgNum || 0}
           />
         ))}
       </div>
@@ -38,4 +54,4 @@ function FreeBoardPage() {
   );
 }
 
-export default FreeBoardPage;
+export default CustomPage;

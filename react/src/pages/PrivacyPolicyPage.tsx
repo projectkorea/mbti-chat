@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function PrivacyPolicy() {
+function PrivacyPolicyPage() {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
@@ -121,4 +121,4 @@ function PrivacyPolicy() {
   );
 }
 
-export default PrivacyPolicy;
+export default PrivacyPolicyPage;

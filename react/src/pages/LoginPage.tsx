@@ -1,13 +1,13 @@
-import LoginForm from "components/login/LoginForm.jsx";
-import { Link, Navigate } from "react-router-dom";
-import SocialLoginBox from "components/login/SocialLoginBox.jsx";
+import AuthForm from "src/components/auth/AuthForm.js";
+import { Link } from "react-router-dom";
+import SocialAuthButtons from "src/components/auth/SocialAuthButtons.jsx";
 import Navigation from "common/Navigation.jsx";
 
 const LoginPage = () => {
   return (
     <>
-      <Navigation isLoggedIn={false} />
-      <div className="blank" style={{ height: "10vh" }} />
+      <Navigation/>
+      <div className="blank h-[10vh]" />
       <div className="login-box">
         <h1 className="logo-title-font">유유상종</h1>
         <div className="subtitle-font-wrapper">
@@ -16,13 +16,13 @@ const LoginPage = () => {
             원하는 유형의 사람들과 무료로 대화해보세요.
           </h1>
         </div>
-        <LoginForm isSignUpForm={false} />
+        <AuthForm isSignUpForm={false} />
         <div className="dividing--container">
           <div className="dividing--line"></div>
           <h1 className="dividing--font">간편 로그인</h1>
           <div className="dividing--line"></div>
         </div>
-        <SocialLoginBox />
+        <SocialAuthButtons />
         <div className="auth--container signup ">
           <h2 className="login-font">간편하게 계정을 만들고 싶다면?</h2>
           <Link to="/login/signup">

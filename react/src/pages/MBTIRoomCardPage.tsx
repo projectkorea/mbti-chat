@@ -2,7 +2,7 @@ import MBTIRoomCard from "components/MBTIRoomCard";
 import { mbtiArray } from "utils/mbtiContent.js";
 import Navigation from "common/Navigation";
 
-function TypePage() {
+function MBTIRoomCardPage() {
   return (
     <>
       <Navigation />
@@ -21,4 +21,4 @@ function TypePage() {
   );
 }
 
-export default TypePage;
+export default MBTIRoomCardPage;

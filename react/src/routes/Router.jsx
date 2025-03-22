@@ -4,19 +4,18 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import LoginPage from "src/pages/LoginPage.jsx";
-import SignUpPage from "src/pages/SignUpPage.jsx";
-import RankPage from "src/pages/RankPage.jsx";
-import ChatRoomPage from "src/pages/ChatRoomPage.js";
-import TypePage from "src/pages/TypePage.jsx";
-import FreeBoardPage from "src/pages/FreeBoardPage.jsx";
+import LoginPage from "pages/LoginPage";
+import SignUpPage from "pages/SignUpPage";
+import RankPage from "pages/RankPage";
+import ChatRoomPage from "pages/ChatRoomPage";
+import MBTIRoomCardPage from "pages/MBTIRoomCardPage";
+import CustomPage from "pages/CustomPage";
+import MyPage from "pages/MyPage";
+import AboutDeveloperPage from "pages/AboutDeveloperPage";
+import PrivacyPolicyPage from "pages/PrivacyPolicyPage";
 
-import Profile from "src/pages/ProfilePage.jsx";
 import Kakaotalk from "./Kakaotalk.jsx";
 import Naver from "./Naver.jsx";
-
-import AboutDeveloper from "./AboutDeveloper.jsx";
-import PrivacyPolicy from "./PrivacyPolicy";
 
 import { useUserStore } from "store/useStore";
 import useTitleAndColName from "hooks/useTitleAndColName";
@@ -32,7 +31,7 @@ const MainRouter = () => {
       },
       {
         path: "/type",
-        element: <TypePage />,
+        element: <MBTIRoomCardPage />,
       },
       {
         path: "/rank",
@@ -44,19 +43,19 @@ const MainRouter = () => {
       },
       {
         path: "/qna/1",
-        element: <AboutDeveloper />,
+        element: <AboutDeveloperPage />,
       },
       {
         path: "/qna/2",
-        element: <PrivacyPolicy />,
+        element: <PrivacyPolicyPage />,
       },
       {
         path: "/free",
-        element: <FreeBoardPage />,
+        element: <CustomPage />,
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: <MyPage />,
       },
       {
         path: "/login",

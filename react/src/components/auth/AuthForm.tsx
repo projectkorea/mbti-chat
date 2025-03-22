@@ -3,32 +3,44 @@ import { createUser } from "utils/myBase.js";
 import { signInEmail } from "utils/myBase";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = ({ isSignUpForm }) => {
+interface AuthFormProps {
+  isSignUpForm: boolean;
+}
+
+const AuthForm = ({ isSignUpForm }: AuthFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const onSubmitLogin = async (e) => {
+  const onSubmitLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await signInEmail(email, password);
       navigate("/");
-    } catch (error) {
-      setError(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     }
   };
 
   const onSubmitSignUp = async () => {
     try {
       await createUser(email, password);
-    } catch (error) {
-      setError(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     }
   };
 
-  const onValidatePassword = (e) => {
+  const onValidatePassword = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
       alert("비밀번호가 일치하지 않습니다.");
@@ -107,4 +119,4 @@ const LoginForm = ({ isSignUpForm }) => {
   );
 };
 
-export default LoginForm;
+export default AuthForm;

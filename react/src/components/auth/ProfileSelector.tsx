@@ -1,10 +1,16 @@
-import PropTypes from "prop-types";
 import { mbtiPronArray } from "utils/mbtiContent.js";
 import { nickname } from "utils/nicknameGen.js";
 import { MyBase } from "utils/myBase.js";
 import { useUserStore } from "store/useStore.js";
 
-function ProfileChooseBlock({ mbtiType }) {
+type MBTIType = keyof typeof mbtiPronArray;
+
+interface ProfileSelectorProps {
+  mbtiType: MBTIType;
+  setTypeInput?: (type: string) => void;
+}
+
+function ProfileSelector({ mbtiType }: ProfileSelectorProps) {
   const { setTypeChoose } = useUserStore();
 
   const handleTypeClick = async () => {
@@ -29,9 +35,4 @@ function ProfileChooseBlock({ mbtiType }) {
   );
 }
 
-ProfileChooseBlock.propTypes = {
-  mbtiType: PropTypes.string.isRequired,
-  setTypeInput: PropTypes.func,
-};
-
-export default ProfileChooseBlock;
+export default ProfileSelector;

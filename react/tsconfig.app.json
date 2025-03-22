@@ -33,7 +33,8 @@
       "store/*": ["src/store/*"],
       "assets/*": ["src/assets/*"],
       "routes/*": ["src/routes/*"],
-      "common/*": ["src/components/common/*"]
+      "common/*": ["src/components/common/*"],
+      "types/*": ["src/types/*"]
     },
 
     /* Linting */

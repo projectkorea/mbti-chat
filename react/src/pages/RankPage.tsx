@@ -3,22 +3,33 @@ import { useState } from "react";
 import { mbtiArray } from "utils/mbtiContent.js";
 import Navigation from "components/common/Navigation";
 
+// Define the type for MBTI array elements
+type MBTIElement = {
+  type: string;
+  msg: number;
+  people: number;
+  color: string;
+  realTime: string;
+};
+
+// Define valid target keys
+type TargetKey = "msg" | "people";
+
 function RankPage() {
-  const [target, setTarget] = useState("msg");
+  const [target, setTarget] = useState<TargetKey>("msg");
   const [unit, setUnit] = useState("개");
   let sum = 0;
-  mbtiArray.forEach((element) => {
+  mbtiArray.forEach((element: MBTIElement) => {
     sum += element[target];
   }); 
 
-  const onClick = (event) => {
-    const {
-      target: { name },
-    } = event;
-    if (name === "msg") {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const buttonName = event.currentTarget.name as TargetKey;
+    
+    if (buttonName === "msg") {
       setTarget("msg");
       setUnit("개");
-    } else if (name === "people") {
+    } else if (buttonName === "people") {
       setTarget("people");
       setUnit("명");
     }
@@ -36,22 +47,22 @@ function RankPage() {
             유형 수
           </button>
         </div>
-        <div style={{ display: "flex" }}>
-          <div className="rank-column" style={{ flexDirection: "column" }}>
+        <div className="flex">
+          <div className="rank-column flex-col">
             {Array.from({ length: 16 }, (_, index) => (
-              <h1 key={index} style={{ margin: "5px", textAlign: "center" }}>
+              <h1 key={index} className="m-[5px] text-center">
                 {index + 1}등:
               </h1>
             ))}
           </div>
           <div
-            className="rank-column"
-            style={{ flexDirection: "column-reverse" }}
+            className="rank-column flex-col-reverse"
           >
-            {mbtiArray.map((element) => (
+            {mbtiArray.map((element: MBTIElement) => (
               <div
                 key={element.type}
-                style={{ order: element[target], margin: "5px 0px" }}
+                className="my-[5px] mx-0"
+                style={{ order: element[target] }}
               >
                 <MBTIRankingBar
                   key={element.type}

@@ -1,7 +1,7 @@
 import { db } from "utils/myBase.js";
 import { useEffect, useState } from "react";
 
-function AboutDeveloper() {
+function AboutDeveloperPage() {
   const [chat, setChat] = useState("");
 
   const onSubmit = async (event: React.FormEvent) => {
@@ -75,4 +75,4 @@ function AboutDeveloper() {
   );
 }
 
-export default AboutDeveloper;
+export default AboutDeveloperPage;
