@@ -8,6 +8,7 @@ import autoprefixer from 'autoprefixer'
 export default defineConfig({
   plugins: [react()],
   base: '/chat/',
+  // base: "/static/chat/",
   css: {
     postcss: {
       plugins: [
@@ -18,6 +19,7 @@ export default defineConfig({
   },
   build: {
     outDir: '../build/react',
+    // outDir: "../../public/static/chat",
     emptyOutDir: true,
     cssCodeSplit: true,
   },

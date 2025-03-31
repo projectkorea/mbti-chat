@@ -34,12 +34,12 @@ import { mbtiArray } from 'src/utils/mbtiContents';
 declare global {
   interface ImportMetaEnv {
     VITE_API_KEY: string;
-    VITE_AUTH_DOMAIN: string;
-    VITE_PROJECT_ID: string;
-    VITE_STORAGE_BUCKET: string;
-    VITE_MESSAGING_ID: string;
-    VITE_APP_ID: string;
-    VITE_MEASURE_ID: string;
+    VITE_FIREBASE_ADMIN_AUTH_DOMAIN: string;
+    VITE_FIREBASE_ADMIN_PROJECT_ID: string;
+    VITE_FIREBASE_ADMIN_STORAGE_BUCKET: string;
+    VITE_FIREBASE_ADMIN_MESSAGING_ID: string;
+    VITE_FIREBASE_ADMIN_APP_ID: string;
+    VITE_FIREBASE_ADMIN_MEASURE_ID: string;
     VITE_KAKAO_APP_KEY_REST: string;
     VITE_NAVER_APP_CLIENT_ID: string;
   }
@@ -51,24 +51,24 @@ declare global {
 
 const {
   VITE_API_KEY,
-  VITE_AUTH_DOMAIN,
-  VITE_PROJECT_ID,
-  VITE_STORAGE_BUCKET,
-  VITE_MESSAGING_ID,
-  VITE_APP_ID,
-  VITE_MEASURE_ID,
+  VITE_FIREBASE_ADMIN_AUTH_DOMAIN,
+  VITE_FIREBASE_ADMIN_PROJECT_ID,
+  VITE_FIREBASE_ADMIN_STORAGE_BUCKET,
+  VITE_FIREBASE_ADMIN_MESSAGING_ID,
+  VITE_FIREBASE_ADMIN_APP_ID,
+  VITE_FIREBASE_ADMIN_MEASURE_ID,
   VITE_KAKAO_APP_KEY_REST,
   VITE_NAVER_APP_CLIENT_ID,
 } = import.meta.env;
 
 const firebaseConfig = {
   apiKey: VITE_API_KEY,
-  authDomain: VITE_AUTH_DOMAIN,
-  projectId: VITE_PROJECT_ID,
-  storageBucket: VITE_STORAGE_BUCKET,
-  messagingSenderId: VITE_MESSAGING_ID,
-  appId: VITE_APP_ID,
-  measurementId: VITE_MEASURE_ID,
+  authDomain: VITE_FIREBASE_ADMIN_AUTH_DOMAIN,
+  projectId: VITE_FIREBASE_ADMIN_PROJECT_ID,
+  storageBucket: VITE_FIREBASE_ADMIN_STORAGE_BUCKET,
+  messagingSenderId: VITE_FIREBASE_ADMIN_MESSAGING_ID,
+  appId: VITE_FIREBASE_ADMIN_APP_ID,
+  measurementId: VITE_FIREBASE_ADMIN_MEASURE_ID,
 };
 
 const app = initializeApp(firebaseConfig);
