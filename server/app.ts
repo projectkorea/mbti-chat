@@ -3,9 +3,7 @@ import path from "path";
 import cors from "cors";
 import helmet from "helmet";
 
-// 프로젝트 루트 경로 얻기
 const PROJECT_ROOT = path.resolve(process.cwd());
-// 빌드된 React 앱 경로
 const REACT_BUILD_PATH = path.join(PROJECT_ROOT, 'build', 'react');
 
 const app = express();
