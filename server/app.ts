@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import cors from "cors";
 import helmet from "helmet";
+import { kakaoAuth, naverAuth } from "./auth";
 
 const PROJECT_ROOT = path.resolve(process.cwd());
 const REACT_BUILD_PATH = path.join(PROJECT_ROOT, 'build', 'react');
@@ -15,6 +16,10 @@ app.use(helmet({
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// OAuth Routes
+app.post("/api/kakao-auth", kakaoAuth);
+app.post("/api/naver-auth", naverAuth);
 
 app.use('/chat', express.static(REACT_BUILD_PATH));
 
