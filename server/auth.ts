@@ -47,7 +47,6 @@ const serviceAccount: ServiceAccount = {
 if (!admin.apps.length) {
   // admin.initializeApp({
     // credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-    // databaseURL: process.env.VITE_CHAT_FIREBASE_DATABASE_URL,
   // });
 }
 

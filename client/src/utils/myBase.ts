@@ -30,7 +30,6 @@ import {
 import { getFunctions } from 'firebase/functions';
 import { mbtiArray } from 'src/utils/mbtiContents';
 
-// Add type definitions for Vite env variables
 declare global {
   interface ImportMetaEnv {
     VITE_CHAT_FIREBASE_API_KEY: string;
@@ -44,16 +43,8 @@ declare global {
     VITE_CHAT_FIREBASE_ADMIN_TOKEN_URI: string;
     VITE_CHAT_FIREBASE_ADMIN_AUTH_PROVIDER_CERT_URL: string;
     VITE_CHAT_FIREBASE_ADMIN_CLIENT_CERT_URL: string;
-    VITE_CHAT_FIREBASE_ADMIN_AUTH_DOMAIN: string;
-    VITE_CHAT_FIREBASE_ADMIN_STORAGE_BUCKET: string;
-    VITE_CHAT_FIREBASE_ADMIN_MESSAGING_ID: string;
-    VITE_CHAT_FIREBASE_ADMIN_APP_ID: string;
-    VITE_CHAT_FIREBASE_ADMIN_MEASURE_ID: string;
-    VITE_CHAT_FIREBASE_DATABASE_URL: string;
     VITE_CHAT_KAKAO_APP_KEY_REST: string;
-    VITE_CHAT_KAKAO_APP_REDIRECT_URI: string;
     VITE_CHAT_NAVER_APP_CLIENT_ID: string;
-    VITE_CHAT_NAVER_APP_CLIENT_SECRET: string;
   }
 
   interface ImportMeta {
@@ -73,22 +64,14 @@ const {
   VITE_CHAT_FIREBASE_ADMIN_TOKEN_URI,
   VITE_CHAT_FIREBASE_ADMIN_AUTH_PROVIDER_CERT_URL,
   VITE_CHAT_FIREBASE_ADMIN_CLIENT_CERT_URL,
-  VITE_CHAT_FIREBASE_ADMIN_AUTH_DOMAIN,
-  VITE_CHAT_FIREBASE_ADMIN_STORAGE_BUCKET,
-  VITE_CHAT_FIREBASE_ADMIN_MESSAGING_ID,
-  VITE_CHAT_FIREBASE_ADMIN_APP_ID,
   VITE_CHAT_KAKAO_APP_KEY_REST,
   VITE_CHAT_NAVER_APP_CLIENT_ID,
 } = import.meta.env;
 
 const firebaseConfig = {
   apiKey: VITE_CHAT_FIREBASE_API_KEY,
-  authDomain: VITE_CHAT_FIREBASE_ADMIN_AUTH_DOMAIN,
-  projectId: VITE_CHAT_FIREBASE_ADMIN_PROJECT_ID,
-  storageBucket: VITE_CHAT_FIREBASE_ADMIN_STORAGE_BUCKET,
-  messagingSenderId: VITE_CHAT_FIREBASE_ADMIN_MESSAGING_ID,
-  appId: VITE_CHAT_FIREBASE_ADMIN_APP_ID,
   type: VITE_CHAT_FIREBASE_ADMIN_TYPE,
+  projectId: VITE_CHAT_FIREBASE_ADMIN_PROJECT_ID,
   private_key_id: VITE_CHAT_FIREBASE_ADMIN_PRIVATE_KEY_ID,
   private_key: VITE_CHAT_FIREBASE_ADMIN_PRIVATE_KEY,
   client_email: VITE_CHAT_FIREBASE_ADMIN_CLIENT_EMAIL,
@@ -127,14 +110,12 @@ export {
   VITE_CHAT_NAVER_APP_CLIENT_ID
 };
 
-// Define interface for MBTI type
 interface MbtiType {
   type: string;
   realTime?: string;
   [key: string]: string | number | undefined;
 }
 
-// Define interface for chat message
 interface ChatMessage {
   id: string;
   createdAt: number;
