@@ -1,12 +1,12 @@
 import { useOAuthCallback } from "hooks/useOAuthCallback";
 import Loading from "components/common/Loading";
-import { VITE_KAKAO_APP_KEY_REST } from "utils/myBase.js";
+import { VITE_CHAT_KAKAO_APP_KEY_REST } from "utils/myBase.js";
 import { useEffect } from "react";
 
 // Initialize Kakao SDK
 const initializeKakaoSDK = () => {
   if (window.Kakao && !window.Kakao.isInitialized()) {
-    window.Kakao.init(VITE_KAKAO_APP_KEY_REST);
+    window.Kakao.init(VITE_CHAT_KAKAO_APP_KEY_REST);
     return window.Kakao.isInitialized();
   }
   return false;

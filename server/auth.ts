@@ -5,7 +5,6 @@ import axios from "axios";
 
 dotenv.config();
 
-// Interface definitions
 interface ServiceAccount {
   type: string;
   project_id: string;
@@ -27,7 +26,6 @@ interface UserParams {
   provider?: string;
 }
 
-// Initialize Firebase Admin
 const privateKey = (process.env.VITE_CHAT_FIREBASE_ADMIN_PRIVATE_KEY || "")
   .split("\\n")
   .join("\n");
@@ -47,10 +45,10 @@ const serviceAccount: ServiceAccount = {
 
 // Initialize Firebase if not already initialized
 if (!admin.apps.length) {
-  admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-    databaseURL: process.env.VITE_CHAT_FIREBASE_DATABASE_URL,
-  });
+  // admin.initializeApp({
+    // credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+    // databaseURL: process.env.VITE_CHAT_FIREBASE_DATABASE_URL,
+  // });
 }
 
 // API URLs

@@ -5,8 +5,8 @@ import {
   FacebookProvider,
 } from "../utils/myBase.js";
 import {
-  VITE_KAKAO_APP_KEY_REST,
-  VITE_NAVER_APP_CLIENT_ID,
+  VITE_CHAT_KAKAO_APP_KEY_REST,
+  VITE_CHAT_NAVER_APP_CLIENT_ID,
 } from "../utils/myBase.js";
 
 // Add Kakao SDK type declaration
@@ -44,7 +44,7 @@ const useOAuthLogin = () => {
 
   const onKakaoClick = () => {
     if (!window.Kakao.isInitialized()) {
-      window.Kakao.init(VITE_KAKAO_APP_KEY_REST);
+      window.Kakao.init(VITE_CHAT_KAKAO_APP_KEY_REST);
       window.Kakao.isInitialized();
     }
     const protocol = window.location.protocol;
@@ -71,7 +71,7 @@ const useOAuthLogin = () => {
     const authUrl = "https://nid.naver.com/oauth2.0/authorize";
     const params = [];
     params.push("response_type=code");
-    params.push("client_id=" + VITE_NAVER_APP_CLIENT_ID);
+    params.push("client_id=" + VITE_CHAT_NAVER_APP_CLIENT_ID);
     params.push("redirect_uri=" + url);
     params.push("state=" + state);
     const authCodeUrl = authUrl + "?" + params.join("&");
