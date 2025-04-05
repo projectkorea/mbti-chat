@@ -5,31 +5,16 @@
   "author": "JunhaKim",
   "license": "ISC",
   "scripts": {
-    "postinstall": "cd client && npm install",
-    "build:client": "cd client && npm run build",
+    "build:client": "cd client && pnpm run build",
     "build:server": "tsc -p server/tsconfig.json",
-    "build": "rimraf build && npm run build:server && npm run build:client",
-    "dev": "nodemon --watch \"**/*\" --ignore \"build/**\" --ext js,jsx,ts,tsx,json,css --exec \"npm run build && cross-env NODE_ENV=development node build/server/app.js\"",
-    "prod": "npm run build && cross-env NODE_ENV=production node build/server/app.js"
-  },
-  "dependencies": {
-    "core-js": "^3.35.1",
-    "firebase-admin": "^9.11.1",
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "helmet": "^7.1.0",
-    "dotenv": "^16.4.1"
+    "build": "rimraf build && pnpm run build:server && pnpm run build:client",
+    "start:app": "pnpm run build && cross-env NODE_ENV=development node build/server/app.js",
+    "start": "nodemon --watch \"**/*\" --ignore \"build/**\" --exec \"pnpm run start:app\""
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/helmet": "^4.0.0",
-    "@types/node": "^16.4.0",
-    "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.12",
-    "rimraf": "^3.0.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^4.3.5"
-  }
+    "rimraf": "^6.0.1"
+  },
+  "packageManager": "pnpm@10.7.0+sha256.35cab26953bf90847e798839db58c9a2a82d526b7af179fd2a103c18242cadc6"
 }

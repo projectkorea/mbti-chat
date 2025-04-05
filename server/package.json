@@ -1,5 +1,5 @@
 {
-  "name": "mbti-chat",
+  "name": "chat-server",
   "version": "1.0.0",
   "main": "app.ts",
   "author": "JunhaKim",
@@ -13,8 +13,8 @@
     "dev": "nodemon --exec ts-node app.ts"
   },
   "dependencies": {
-    "@types/axios": "^0.14.4",
     "axios": "^1.4.0",
+    "core-js": "^3.35.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.1",
