@@ -1,4 +1,4 @@
-import { mbtiPronArray } from "src/utils/mbtiIContents";
+import { mbtiPronArray } from "src/utils/mbtiContents";
 import { nickname } from "utils/nicknameGen";
 import { MyBase } from "utils/myBase.js";
 import { useUserStore } from "store/useStore.js";

@@ -1,5 +1,5 @@
 import MBTIRoomCard from "components/MBTIRoomCard";
-import { mbtiArray } from "src/utils/mbtiIContents";
+import { mbtiArray } from "src/utils/mbtiContents";
 import Navigation from "common/Navigation";
 
 function MBTIRoomCardPage() {
