@@ -1,4 +1,4 @@
-import { mbtiColorArray } from "src/utils/MBTIContents";
+import { mbtiColorArray } from "src/utils/mbtiIContents";
 
 interface MbtiBadgeProps {
   mbtiType: string;
