@@ -36,7 +36,6 @@
       "common/*": ["src/components/common/*"],
       "types/*": ["src/types/*"]
     },
-
     /* Linting */
     "noImplicitAny": true,
     "strict": false,
