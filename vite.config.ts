@@ -5,11 +5,15 @@ import autoprefixer from 'autoprefixer'
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
-  base: '/chat/',
-  // base: "/static/chat/",
-  css: {
+export default defineConfig(({ command }) => {
+  const isBuild = command === 'build'
+  const base = isBuild ? '/static/mbti' : '/chat'
+  const outDir = isBuild ? `../../public/${base}` : './build'
+
+  return {
+    plugins: [react(), tsconfigPaths()],
+    base,
+    css: {
     postcss: {
       plugins: [
         tailwindcssPostcss,
@@ -18,9 +22,9 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../build/react',
-    // outDir: "../../public/static/chat",
+    outDir,
     emptyOutDir: true,
     cssCodeSplit: true,
   },
+}
 })
