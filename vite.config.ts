@@ -13,6 +13,9 @@ export default defineConfig(({ command }) => {
   return {
     plugins: [react(), tsconfigPaths()],
     base,
+    server: {
+      port: 3000,
+    },
     css: {
     postcss: {
       plugins: [
